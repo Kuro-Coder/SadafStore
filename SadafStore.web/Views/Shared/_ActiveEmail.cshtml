@@ -1,0 +1,15 @@
+﻿@model SadafStore.DataLayer.Entities.User.User
+
+<div style="direction: rtl; padding: 20px">
+    <h2>
+        @Model.UserName عزیز
+    </h2>
+    <p>
+        با سلام و تشکر از ثبت نام شما، برروی لینک زیر کلیک کنید تا حساب شما فعال شود:
+    </p>
+    <p>
+        <a href="https://localhost:44362/Account/ActiveAccount/@Model.ActiveCode">
+            لینک فعال ساز
+        </a>
+    </p>
+</div>

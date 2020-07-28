@@ -1,0 +1,54 @@
+﻿@model SadafStore.DataLayer.Entities.User.User
+@{
+    ViewData["Title"] = "ثبت موفق کاربر";
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/DefaultLayout">خانه</a></li>
+                        <li>موفق بودن ثبت اطلاعات شما</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<div class="login_page_bg">
+    <div class="container">
+        <div class="customer_login">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form register">
+                        <h2>ارسال ایمیل فعال ساز</h2>
+                        <form>
+                            <h3>کاربر عزیز @Model.UserName</h3>
+                            <p class="text-justify">
+                                ایمیلی حاوی لینک فعال سازی حساب شما به صندق پستی شما ارسال شد.
+                                لطفا برای فعال شدن حساب کاربری خود به صندوق پستی @Model.Email
+                                مراجعه کنید و برروی لینک ارسال شده در ایمیل کلیک کنید.
+                            </p>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<h4>رفتن به صندق‌های پستی:</h4>
+
+    <p></p>*@

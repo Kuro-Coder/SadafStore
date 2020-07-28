@@ -1,0 +1,79 @@
+﻿@model SadafStore.Core.DTOs.LoginViewModel
+@{
+    ViewData["Title"] = "ورود";
+}
+
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>ورود کاربر</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!-- customer login start -->
+<div class="login_page_bg">
+    <div class="container">
+        <div class="customer_login">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                </div>
+                <!--login area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form login">
+                        <h2>ورود</h2>
+
+                        @if (ViewBag.IsSuccess == true)
+                        {
+                            <div class="alert alert-success">
+                                <p class="">
+                                    ورود شما موفق بود، به صفحه مورد نظر منتقل می‌شوید.
+                                </p>
+                            </div>
+                            <script>
+                                var delay = 4000;
+                                setTimeout(function () {
+                                    window.location = "/";
+                                }, delay);
+                            </script>
+                        }
+
+                        <form asp-action="Login" method="post">
+                            <p>
+                                <label> ایمیل <span>:</span></label>
+                                <input asp-for="Email" type="email" dir="ltr">
+                            </p>
+                            <span asp-validation-for="Email"></span>
+                            <p>
+                                <label>کلمه عبور <span>:</span></label>
+                                <input asp-for="Password" type="password" dir="ltr">
+                            </p>
+                            <span asp-validation-for="Password"></span>
+                            <div class="login_submit">
+                                <a href="/ForgotPassword">کلمه عبور خود را فراموش کرده اید؟</a>
+                                <label for="remember">
+                                    <input asp-for="RememberMe" id="remember" type="checkbox">
+                                    مرا به خاطر بسپار
+                                </label>
+                                <button type="submit">ورود</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <!--login area start-->
+            </div>
+        </div>
+    </div>
+</div>

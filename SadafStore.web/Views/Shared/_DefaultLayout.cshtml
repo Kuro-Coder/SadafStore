@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="fa" dir="rtl">
+
+<head>
+    <title>صدف | @ViewData["Title"]</title>
+    <partial name="_MetaTags" />
+    <partial name="_Styles" />
+</head>
+
+<body>
+
+    <!--Offcanvas menu area start-->
+    <partial name="_MenuStart" />
+    <!--Offcanvas menu area end-->
+    <!--header area start-->
+    <partial name="_Header" />
+<!--header area end-->
+    <!--slider area start-->
+    @RenderSection("Slider", false)
+    <!--slider area end-->
+    <!--shipping area start-->
+    @RenderSection("Shipping", false)
+    <!--shipping area end-->
+    <!--home section bg area start-->
+    @RenderBody()
+    <!--home section bg area end-->
+    <!--footer area start-->
+    <partial name="_Footer" />
+    <!--footer area end-->
+    <!-- modal area start-->
+    <partial name="_Models" />
+    <!-- modal area end-->
+    <!--news letter popup start (uncomment lines 661-686 in main.js to show this)-->
+    <partial name="_News" />
+    <!--news letter popup start-->
+    <!-- JS
+    ============================================ -->
+    <!-- Plugins JS -->
+    <script src="/js/plugins.js"></script>
+
+    <!-- Main JS -->
+    <script src="/js/main.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.js"></script>
+</body>
+
+</html>
+

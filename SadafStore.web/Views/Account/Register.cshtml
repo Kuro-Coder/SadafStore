@@ -1,0 +1,88 @@
+﻿@model SadafStore.Core.DTOs.RegisterViewModel
+@{
+    ViewData["Title"] = "ثبت نام";
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>ایجاد حساب</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!-- customer login start -->
+<div class="login_page_bg">
+    <div class="container">
+        <div class="customer_login">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                </div>
+                <!--register area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form register">
+                        <h2>ثبت نام</h2>
+                        <form asp-action="Register" method="post">
+                            <p>
+                                <label>نام کاربری<span>:</span></label>
+                                <input asp-for="UserName" type="text" dir="ltr">
+                            </p>
+                            <p>
+                                <label>آدرس ایمیل<span>:</span></label>
+                                <input asp-for="Email" type="email" dir="ltr">
+                            </p>
+                            <p>
+                                <label>کلمه عبور<span>:</span></label>
+                                <input asp-for="Password" type="password" dir="ltr">
+                            </p>
+                            <p>
+                                <label>تکرار کلمه عبور<span>:</span></label>
+                                <input asp-for="RePassword" type="password" dir="ltr">
+                            </p>
+
+                            <div asp-validation-summary="All" class="text-danger">
+
+                            </div>
+
+                            <div class="login_submit">
+                                <button type="submit">ثبت نام</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--register area end-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- customer login end -->
+@*
+    //Genders
+    <div class="row">
+
+        <div class="col-6">
+            <p>
+                مونث(انتخاب اختیاری)<span>:</span>
+                <input asp-for="Male" type="checkbox" dir="ltr" />
+            </p>
+        </div>
+        <div class="col-6">
+            <p>
+                مذکر(انتخاب اختیاری)
+                <span>:</span>
+                <input asp-for="Female" type="checkbox" dir="ltr" />
+            </p>
+        </div>
+
+    </div>*@
