@@ -172,3 +172,5 @@ F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ForgotPassword.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\Home\Index.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\_ViewStart.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\Shared\_NavTabs.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\_ViewImports.cshtml.g.cs

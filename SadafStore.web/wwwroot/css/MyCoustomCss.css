@@ -3,3 +3,50 @@
 .field-validation-error {
     color: red;
 }
+
+.avatar-layer {
+    border: 1px solid #ecf1f8;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.img-layer {
+    border: 1px solid #ecf1f8;
+    margin-bottom: 5px;
+    background-color: #fff;
+}
+
+.navImg {
+    width: 170px;
+    height: 170px;
+    border: 3px solid #ecf1f8;
+    z-index: 1;
+    position: relative;
+}
+
+.change-image {
+    margin: 25px auto 0;
+    position: relative;
+    z-index: 1;
+    width: 170px;
+    height: 190px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.detail {
+    width: 100%;
+    padding: 5px 0 5px;
+    text-align: center;
+}

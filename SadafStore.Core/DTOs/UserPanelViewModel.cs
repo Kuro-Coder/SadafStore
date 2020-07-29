@@ -15,5 +15,12 @@ namespace SadafStore.Core.DTOs
             public string UserAddress { get; set; }
             public string TelNumber { get; set; }
         }
+
+        public class NavBarsUserPanelViewModel
+        {
+            public string UserAvatarInNav { get; set; }
+            public string UserNameInNav { get; set; }
+            
+        }
     }
 }

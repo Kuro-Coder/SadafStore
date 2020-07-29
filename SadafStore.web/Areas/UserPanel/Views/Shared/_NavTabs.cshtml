@@ -1,0 +1,33 @@
+﻿@using SadafStore.Core.DTOs
+@using SadafStore.Core.Services.Interfaces
+@inject IUserService _UserService
+
+@{
+    UserPanelViewModel.NavBarsUserPanelViewModel user = _UserService.GetNavBarUserPanelData(User.Identity.Name);
+}
+
+<div class="avatar-layer">
+    <div class="img-layer">
+        <a href="" class="change-image">
+            <img class="navImg" src="AvatarsImg/@user.UserAvatarInNav" />
+        </a>
+
+    </div>
+    <div class="detail">
+        <h3>
+            @user.UserNameInNav
+        </h3>
+    </div>
+</div>
+
+
+
+<div class="dashboard_tab_button">
+    <ul role="tablist" class="nav flex-column dashboard-list">
+        <li><a href="#dashboard" data-toggle="tab" class="nav-link active show">داشبورد</a></li>
+        <li> <a href="#orders" data-toggle="tab" class="nav-link">سفارشات</a></li>
+        <li><a href="#downloads" data-toggle="tab" class="nav-link">دریافت ها</a></li>
+        <li><a href="#account-details" data-toggle="tab" class="nav-link">ویرایش حساب</a></li>
+        <li><a href="login.html" class="nav-link">خروج</a></li>
+    </ul>
+</div>

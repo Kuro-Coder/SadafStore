@@ -25,6 +25,7 @@ namespace SadafStore.Core.Services.Interfaces
         #region User Panel
 
         UserPanelViewModel.InformationUserViewModel GetUserInformation(string userName);
+        UserPanelViewModel.NavBarsUserPanelViewModel GetNavBarUserPanelData(string userName);
 
         #endregion
     }

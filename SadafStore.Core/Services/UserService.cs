@@ -98,5 +98,15 @@ namespace SadafStore.Core.Services
             _context.Update(user);
             _context.SaveChanges();
         }
+
+        public UserPanelViewModel.NavBarsUserPanelViewModel GetNavBarUserPanelData(string userName)
+        {
+            return _context.Users.Where(u => u.UserName == userName).Select(u =>
+                new UserPanelViewModel.NavBarsUserPanelViewModel()
+                {
+                    UserNameInNav = u.UserName,
+                    UserAvatarInNav = u.AvatarImg
+                }).Single();
+        }
     }
 }
