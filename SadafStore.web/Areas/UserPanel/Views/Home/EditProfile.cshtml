@@ -1,0 +1,80 @@
+﻿@model SadafStore.Core.DTOs.UserPanelViewModel.EditProfileViewModel
+@{
+    ViewData["Title"] = "ویرایش حساب کاربری";
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li><a href="/UserPanel">داشبورد</a></li>
+                        <li>ویرایش حساب</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<div class="account_page_bg">
+    <div class="container">
+        <section class="main_content_area">
+            <div class="account_dashboard">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <!-- Nav tabs -->
+                        <partial name="_NavTabs" />
+                    </div>
+                    <div class="col-sm-12 col-md-9 col-lg-9">
+                        <!-- Tab panes -->
+                        <div class="tab-content dashboard_content">
+                            <div class="" id="account-details">
+                                <h3>ویرایش حساب </h3>
+                                <div class="login">
+                                    <div class="login_form_container">
+                                        <div class="account_login_form">
+                                            <form asp-action="EditProfile" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" asp-for="ImageName" />
+                                                <br>
+                                                <label>نام کاربری</label>
+                                                <input class="my-input-bg" asp-for="UserName" type="text" placeholder="نام کاربری جدید شما">
+
+                                                <label>نام و نام خانوادگی</label>
+                                                <input class="my-input-bg" asp-for="AvatarName" type="text" placeholder="نام خانوادگی شما">
+
+                                                <label>آدرس</label>
+                                                <input class="my-input-bg" asp-for="AvatarAddress" type="text" placeholder="آدرس شما">
+
+                                                <label>شماره تماس</label>
+                                                <input class="my-input-bg" asp-for="AvatarPhone" type="text" placeholder="شماره تماس با شما">
+
+                                                <label>تصویر</label>
+                                                <img class="img-thumbnail imgWidth" src="/AvatarsImg/@Model.ImageName" />
+                                                <input class="my-input-bg" asp-for="AvatarImage" type="file">
+                                                <span class="example">
+                                                    (لطفا تصویری برای خود انتخاب کنید)
+                                                </span>
+                                                <br>
+                                                <div class="save_button primary_btn default_button">
+                                                    <button type="submit">ذخیره</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

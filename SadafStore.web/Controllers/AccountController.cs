@@ -81,8 +81,9 @@ namespace SadafStore.web.Controllers
         #region Login User
 
         [Route("Login")]
-        public IActionResult Login()
+        public IActionResult Login(bool EditProfile = false)
         {
+            ViewBag.EditProfile = EditProfile;
             return View();
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using SadafStore.Core.CodeGenerator;
@@ -81,8 +82,8 @@ namespace SadafStore.Core.Services
         {
             var user = GetUserByUserName(userName);
             UserPanelViewModel.InformationUserViewModel information = new UserPanelViewModel.InformationUserViewModel();
-            information.UserName = user.UserName;
             information.Email = user.Email;
+            information.AvatarName = user.AvatarName;
             information.RegisterDate = user.RegisterDate;
             information.Wallet = 0;
             information.UserAddress = user.AvatarAddress;
@@ -107,6 +108,52 @@ namespace SadafStore.Core.Services
                     UserNameInNav = u.UserName,
                     UserAvatarInNav = u.AvatarImg
                 }).Single();
+        }
+
+        public UserPanelViewModel.EditProfileViewModel GetDataForEditProfile(string userName)
+        {
+            return _context.Users.Where(u => u.UserName == userName).Select(u =>
+                new UserPanelViewModel.EditProfileViewModel
+                {
+                    UserName = u.UserName,
+                    AvatarName = u.AvatarName,
+                    AvatarPhone = u.AvatarPhone,
+                    AvatarAddress = u.AvatarAddress,
+                    ImageName = u.AvatarImg
+                }).Single();
+        }
+
+        public void EditProfile(string username, UserPanelViewModel.EditProfileViewModel profile)
+        {
+            if (profile.AvatarImage != null)
+            {
+                string imagePath = "";
+                if (profile.ImageName != "null.jpg")
+                {
+                    imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/AvatarsImg", profile.ImageName);
+                    if (File.Exists(imagePath))
+                    {
+                        File.Delete(imagePath);
+                    }
+                }
+
+                profile.ImageName = GeneratorCode.GenerateGuidCode() + Path.GetExtension(profile.AvatarImage.FileName);
+                imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/AvatarsImg", profile.ImageName);
+
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    profile.AvatarImage.CopyTo(stream);
+                }
+            }
+
+            var user = GetUserByUserName(username);
+            user.UserName = profile.UserName;
+            user.AvatarName = profile.AvatarName;
+            user.AvatarAddress = profile.AvatarAddress;
+            user.AvatarPhone = profile.AvatarPhone;
+            user.AvatarImg = profile.ImageName;
+
+            UpdateUser(user);
         }
     }
 }

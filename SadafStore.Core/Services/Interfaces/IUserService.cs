@@ -26,6 +26,11 @@ namespace SadafStore.Core.Services.Interfaces
 
         UserPanelViewModel.InformationUserViewModel GetUserInformation(string userName);
         UserPanelViewModel.NavBarsUserPanelViewModel GetNavBarUserPanelData(string userName);
+        UserPanelViewModel.EditProfileViewModel GetDataForEditProfile(string userName);
+
+        //username id old data and profile is new data to save
+        void EditProfile(string username, UserPanelViewModel.EditProfileViewModel profile);
+
 
         #endregion
     }
