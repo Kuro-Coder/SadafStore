@@ -175,3 +175,4 @@ F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\Shared\_NavTabs.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\_ViewImports.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\Home\EditProfile.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\Home\ChangePassword.cshtml.g.cs

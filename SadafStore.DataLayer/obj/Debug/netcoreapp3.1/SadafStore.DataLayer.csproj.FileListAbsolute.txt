@@ -9,3 +9,4 @@ F:\MyProject Core\SadafStore\SadafStore.DataLayer\bin\Debug\netcoreapp3.1\SadafS
 F:\MyProject Core\SadafStore\SadafStore.DataLayer\bin\Debug\netcoreapp3.1\SadafStore.DataLayer.runtimeconfig.dev.json
 F:\MyProject Core\SadafStore\SadafStore.DataLayer\obj\Debug\netcoreapp3.1\SadafStore.DataLayer.genruntimeconfig.cache
 F:\MyProject Core\SadafStore\SadafStore.DataLayer\obj\Debug\netcoreapp3.1\SadafStore.DataLayer.csproj.CoreCompileInputs.cache
+F:\MyProject Core\SadafStore\SadafStore.DataLayer\obj\Debug\netcoreapp3.1\SadafStore.DataLayer.csprojAssemblyReference.cache

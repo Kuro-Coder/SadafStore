@@ -50,5 +50,35 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
         }
 
         #endregion
+
+        #region Change Password in UserPanel
+
+        [Route("UserPanel/ChangePassword")]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Route("UserPanel/ChangePassword")]
+        public IActionResult ChangePassword(UserPanelViewModel.ChangePasswordViewModel change)
+        {
+            if (!ModelState.IsValid)
+                return View(change);
+            //check old pass
+            string currentUserName = User.Identity.Name;
+            if (!_userService.CompareOldPasswordForChange(change.OldPassword,currentUserName))
+            {
+                ModelState.AddModelError("OldPassword"," => کلمه عبور فعلی شما به درستی وارد نشده است!!!");
+                return View(change);
+            }
+            //Get and Save New Pass
+            _userService.ChangeUserPassword(currentUserName,change.NewPassword);
+
+            //Logout User For Update Pass
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return Redirect("/Login?SuccessChangePass=true");
+        }
+
+        #endregion
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Internal;
 using SadafStore.Core.CodeGenerator;
 using SadafStore.Core.Convertors;
 using SadafStore.Core.DTOs;
@@ -153,6 +154,19 @@ namespace SadafStore.Core.Services
             user.AvatarPhone = profile.AvatarPhone;
             user.AvatarImg = profile.ImageName;
 
+            UpdateUser(user);
+        }
+
+        public bool CompareOldPasswordForChange(string oldPassword, string userName)
+        {
+            string hashOldPassword = PasswordHelper.EncodePasswordMd5(oldPassword);
+            return _context.Users.Any(u => u.UserName == userName && u.Password == hashOldPassword);
+        }
+
+        public void ChangeUserPassword(string userName, string newPassword)
+        {
+            var user = GetUserByUserName(userName);
+            user.Password = PasswordHelper.EncodePasswordMd5(newPassword);
             UpdateUser(user);
         }
     }

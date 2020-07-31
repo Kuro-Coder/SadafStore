@@ -57,6 +57,13 @@
                                 </p>
                             </div>
                         }
+                        
+                        @if (ViewBag.SuccessChangePass != null)
+                        {
+                            <div class="alert alert-warning">
+                                کلمه عبور شما با موفقیت ویرایش شد، به صفحه ورود برای ورود دوباره منتقل شدید.
+                            </div>
+                        }
 
                         <form asp-action="Login" method="post">
                             <p>

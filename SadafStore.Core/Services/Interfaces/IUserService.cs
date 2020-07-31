@@ -30,7 +30,10 @@ namespace SadafStore.Core.Services.Interfaces
 
         //username id old data and profile is new data to save
         void EditProfile(string username, UserPanelViewModel.EditProfileViewModel profile);
-
+        //check OldPassword For Change
+        bool CompareOldPasswordForChange(string oldPassword, string userName);
+        //Tack New Password
+        void ChangeUserPassword(string userName, string newPassword);
 
         #endregion
     }
