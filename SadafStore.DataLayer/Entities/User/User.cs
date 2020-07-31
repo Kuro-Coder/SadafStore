@@ -62,6 +62,8 @@ namespace SadafStore.DataLayer.Entities.User
 
         public virtual List<UserRole> UserRole { get; set; }
 
+        public virtual List<Wallet.Wallet> Wallets { get; set; }
+
         #endregion
     }
 }
