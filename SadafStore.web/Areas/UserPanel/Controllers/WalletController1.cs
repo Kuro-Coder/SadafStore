@@ -38,7 +38,16 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
 
             int walletId = _userService.ChargeWallet(User.Identity.Name, charge.Amount, "شارژ حساب");
 
-            //TODO Payment 
+            #region Payment Online
+
+            var payment = new ZarinpalSandbox.Payment(charge.Amount);
+            var res = payment.PaymentRequest("شارژ کیف پول", "https://localhost:44362/OnlinePayment/" + walletId, "habib.pa98@gmail.com", "09333635633");
+            if (res.Result.Status == 100)
+            {
+                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+            }
+
+            #endregion
             return View();
         }
     }

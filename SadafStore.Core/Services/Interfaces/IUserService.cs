@@ -35,6 +35,11 @@ namespace SadafStore.Core.Services.Interfaces
         bool CompareOldPasswordForChange(string oldPassword, string userName);
         //Tack New Password
         void ChangeUserPassword(string userName, string newPassword);
+
+        #endregion
+
+        #region Wallet Services
+
         //Get UserName and Send Wallet Balance
         int BalanceUserWallet(string userName);
         //Get UserName and Send UserId for Wallet
@@ -44,7 +49,11 @@ namespace SadafStore.Core.Services.Interfaces
         //for how Wallet is charging and how much and pay or not pay
         int ChargeWallet(string userName, int amount, string description, bool isPay = false);
         //Save Wallet
-        int AddWallet(Wallet wallet); 
+        int AddWallet(Wallet wallet);
+        //Get a Wallet By walletId
+        Wallet GetWalletByWalletId(int walletId);
+
+        void UpdateWallet(Wallet wallet);
 
         #endregion
     }

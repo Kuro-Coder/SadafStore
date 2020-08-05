@@ -139,8 +139,6 @@ F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\ru\Microsoft
 F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.csproj.CoreCompileInputs.cache
-F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.MvcApplicationPartsAssemblyInfo.cache
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Footer.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Header.cshtml.g.cs
@@ -164,7 +162,6 @@ F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\runtimes\rhe
 F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\runtimes\win7-arm\native\libuv.dll
 F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\libuv.dll
 F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
-F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.MvcApplicationPartsAssemblyInfo.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ActiveEmail.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\View5.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Account\ForgotPassword.cshtml.g.cs
@@ -177,3 +174,10 @@ F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\Home\EditProfile.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\Home\ChangePassword.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\WalletController1\Wallet.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\Microsoft.VisualBasic.dll
+F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\ZarinpalSandbox.dll
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.csproj.CoreCompileInputs.cache
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.MvcApplicationPartsAssemblyInfo.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.MvcApplicationPartsAssemblyInfo.cache
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Home\OnlinePayment.cshtml.g.cs

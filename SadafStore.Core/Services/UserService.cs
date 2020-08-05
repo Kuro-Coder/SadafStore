@@ -223,5 +223,16 @@ namespace SadafStore.Core.Services
             _context.SaveChanges();
             return wallet.WalletId;
         }
+
+        public Wallet GetWalletByWalletId(int walletId)
+        {
+            return _context.Wallets.Find(walletId);
+        }
+
+        public void UpdateWallet(Wallet wallet)
+        {
+            _context.Wallets.Update(wallet);
+            _context.SaveChanges();
+        }
     }
 }
