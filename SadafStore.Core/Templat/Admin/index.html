@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <title>Preadmin - Bootstrap Admin Template</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/morris/morris.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo">
+                    <img src="assets/img/logo.png" width="40" height="40" alt="">
+                </a>
+            </div>
+            <div class="page-title-box pull-left">
+                <h3>Preadmin</h3>
+            </div>
+            <a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            <ul class="nav navbar-nav navbar-right user-menu pull-right">
+                <li class="dropdown hidden-xs">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i> <span class="badge bg-primary pull-right">3</span></a>
+                    <div class="dropdown-menu notifications">
+                        <div class="topnav-dropdown-header">
+                            <span>اعلانات</span>
+                        </div>
+                        <div class="drop-scroll">
+                            <ul class="media-list">
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">
+												<img alt="John Doe" src="assets/img/user.jpg" class="img-responsive img-circle">
+											</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">امین صفرپور</span> افزودن کار جدید <span class="noti-title">رزرو وقت بیمار</span></p>
+                                            <p class="noti-time"><span class="notification-time">4 دقیقه قبل</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">V</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">برناردو گالوویز</span> نام کار را تغییر داد <span class="noti-title">رزرو روزانه با دروازه پرداخت</span></p>
+                                            <p class="noti-time"><span class="notification-time">6 دقیقه قبل</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">L</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">برناردو گالوویز</span> افزود <span class="noti-title">امین صفرپور</span> و <span class="noti-title">کلر مپس</span>برای پروژه  <span class="noti-title">دکتر ماژول موجود</span></p>
+                                            <p class="noti-time"><span class="notification-time">8 دقیقه قبل</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">G</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">برناردو گالوویز</span> تکمیل کار <span class="noti-title">کنفرانس ویدیویی بیمار و دکتر</span></p>
+                                            <p class="noti-time"><span class="notification-time">12 دقیقه قبل</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">V</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">برناردو گالوویز</span> افزودن کار جدید <span class="noti-title">ماژول چت خصوصی</span></p>
+                                            <p class="noti-time"><span class="notification-time">2 دقیقه قبل</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-dropdown-footer">
+                            <a href="activities.html">مشاهده تمام اعلان ها</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown hidden-xs">
+                    <a href="javascript:;" id="open_msg_box" class="hasnotifications"><i class="fa fa-comment-o"></i> <span class="badge bg-primary pull-right">8</span></a>
+                </li>
+                <li class="dropdown">
+                    <a href="profile.html" class="dropdown-toggle user-link" data-toggle="dropdown" title="Admin">
+                        <span class="user-img"><img class="img-circle" src="assets/img/user.jpg" width="40" alt="Admin">
+							<span class="status online"></span></span>
+                        <span>مدیر</span>
+                        <i class="caret"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="profile.html">پروفایل من</a></li>
+                        <li><a href="edit-profile.html">ویرایش پروفایل</a></li>
+                        <li><a href="settings.html">تنظیمات</a></li>
+                        <li><a href="login.html">خروج</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="dropdown mobile-user-menu pull-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="profile.html">پروفایل من</a></li>
+                    <li><a href="edit-profile.html">ویرایش پروفایل</a></li>
+                    <li><a href="settings.html">تنظیمات</a></li>
+                    <li><a href="login.html">خروج</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">ملت وب</li>
+                        <li class="active">
+                            <a href="index.html"><i class="fa fa-dashboard"></i> داشبورد</a>
+                        </li>
+                        <li>
+                            <a href="chat.html"><i class="fa fa-comments" aria-hidden="true"></i> چت <span class="badge bg-primary pull-right">5</span></a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-video-camera camera" aria-hidden="true"></i> <span> تماس ها</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="voice-call.html">تماس صوتی</a></li>
+                                <li><a href="video-call.html">تماس تصویری</a></li>
+                                <li><a href="incoming-call.html">تماس ورودی</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> <span> پست الکترونیک</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="compose.html">نوشتن نامه</a></li>
+                                <li><a href="inbox.html">صندوق ورودی</a></li>
+                                <li><a href="mail-view.html">نمایش ایمیل</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="contacts.html"><i class="fa fa-address-card" aria-hidden="true"></i> تماس</a>
+                        </li>
+                        <li>
+                            <a href="tasks.html"><i class="fa fa-tasks" aria-hidden="true"></i> کارها</a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i> <span> وبلاگ</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="blog.html">وبلاگ</a></li>
+                                <li><a href="blog-details.html">نمایش وبلاگ</a></li>
+                                <li><a href="add-blog.html">اضافه کردن وبلاگ</a></li>
+                                <li><a href="edit-blog.html">ویرایش وبلاگ</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="tickets.html"><i class="fa fa-ticket" aria-hidden="true"></i> تیکت ها</a>
+                        </li>
+                        <li>
+                            <a href="settings.html"><i class="fa fa-cog" aria-hidden="true"></i> تنظیمات</a>
+                        </li>
+                        <li class="menu-title">المنت ها</li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-laptop" aria-hidden="true"></i> <span> اجزاء</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="uikit.html">UI Kit</a></li>
+                                <li><a href="typography.html">تایپوگرافی</a></li>
+                                <li><a href="tabs.html">زبانه ها</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="widgets.html"><i class="fa fa-th" aria-hidden="true"></i> ابزارک</a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-edit" aria-hidden="true"></i> <span> فرم ها</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="form-basic-inputs.html">ورودی های پایه</a></li>
+                                <li><a href="form-input-groups.html">گروه های ورودی</a></li>
+                                <li><a href="form-horizontal.html">فرم افقی</a></li>
+                                <li><a href="form-vertical.html">فرم عمودی</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-table" aria-hidden="true"></i> <span> زبانه ها</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="tables-basic.html">جداول پایه</a></li>
+                                <li><a href="tables-datatables.html">جدول داده</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="calendar.html"><i class="fa fa-calendar" aria-hidden="true"></i> تقویم</a>
+                        </li>
+                        <li class="menu-title">اضافی</li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-columns" aria-hidden="true"></i> <span>صفحات</span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="login.html">ورود </a></li>
+                                <li><a href="register.html"> ثبت نام </a></li>
+                                <li><a href="forgot-password.html"> فراموشی رمز عبور </a></li>
+                                <li><a href="change-password2.html"> تغییر رمز </a></li>
+                                <li><a href="lock-screen.html"> قفل اسکرین </a></li>
+                                <li><a href="profile.html"> پروفایل </a></li>
+                                <li><a href="gallery.html"> گالری </a></li>
+                                <li> <a href="pricing.html">قیمت گذاری</a></li>
+                                <li><a href="error-404.html">404 خطای </a></li>
+                                <li><a href="error-500.html">500 خطای </a></li>
+                                <li><a href="coming-soon.html">بزودی </a></li>
+                                <li><a href="blank-page.html"> صفحه خالی </a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="javascript:void(0);" class="noti-dot"><i class="fa fa-rocket" aria-hidden="true"></i> <span> ارتباط با مشتری </span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li class="submenu">
+                                    <a href="#" class="noti-dot"><span> کارکنان</span> <span class="menu-arrow"></span></a>
+                                    <ul class="list-unstyled" style="display: none;">
+                                        <li><a href="employees.html">تمام کارمندان</a></li>
+                                        <li><a href="holidays.html">تعطیلات</a></li>
+                                        <li><a href="leaves.html"><span>ارسال درخواست</span> <span class="badge bg-primary pull-right">1</span></a></li>
+                                        <li><a href="attendance.html">شرکت کننده</a></li>
+                                        <li><a href="departments.html">بخش ها</a></li>
+                                        <li><a href="designations.html">نامگذاری ها</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="clients.html">مشتریان</a>
+                                </li>
+                                <li>
+                                    <a href="projects.html">پروژه ها</a>
+                                </li>
+                                <li>
+                                    <a href="tasks.html">کارها</a>
+                                </li>
+                                <li>
+                                    <a href="leads.html">رهبری</a>
+                                </li>
+                                <li class="submenu">
+                                    <a href="#"><span> حساب ها </span> <span class="menu-arrow"></span></a>
+                                    <ul class="list-unstyled" style="display: none;">
+                                        <li><a href="estimates.html">برآوردها</a></li>
+                                        <li><a href="invoices.html">صورتحساب ها</a></li>
+                                        <li><a href="payments.html">پرداخت ها</a></li>
+                                        <li><a href="expenses.html">هزینه ها</a></li>
+                                        <li><a href="provident-fund.html">دارایی صندوق</a></li>
+                                        <li><a href="taxes.html">مالیات</a></li>
+                                    </ul>
+                                </li>
+                                <li class="submenu">
+                                    <a href="#"><span>حقوق و دستمزد </span> <span class="menu-arrow"></span></a>
+                                    <ul class="list-unstyled" style="display: none;">
+                                        <li><a href="salary.html"> حقوق کارمند </a></li>
+                                        <li><a href="salary-view.html"> لغزش پرداخت </a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="worksheet.html">جدول زمانبندی</a>
+                                </li>
+                                <li>
+                                    <a href="assets.html">دارایی ها</a>
+                                </li>
+                                <li>
+                                    <a href="activities.html">فعالیت ها</a>
+                                </li>
+                                <li>
+                                    <a href="users.html">کاربران</a>
+                                </li>
+                                <li class="submenu">
+                                    <a href="#"><span> گزارش ها </span> <span class="menu-arrow"></span></a>
+                                    <ul class="list-unstyled" style="display: none;">
+                                        <li><a href="expense-reports.html"> گزارش هزینه </a></li>
+                                        <li><a href="invoice-reports.html"> گزارش صورت حساب </a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span> تجارت الکترونیک </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="products.html"> محصولات </a></li>
+                                <li><a href="products-list.html"> لیست محصولات </a></li>
+                                <li><a href="product-details.html"> جزئیات محصول </a></li>
+                                <li><a href="add-product.html"> افزودن محصول </a></li>
+                                <li><a href="edit-product.html"> ویرایش محصول </a></li>
+                                <li><a href="orders.html"> سفارشات </a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="javascript:void(0);"><i class="fa fa-share-alt" aria-hidden="true"></i> <span>چند سطحی</span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <li class="submenu">
+                                    <a href="javascript:void(0);"><span>سطح 1</span> <span class="menu-arrow"></span></a>
+                                    <ul style="display: none;">
+                                        <li><a href="javascript:void(0);"><span>سطح 2</span></a></li>
+                                        <li class="submenu">
+                                            <a href="javascript:void(0);"> <span> سطح 2</span> <span class="menu-arrow"></span></a>
+                                            <ul class="list-unstyled" style="display: none;">
+                                                <li><a href="javascript:void(0);">سطح 3</a></li>
+                                                <li><a href="javascript:void(0);">سطح 3</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="javascript:void(0);"><span>سطح 2</span></a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);"><span>سطح 1</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-3">
+                        <div class="dash-widget dash-widget5">
+                            <span class="dash-widget-icon bg-success"><i class="fa fa-money" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info">
+                                <h3>ت 98</h3>
+                                <span>درآمد</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-3">
+                        <div class="dash-widget dash-widget5">
+                            <span class="dash-widget-icon bg-info"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info">
+                                <h3>1072</h3>
+                                <span>کاربران</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-3">
+                        <div class="dash-widget dash-widget5">
+                            <span class="dash-widget-icon bg-warning"><i class="fa fa-files-o"></i></span>
+                            <div class="dash-widget-info">
+                                <h3>72</h3>
+                                <span>پروژه ها</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-3">
+                        <div class="dash-widget dash-widget5">
+                            <span class="dash-widget-icon bg-danger"><i class="fa fa-tasks" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info">
+                                <h3>618</h3>
+                                <span>کارها</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <div id="bar-example"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-xs-12">
+                        <div class="panel">
+                            <div class="panel-heading text-center">
+                                <h3 class="panel-title">وضعیت پروژه</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div id="donutChart" class="rad-chart"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-xs-12">
+                        <div class="panel">
+                            <div class="panel-heading text-center">
+                                <h3 class="panel-title">وضعیت محصول</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div id="areaChart" class="rad-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-xs-12">
+                        <div class="panel">
+                            <div class="panel-heading text-center">
+                                <h3 class="panel-title">وضعیت کار</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div id="area-chart" class="rad-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel activity-panel">
+                            <div class="panel-heading">
+                                <h6 class="panel-title">فعالیت ها</h6>
+                            </div>
+                            <div class="panel-body">
+                                <div class="activity-box">
+                                    <ul class="activity-list">
+                                        <li>
+                                            <div class="activity-user">
+                                                <a href="profile.html" title="Lesley Grauer" data-toggle="tooltip" class="avatar">
+                                                    <img alt="Lesley Grauer" src="assets/img/user.jpg" class="img-responsive img-circle">
+                                                </a>
+                                            </div>
+                                            <div class="activity-content">
+                                                <div class="timeline-content">
+                                                    <a href="profile.html" class="name">امین صفرپور</a> کار جدیدی اضافه کرد <a href="#">مدیریت بیمارستان</a>
+                                                    <span class="time">4 دقیقه قبل</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="activity-user">
+                                                <a href="profile.html" class="avatar" title="Jeffery Lalor" data-toggle="tooltip">L</a>
+                                            </div>
+                                            <div class="activity-content">
+                                                <div class="timeline-content">
+                                                    <a href="profile.html" class="name">امین صفرپور</a> افزود <a href="profile.html" class="name">امین صفرپور</a> و <a href="profile.html" class="name">امین صفرپور</a> به پروژه <a href="#">رزرو وقت بیمار</a>
+                                                    <span class="time">6 دقیقه قبل</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="activity-user">
+                                                <a href="profile.html" title="Catherine Manseau" data-toggle="tooltip" class="avatar">
+                                                    <img alt="Catherine Manseau" src="assets/img/user.jpg" class="img-responsive img-circle">
+                                                </a>
+                                            </div>
+                                            <div class="activity-content">
+                                                <div class="timeline-content">
+                                                    <a href="profile.html" class="name">امین صفرپور</a> تکمیل کار <a href="#">رزرو روزانه با دروازه پرداخت</a>
+                                                    <span class="time">12 دقیقه قبل</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="activity-user">
+                                                <a href="#" title="Bernardo Galaviz" data-toggle="tooltip" class="avatar">
+                                                    <img alt="Bernardo Galaviz" src="assets/img/user.jpg" class="img-responsive img-circle">
+                                                </a>
+                                            </div>
+                                            <div class="activity-content">
+                                                <div class="timeline-content">
+                                                    <a href="profile.html" class="name">امین صفرپور</a> نام کار را تغییر داد <a href="#">دکتر ماژول موجود</a>
+                                                    <span class="time">1 روز قبل</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="activity-user">
+                                                <a href="profile.html" title="Mike Litorus" data-toggle="tooltip" class="avatar">
+                                                    <img alt="Mike Litorus" src="assets/img/user.jpg" class="img-responsive img-circle">
+                                                </a>
+                                            </div>
+                                            <div class="activity-content">
+                                                <div class="timeline-content">
+                                                    <a href="profile.html" class="name">امین صفرپور</a> کار جدیدی اضافه کرد <a href="#">کنفرانس ویدیویی بیمار و دکتر</a>
+                                                    <span class="time">2 روز قبل</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="activity-user">
+                                                <a href="profile.html" title="Jeffery Lalor" data-toggle="tooltip" class="avatar">
+                                                    <img alt="Jeffery Lalor" src="assets/img/user.jpg" class="img-responsive img-circle">
+                                                </a>
+                                            </div>
+                                            <div class="activity-content">
+                                                <div class="timeline-content">
+                                                    <a href="profile.html" class="name">امین صفرپور</a> افزوده <a href="profile.html" class="name">امین</a> و <a href="profile.html" class="name">امین صفرپور</a> به کار از <a href="#">ماژول چت خصوصی</a>
+                                                    <span class="time">7 روز قبل</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel-footer text-center bg-white">
+                                <a href="activities.html" class="text-primary">مشاهده همه</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel chat-panel">
+                            <div class="panel-heading">
+                                <div class="navbar">
+                                    <div class="user-details">
+                                        <div class="pull-left user-img m-l-10">
+                                            <a href="profile.html" title="Mike Litorus"><img src="assets/img/user.jpg" alt="" class="w-40 img-circle"><span class="status online"></span></a>
+                                        </div>
+                                        <div class="user-info pull-left">
+                                            <a href="profile.html" title="Mike Litorus"><span class="font-bold">مایک لیوتوس</span> <i class="typing-text">در حال نوشتن....</i></a>
+                                            <span class="last-seen">آخرین بازدید امروز در 7:50 AM</span>
+                                        </div>
+                                    </div>
+                                    <ul class="nav navbar-nav pull-right custom-menu">
+                                        <li>
+                                            <a href="voice-call.html"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="video-call.html"><i class="fa fa-video-camera" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="javascript:void(0)">حذف مکالمه</a></li>
+                                                <li><a href="javascript:void(0)">تنظیمات</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="chats">
+                                    <div class="chat chat-right">
+                                        <div class="chat-body">
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>سلام. چه می توانم برای شما انجام دهم؟?</p>
+                                                    <span class="chat-time">8:30 am</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat-line">
+                                        <span class="chat-date">12 دی 1397</span>
+                                    </div>
+                                    <div class="chat chat-left">
+                                        <div class="chat-avatar">
+                                            <a href="profile.html" class="avatar">
+                                                <img alt="John Doe" src="assets/img/user.jpg" class="img-responsive img-circle">
+                                            </a>
+                                        </div>
+                                        <div class="chat-body">
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>من فقط نگاه می کنم</p>
+                                                    <p>آیا به من چیزی درباره خودت بگویید؟? </p>
+                                                    <span class="chat-time">8:35 am</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>آیا شما وجود دارد؟ آن زمان!</p>
+                                                    <span class="chat-time">8:40 am</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat chat-right">
+                                        <div class="chat-body">
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>کجا?</p>
+                                                    <span class="chat-time">8:35 am</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>خوب، نام من لی ملت وب است. من دوست دارم آواز بخوانم، بازی بسکتبال و غیره</p>
+                                                    <span class="chat-time">8:42 am</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat chat-right">
+                                        <div class="chat-body">
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>اوکی!</p>
+                                                    <span class="chat-time">9:00 am</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat chat-left">
+                                        <div class="chat-avatar">
+                                            <a href="profile.html" class="avatar">
+                                                <img alt="John Doe" src="assets/img/user.jpg" class="img-responsive img-circle">
+                                            </a>
+                                        </div>
+                                        <div class="chat-body">
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>آپلود 3 فایل</p>
+                                                    <ul class="attach-list">
+                                                        <li><i class="fa fa-file"></i> <a href="#">example.avi</a></li>
+                                                        <li><i class="fa fa-file"></i> <a href="#">activity.psd</a></li>
+                                                        <li><i class="fa fa-file"></i> <a href="#">example.psd</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>ملت وب لورم اسپوم مت تست?</p>
+                                                    <span class="chat-time">8:50 am</span>
+                                                </div>
+                                            </div>
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>اوکی?</p>
+                                                    <span class="chat-time">8:55 am</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat chat-left">
+                                        <div class="chat-avatar">
+                                            <a href="profile.html" class="avatar">
+                                                <img alt="John Doe" src="assets/img/user.jpg" class="img-responsive img-circle">
+                                            </a>
+                                        </div>
+                                        <div class="chat-body">
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <ul class="attach-list">
+                                                        <li class="pdf-file"><i class="fa fa-file-pdf-o"></i> <a href="#">Document_2016.pdf</a></li>
+                                                    </ul>
+                                                    <span class="chat-time">9:00 am</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat chat-right">
+                                        <div class="chat-body">
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <ul class="attach-list">
+                                                        <li class="pdf-file"><i class="fa fa-file-pdf-o"></i> <a href="#">Document_2016.pdf</a></li>
+                                                    </ul>
+                                                    <span class="chat-time">9:00 am</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat chat-left">
+                                        <div class="chat-avatar">
+                                            <a href="profile.html" class="avatar">
+                                                <img alt="John Doe" src="assets/img/user.jpg" class="img-responsive img-circle">
+                                            </a>
+                                        </div>
+                                        <div class="chat-body">
+                                            <div class="chat-bubble">
+                                                <div class="chat-content">
+                                                    <p>در حال نوشتن....</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="message-bar">
+                                    <div class="message-inner">
+                                        <a class="link attach-icon" href="#" data-toggle="modal" data-target="#drag_files"><img src="assets/img/attachment.png" alt=""></a>
+                                        <div class="message-area">
+                                            <div class="input-group">
+                                                <textarea class="form-control" placeholder="تایپ پیام...."></textarea>
+                                                <span class="input-group-btn">
+													<button class="btn btn-primary" type="button"><i class="fa fa-send"></i></button>
+												</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel task-panel">
+                            <div class="panel-heading">
+                                <div class="navbar">
+                                    <div class="pull-left">
+                                        <div class="add-task-btn-wrapper">
+                                            <span class="add-task-btn btn btn-default btn-xs">
+													افزودن کار
+												</span>
+                                        </div>
+                                    </div>
+                                    <ul class="nav navbar-nav pull-right custom-menu">
+                                        <li class="dropdown">
+                                            <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cog"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="javascript:void(0)">وظایف در انتظار</a></li>
+                                                <li><a href="javascript:void(0)">وظایف تکمیل شده</a></li>
+                                                <li><a href="javascript:void(0)">تمام وظایف</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="task-wrapper">
+                                    <div class="task-list-container">
+                                        <div class="task-list-body">
+                                            <ul id="task-list">
+                                                <li class="task">
+                                                    <div class="task-container">
+                                                        <span class="task-action-btn task-check">
+																<span class="action-circle large complete-btn" title="Mark Complete">
+																	<i class="material-icons">check</i>
+																</span>
+                                                        </span>
+                                                        <span class="task-label" contenteditable="true">رزرو وقت بیمار</span>
+                                                        <span class="task-action-btn task-btn-right">
+																<span class="action-circle large" title="اختصاص">
+																	<i class="material-icons">person_add</i>
+																</span>
+                                                        <span class="action-circle large delete-btn" title="حذف">
+																	<i class="material-icons">delete</i>
+																</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                                <li class="task">
+                                                    <div class="task-container">
+                                                        <span class="task-action-btn task-check">
+																<span class="action-circle large complete-btn" title="Mark Complete">
+																	<i class="material-icons">check</i>
+																</span>
+                                                        </span>
+                                                        <span class="task-label" contenteditable="true">رزرو روزانه با دروازه پرداخت</span>
+                                                        <span class="task-action-btn task-btn-right">
+																<span class="action-circle large" title="اختصاص">
+																	<i class="material-icons">person_add</i>
+																</span>
+                                                        <span class="action-circle large delete-btn" title="حذف">
+																	<i class="material-icons">delete</i>
+																</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                                <li class="completed task">
+                                                    <div class="task-container">
+                                                        <span class="task-action-btn task-check">
+																<span class="action-circle large complete-btn" title="Mark Complete">
+																	<i class="material-icons">check</i>
+																</span>
+                                                        </span>
+                                                        <span class="task-label">دکتر ماژول موجود</span>
+                                                        <span class="task-action-btn task-btn-right">
+																<span class="action-circle large" title="اختصاص">
+																	<i class="material-icons">person_add</i>
+																</span>
+                                                        <span class="action-circle large delete-btn" title="حذف">
+																	<i class="material-icons">delete</i>
+																</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                                <li class="task">
+                                                    <div class="task-container">
+                                                        <span class="task-action-btn task-check">
+																<span class="action-circle large complete-btn" title="Mark Complete">
+																	<i class="material-icons">check</i>
+																</span>
+                                                        </span>
+                                                        <span class="task-label" contenteditable="true">کنفرانس ویدیویی بیمار و دکتر</span>
+                                                        <span class="task-action-btn task-btn-right">
+																<span class="action-circle large" title="اختصاص">
+																	<i class="material-icons">person_add</i>
+																</span>
+                                                        <span class="action-circle large delete-btn" title="حذف">
+																	<i class="material-icons">delete</i>
+																</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                                <li class="task">
+                                                    <div class="task-container">
+                                                        <span class="task-action-btn task-check">
+																<span class="action-circle large complete-btn" title="Mark Complete">
+																	<i class="material-icons">check</i>
+																</span>
+                                                        </span>
+                                                        <span class="task-label" contenteditable="true">ماژول چت خصوصی</span>
+                                                        <span class="task-action-btn task-btn-right">
+																<span class="action-circle large" title="اختصاص">
+																	<i class="material-icons">person_add</i>
+																</span>
+                                                        <span class="action-circle large delete-btn" title="حذف">
+																	<i class="material-icons">delete</i>
+																</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                                <li class="task">
+                                                    <div class="task-container">
+                                                        <span class="task-action-btn task-check">
+																<span class="action-circle large complete-btn" title="Mark Complete">
+																	<i class="material-icons">check</i>
+																</span>
+                                                        </span>
+                                                        <span class="task-label" contenteditable="true">مشخصات بیمار اضافه کنید</span>
+                                                        <span class="task-action-btn task-btn-right">
+																<span class="action-circle large" title="اختصاص">
+																	<i class="material-icons">person_add</i>
+																</span>
+                                                        <span class="action-circle large delete-btn" title="حذف">
+																	<i class="material-icons">delete</i>
+																</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="task-list-footer">
+                                            <div class="new-task-wrapper">
+                                                <textarea id="new-task" placeholder="Enter new task here. . ."></textarea>
+                                                <span class="error-message hidden">شما نیاز به وارد کردن اولین وظیفه دارید</span>
+                                                <span class="add-new-task-btn btn" id="add-task">افزودن کار</span>
+                                                <span class="cancel-btn btn" id="close-task-panel">بستن</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel member-panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">تماس ها</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="contact-list">
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="pull-left user-img m-l-10">
+                                                <a href="profile.html" title="John Doe"><img src="assets/img/user.jpg" alt="" class="w-40 img-circle"><span class="status online"></span></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <span class="contact-name text-ellipsis">امین صفرپور</span>
+                                                <span class="contact-date">توسعه وب</span>
+                                            </div>
+                                            <ul class="contact-action">
+                                                <li class="dropdown">
+                                                    <a href="" class="dropdown-toggle action-icon" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0)">ویرایش</a></li>
+                                                        <li><a href="javascript:void(0)">حذف</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="pull-left user-img m-l-10">
+                                                <a href="profile.html" title="Richard Miles"><img src="assets/img/user.jpg" alt="" class="w-40 img-circle"><span class="status offline"></span></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <span class="contact-name text-ellipsis">امین صفرپور</span>
+                                                <span class="contact-date">توسعه وب</span>
+                                            </div>
+                                            <ul class="contact-action">
+                                                <li class="dropdown">
+                                                    <a href="" class="dropdown-toggle action-icon" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0)">ویرایش</a></li>
+                                                        <li><a href="javascript:void(0)">حذف</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="pull-left user-img m-l-10">
+                                                <a href="profile.html" title="John Doe"><img src="assets/img/user.jpg" alt="" class="w-40 img-circle"><span class="status away"></span></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <span class="contact-name text-ellipsis">امین صفرپور</span>
+                                                <span class="contact-date">توسعه وب</span>
+                                            </div>
+                                            <ul class="contact-action">
+                                                <li class="dropdown">
+                                                    <a href="" class="dropdown-toggle action-icon" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0)">ویرایش</a></li>
+                                                        <li><a href="javascript:void(0)">حذف</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="pull-left user-img m-l-10">
+                                                <a href="profile.html" title="Richard Miles"><img src="assets/img/user.jpg" alt="" class="w-40 img-circle"><span class="status online"></span></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <span class="contact-name text-ellipsis">امین صفرپور</span>
+                                                <span class="contact-date">توسعه وب</span>
+                                            </div>
+                                            <ul class="contact-action">
+                                                <li class="dropdown">
+                                                    <a href="" class="dropdown-toggle action-icon" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0)">ویرایش</a></li>
+                                                        <li><a href="javascript:void(0)">حذف</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="pull-left user-img m-l-10">
+                                                <a href="profile.html" title="John Doe"><img src="assets/img/user.jpg" alt="" class="w-40 img-circle"><span class="status offline"></span></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <span class="contact-name text-ellipsis">امین صفرپور</span>
+                                                <span class="contact-date">توسعه وب</span>
+                                            </div>
+                                            <ul class="contact-action">
+                                                <li class="dropdown">
+                                                    <a href="" class="dropdown-toggle action-icon" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0)">ویرایش</a></li>
+                                                        <li><a href="javascript:void(0)">حذف</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="contact-cont">
+                                            <div class="pull-left user-img m-l-10">
+                                                <a href="profile.html" title="Richard Miles"><img src="assets/img/user.jpg" alt="" class="w-40 img-circle"><span class="status away"></span></a>
+                                            </div>
+                                            <div class="contact-info">
+                                                <span class="contact-name text-ellipsis">امین صفرپور</span>
+                                                <span class="contact-date">توسعه وب</span>
+                                            </div>
+                                            <ul class="contact-action">
+                                                <li class="dropdown">
+                                                    <a href="" class="dropdown-toggle action-icon" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0)">ویرایش</a></li>
+                                                        <li><a href="javascript:void(0)">حذف</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-footer text-center bg-white">
+                                <a href="users.html" class="text-primary">مشاهده تمام اعضا</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel panel-table panel-table-top">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">فاکتورها</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped custom-table m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th>شناسه صورتحساب</th>
+                                                <th>مشتری</th>
+                                                <th>تاریخ تحویل</th>
+                                                <th>جمع</th>
+                                                <th>وضعیت</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="invoice-view.html">#INV-0001</a></td>
+                                                <td>
+                                                    <h2><a href="#">امین صفرپور</a></h2>
+                                                </td>
+                                                <td>8 Aug 2017</td>
+                                                <td>ت380</td>
+                                                <td>
+                                                    <span class="label label-warning-border">نیمه پرداخت</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="invoice-view.html">#INV-0002</a></td>
+                                                <td>
+                                                    <h2><a href="#">امین صفرپور</a></h2>
+                                                </td>
+                                                <td>17 Sep 2017</td>
+                                                <td>ت500</td>
+                                                <td>
+                                                    <span class="label label-success-border">پرداخت</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="invoice-view.html">#INV-0003</a></td>
+                                                <td>
+                                                    <h2><a href="#">امین صفرپور</a></h2>
+                                                </td>
+                                                <td>30 Nov 2017</td>
+                                                <td>ت60</td>
+                                                <td>
+                                                    <span class="label label-danger-border">پرداخت نشده</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="invoices.html" class="text-primary">مشاهده همه صورتحساب ها</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel panel-table panel-table-top">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">پرداخت ها</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped custom-table m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th>شناسه صورتحساب</th>
+                                                <th>مشتری</th>
+                                                <th>نوع پرداخت</th>
+                                                <th>تاریخ پرداخت</th>
+                                                <th>مبلغ پرداخت شده</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="invoice-view.html">#INV-0004</a></td>
+                                                <td>
+                                                    <h2><a href="#">امین صفرپور</a></h2>
+                                                </td>
+                                                <td>پی پال</td>
+                                                <td>2 دی 1397</td>
+                                                <td>ت380</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="invoice-view.html">#INV-0005</a></td>
+                                                <td>
+                                                    <h2><a href="#">امین صفرپور</a></h2>
+                                                </td>
+                                                <td>پی پال</td>
+                                                <td>2 دی 1397</td>
+                                                <td>ت500</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="invoice-view.html">#INV-0006</a></td>
+                                                <td>
+                                                    <h2><a href="#">امین صفرپور</a></h2>
+                                                </td>
+                                                <td>پی پال</td>
+                                                <td>2 دی 1397</td>
+                                                <td>ت60</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="payments.html" class="text-primary">مشاهده همه پرداخت ها</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel panel-table">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">مشتریان</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped custom-table m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width:200px;">نام</th>
+                                                <th>ایمیل</th>
+                                                <th>وضعیت</th>
+                                                <th class="text-right">اعمال</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="min-width:200px;">
+                                                    <a href="#" class="avatar">B</a>
+                                                    <h2><a href="client-profile.html">امین صفرپور <span>سئو</span></a></h2>
+                                                </td>
+                                                <td>barrycuda@example.com</td>
+                                                <td>
+                                                    <div class="dropdown action-label">
+                                                        <a class="btn btn-white btn-sm rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-dot-circle-o text-success"></i> فعال <i class="caret"></i>
+															</a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-success"></i> فعال</a></li>
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-danger"></i> غیرفعال</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a class="avatar">T</a>
+                                                    <h2><a href="client-profile.html">امین صفرپور <span>مدیر</span></a></h2>
+                                                </td>
+                                                <td>tressawexler@example.com</td>
+                                                <td>
+                                                    <div class="dropdown action-label">
+                                                        <a class="btn btn-white btn-sm rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-dot-circle-o text-danger"></i> غیرفعال <i class="caret"></i>
+															</a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-success"></i> فعال</a></li>
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-danger"></i> غیرفعال</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="client-profile.html" class="avatar">R</a>
+                                                    <h2><a href="client-profile.html">امین صفرپور <span>سئو</span></a></h2>
+                                                </td>
+                                                <td>rubybartlett@example.com</td>
+                                                <td>
+                                                    <div class="dropdown action-label">
+                                                        <a class="btn btn-white btn-sm rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-dot-circle-o text-danger"></i> غیرفعال <i class="caret"></i>
+															</a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-success"></i> فعال</a></li>
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-danger"></i> غیرفعال</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="client-profile.html" class="avatar">M</a>
+                                                    <h2><a href="client-profile.html"> امین صفرپور <span>سئو</span></a></h2>
+                                                </td>
+                                                <td>mistytison@example.com</td>
+                                                <td>
+                                                    <div class="dropdown action-label">
+                                                        <a class="btn btn-white btn-sm rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-dot-circle-o text-success"></i> فعال <i class="caret"></i>
+															</a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-success"></i> فعال</a></li>
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-danger"></i> غیرفعال</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="client-profile.html" class="avatar">D</a>
+                                                    <h2><a href="client-profile.html"> امین صفرپور <span>سئو</span></a></h2>
+                                                </td>
+                                                <td>danieldeacon@example.com</td>
+                                                <td>
+                                                    <div class="dropdown action-label">
+                                                        <a class="btn btn-white btn-sm rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-dot-circle-o text-danger"></i> غیرفعال <i class="caret"></i>
+															</a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-success"></i> فعال</a></li>
+                                                            <li><a href="#"><i class="fa fa-dot-circle-o text-danger"></i> غیرفعال</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="clients.html" class="text-primary">مشاهده همه مشتریان</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel panel-table">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">پروژه های اخیر</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped custom-table m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-md-3">نام پروژه</th>
+                                                <th class="col-md-3">پیشرفت</th>
+                                                <th class="text-right col-md-1">کارها</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <h2><a href="project-view.html">مدیریت آفیس</a></h2>
+                                                    <small class="block text-ellipsis">
+															<span class="text-xs">1</span> <span class="text-muted">وظایف باز, </span>
+															<span class="text-xs">9</span> <span class="text-muted">وظایف بسته شده</span>
+														</small>
+                                                </td>
+                                                <td>
+                                                    <div class="progress progress-xs progress-striped">
+                                                        <div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="65%" style="width: 65%"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2><a href="project-view.html">مدیریت پروژه</a></h2>
+                                                    <small class="block text-ellipsis">
+															<span class="text-xs">2</span> <span class="text-muted">وظایف باز, </span>
+															<span class="text-xs">5</span> <span class="text-muted">وظایف بسته شده</span>
+														</small>
+                                                </td>
+                                                <td>
+                                                    <div class="progress progress-xs progress-striped">
+                                                        <div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="15%" style="width: 15%"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2><a href="project-view.html">برنامه تماس ویدیویی</a></h2>
+                                                    <small class="block text-ellipsis">
+															<span class="text-xs">3</span> <span class="text-muted">وظایف باز, </span>
+															<span class="text-xs">3</span> <span class="text-muted">وظایف بسته شده</span>
+														</small>
+                                                </td>
+                                                <td>
+                                                    <div class="progress progress-xs progress-striped">
+                                                        <div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="49%" style="width: 49%"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2><a href="project-view.html">مدیریت بیمارستان</a></h2>
+                                                    <small class="block text-ellipsis">
+															<span class="text-xs">12</span> <span class="text-muted">وظایف باز, </span>
+															<span class="text-xs">4</span> <span class="text-muted">وظایف بسته شده</span>
+														</small>
+                                                </td>
+                                                <td>
+                                                    <div class="progress progress-xs progress-striped">
+                                                        <div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="88%" style="width: 88%"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2><a href="project-view.html">بازار دیجیتال</a></h2>
+                                                    <small class="block text-ellipsis">
+															<span class="text-xs">7</span> <span class="text-muted">وظایف باز, </span>
+															<span class="text-xs">14</span> <span class="text-muted">وظایف بسته شده</span>
+														</small>
+                                                </td>
+                                                <td>
+                                                    <div class="progress progress-xs progress-striped">
+                                                        <div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="100%" style="width: 100%"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="dropdown">
+                                                        <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                                        <ul class="dropdown-menu pull-right">
+                                                            <li><a href="#" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                            <li><a href="#" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="projects.html" class="text-primary">مشاهده همه پروژه ها</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="notification-box">
+                <div class="msg-sidebar notifications msg-noti">
+                    <div class="topnav-dropdown-header">
+                        <span>پیام ها</span>
+                    </div>
+                    <div class="drop-scroll msg-list-scroll">
+                        <ul class="list-box">
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">R</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item new-message">
+                                        <div class="list-left">
+                                            <span class="avatar">J</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">1 Aug</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">T</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">M</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">C</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">D</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">B</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">R</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">C</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">M</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">J</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">L</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="chat.html">
+                                    <div class="list-item">
+                                        <div class="list-left">
+                                            <span class="avatar">T</span>
+                                        </div>
+                                        <div class="list-body">
+                                            <span class="message-author">امین صفرپور</span>
+                                            <span class="message-time">12:28 AM</span>
+                                            <div class="clearfix"></div>
+                                            <span class="message-content">ملت وب ایپسوم متن ساختگی با تولید سادگی ملت وب از صنعت چاپ </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="topnav-dropdown-footer">
+                        <a href="chat.html">مشاهده همه پیام ها</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="assets/js/select2.min.js"></script>
+    <script type="text/javascript" src="assets/js/moment.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/morris/morris.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/raphael/raphael-min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+</body>
+
+</html>

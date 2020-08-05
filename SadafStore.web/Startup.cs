@@ -31,6 +31,7 @@ namespace SadafStore.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
             #region Authentication
 
@@ -88,6 +89,7 @@ namespace SadafStore.web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
 
                     name: "MyAreas",
@@ -98,6 +100,7 @@ namespace SadafStore.web
                     name: "Default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
+                
             });
             app.Run(async (context) =>
             {
