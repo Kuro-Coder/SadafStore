@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "OnlinePayment";
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>نتیجه پرداخت</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<div class="login_page_bg">
+    <div class="container">
+        <div class="customer_login">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                </div>
+                <!--login area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form login">
+
+                        @if (ViewBag.IsSuccess == true)
+                        {
+                            <div class="alert alert-success">
+                                <h2>
+                                    پرداخت انجام شد.
+                                </h2>
+                                <p class="">
+                                    کد پیگیری: @ViewBag.Code
+                                </p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger">
+                                <h2>
+                                    پرداخت انجام نشد.
+                                </h2>
+                                <p class="">
+                                    شما در عملیات پرداخت با شکست واجه شدید.
+                                </p>
+                            </div>
+                        }
+                        
+                        <div class="login_submit">
+                            <a href="/UserPanel/Wallet"  type="submit">رفتن به مشاهده کیف پول</a>
+                        </div>
+
+                    </div>
+                </div>
+                <!--login area start-->
+            </div>
+        </div>
+    </div>
+</div>
+
