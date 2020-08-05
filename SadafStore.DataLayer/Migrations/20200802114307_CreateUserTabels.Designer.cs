@@ -10,8 +10,8 @@ using SadafStore.DataLayer.Context;
 namespace SadafStore.DataLayer.Migrations
 {
     [DbContext(typeof(SadafStoreContext))]
-    [Migration("20200731151610_Wallet")]
-    partial class Wallet
+    [Migration("20200802114307_CreateUserTabels")]
+    partial class CreateUserTabels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -180,7 +180,7 @@ namespace SadafStore.DataLayer.Migrations
 
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Wallet.Wallet", b =>
                 {
-                    b.HasOne("SadafStore.DataLayer.Entities.User.User", "Users")
+                    b.HasOne("SadafStore.DataLayer.Entities.User.User", "User")
                         .WithMany("Wallets")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

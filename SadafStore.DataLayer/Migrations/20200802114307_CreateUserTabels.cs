@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SadafStore.DataLayer.Migrations
 {
-    public partial class CreatUserTableMig : Migration
+    public partial class CreateUserTabels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,6 +43,18 @@ namespace SadafStore.DataLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WalletTypes",
+                columns: table => new
+                {
+                    TypeId = table.Column<int>(nullable: false),
+                    TypeTitle = table.Column<string>(maxLength: 150, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WalletTypes", x => x.TypeId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserRoles",
                 columns: table => new
                 {
@@ -68,6 +80,37 @@ namespace SadafStore.DataLayer.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Wallets",
+                columns: table => new
+                {
+                    WalletId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TypeId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    Amount = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(maxLength: 500, nullable: false),
+                    IsPay = table.Column<bool>(nullable: false),
+                    TransactionDate = table.Column<DateTime>(nullable: false),
+                    WalletTypeTypeId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Wallets", x => x.WalletId);
+                    table.ForeignKey(
+                        name: "FK_Wallets_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Wallets_WalletTypes_WalletTypeTypeId",
+                        column: x => x.WalletTypeTypeId,
+                        principalTable: "WalletTypes",
+                        principalColumn: "TypeId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_RoleId",
                 table: "UserRoles",
@@ -77,6 +120,16 @@ namespace SadafStore.DataLayer.Migrations
                 name: "IX_UserRoles_UserId",
                 table: "UserRoles",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Wallets_UserId",
+                table: "Wallets",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Wallets_WalletTypeTypeId",
+                table: "Wallets",
+                column: "WalletTypeTypeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -85,10 +138,16 @@ namespace SadafStore.DataLayer.Migrations
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
+                name: "Wallets");
+
+            migrationBuilder.DropTable(
                 name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "WalletTypes");
         }
     }
 }

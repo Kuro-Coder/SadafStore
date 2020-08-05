@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SadafStore.Core.DTOs;
 using SadafStore.DataLayer.Entities.User;
+using SadafStore.DataLayer.Entities.Wallet;
 
 namespace SadafStore.Core.Services.Interfaces
 {
@@ -34,6 +35,16 @@ namespace SadafStore.Core.Services.Interfaces
         bool CompareOldPasswordForChange(string oldPassword, string userName);
         //Tack New Password
         void ChangeUserPassword(string userName, string newPassword);
+        //Get UserName and Send Wallet Balance
+        int BalanceUserWallet(string userName);
+        //Get UserName and Send UserId for Wallet
+        int GetUserIdByUserName(string userName);
+        //User Wallet Description
+        List<WalletViewModel> GetWalletUser(string userName);
+        //for how Wallet is charging and how much and pay or not pay
+        int ChargeWallet(string userName, int amount, string description, bool isPay = false);
+        //Save Wallet
+        int AddWallet(Wallet wallet); 
 
         #endregion
     }

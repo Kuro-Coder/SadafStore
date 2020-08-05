@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200716063921_CreatUserTableMig.cs" />
+    <Compile Remove="Migrations\20200716063921_CreatUserTableMig.Designer.cs" />
+    <Compile Remove="Migrations\20200731151610_Wallet.cs" />
+    <Compile Remove="Migrations\20200731151610_Wallet.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>

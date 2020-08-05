@@ -34,7 +34,7 @@ namespace SadafStore.DataLayer.Entities.Wallet
 
         }
         
-        public virtual User.User Users { get; set; }
+        public virtual User.User User { get; set; }
         public virtual WalletType WalletType { get; set; }
         #endregion
 
