@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SadafStore.Core.DTOs.ProductViewModels;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Entities.Product;
 
@@ -19,21 +20,26 @@ namespace SadafStore.web.Pages.Admin.Products
         {
             _productService = productService;
         }
-        [BindProperty] public Product Product { get; set; }
+        [BindProperty] public CreateProductViewModel CreateProductViewModel { get; set; }
 
         public void OnGet()
         {
             ViewData["Groups"] = _productService.GetAllGroups();
         }
 
-        public IActionResult OnPost(IFormFile ImageUp)
+        public IActionResult OnPost(List<int> selectedGroups)
         {
             if (!ModelState.IsValid)
                 return Page();
 
-            _productService.AddProduct(Product, ImageUp);
+            //Add User:
+            int productId = _productService.CreateProductsForAdmin(CreateProductViewModel);
+            
 
-            return RedirectToPage("Index");
+            //Add Role:
+            _productService.AddGroupsToProduct(selectedGroups,productId);
+
+            return Redirect("/Admin/Products");
         }
     }
 }

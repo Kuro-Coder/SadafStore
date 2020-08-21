@@ -20,9 +20,9 @@ namespace SadafStore.Core.Services.Interfaces
 
         #region Product
 
-        List<ShowProductForAdminViewModel> GetProductsForAdmin();
-
-        int AddProduct(Product product, IFormFile imgProduct);
+        int AddProduct(Product product);
+        int CreateProductsForAdmin(CreateProductViewModel product);
+        void AddGroupsToProduct(List<int> groupIds, int productId);
 
         #endregion
     }

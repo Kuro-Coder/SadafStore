@@ -22,29 +22,76 @@ namespace SadafStore.Core.Services
             _context = context;
         }
 
-        public int AddProduct(Product product, IFormFile imgProduct)
-        {
-            product.CreateTime = DateTime.Now;
-            product.IsDelete = false;
-             product.ProductImage = "no-photo.jpg";
-            //TODO Check Image
-            if (imgProduct != null)
-            {
-                product.ProductImage = GeneratorCode.GenerateGuidCode() + Path.GetExtension(imgProduct.FileName);
-                string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/images", product.ProductImage);
+        //public int AddProduct(Product product, IFormFile imgProduct)
+        //{
+        //    product.CreateTime = DateTime.Now;
+        //    product.IsDelete = false;
+        //     product.ProductImage = "no-photo.jpg";
+        //    //TODO Check Image
+        //    if (imgProduct != null)
+        //    {
+        //        product.ProductImage = GeneratorCode.GenerateGuidCode() + Path.GetExtension(imgProduct.FileName);
+        //        string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/images", product.ProductImage);
 
+        //        using (var stream = new FileStream(imagePath, FileMode.Create))
+        //        {
+        //            imgProduct.CopyTo(stream);
+        //        }
+        //    }
+
+        //    _context.Add(product);
+        //    _context.SaveChanges();
+
+        //    return product.ProductId;
+        //}
+        public int AddProduct(Product product)
+        {
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            return product.ProductId;
+        }
+
+        public int CreateProductsForAdmin(CreateProductViewModel product)
+        {
+            Product addProduct = new Product();
+            addProduct.ProductTitle = product.ProductName;
+            addProduct.Price = product.ProductPrice;
+            addProduct.ProductNumber = product.ProductNumber;
+            addProduct.ShortDescription = product.ProductFeature;
+            addProduct.Description = product.ProductDescription;
+            addProduct.IsActive = true;
+            addProduct.IsDelete = false;
+            addProduct.Tags = product.ProductTags;
+            addProduct.CreateTime = DateTime.Now;
+
+            //Product Image
+            //TODO Check Image
+            if (product.ProductImageName != null)
+            {
+                string imagePath = "";
+                addProduct.ProductImage = GeneratorCode.GenerateGuidCode() + Path.GetExtension(product.ProductImageName.FileName);
+                imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/images", addProduct.ProductImage);
                 using (var stream = new FileStream(imagePath, FileMode.Create))
                 {
-                    imgProduct.CopyTo(stream);
+                    product.ProductImageName.CopyTo(stream);
                 }
             }
 
-            //ToDO Upload Demo 
+            return AddProduct(addProduct);
+        }
 
-            _context.Add(product);
+        public void AddGroupsToProduct(List<int> groupIds, int productId)
+        {
+            foreach (int groupId in groupIds)
+            {
+                _context.ProductSelectedGroups.Add(new ProductSelectedGroup()
+                {
+                    GroupId = groupId,
+                    ProductId = productId
+                });
+            }
+
             _context.SaveChanges();
-
-            return product.ProductId;
         }
 
         public List<ProductGroup> GetAllGroups()
@@ -60,21 +107,6 @@ namespace SadafStore.Core.Services
                     Text = g.GroupTitle,
                     Value = g.GroupId.ToString()
                 }).ToList();
-        }
-
-        public List<ShowProductForAdminViewModel> GetProductsForAdmin()
-        {
-            return _context.Products.Select(p => new ShowProductForAdminViewModel()
-            {
-                ProductId = p.ProductId,
-                ProductName = p.ProductTitle,
-                ProductFeature = p.ShortDescription,
-                ProductPrice = p.Price,
-                ProductNumber = p.ProductNumber,
-                ProductDescription = p.Description,
-                ProductIsActive = p.IsActive,
-                ProductImageName = p.ProductImage
-            }).ToList();
         }
 
         public List<SelectListItem> GetSubGroupForManageProduct(int groupId)

@@ -33,7 +33,7 @@ namespace SadafStore.Core.DTOs
         public string Password { get; set; }
 
         public IFormFile AvatarImg { get; set; }
-        //public List<int> UserRoles { get; set; }
+        
     }
 
     public class EditUserViewModel
