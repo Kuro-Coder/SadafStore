@@ -33,6 +33,10 @@ namespace SadafStore.DataLayer.Entities.Product
         [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
         public int Price { get; set; }
 
+        [Display(Name = "تعداد")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
+        public int ProductNumber { get; set; }
+
         [MaxLength(50)]
         public string ProductImage { get; set; }
 

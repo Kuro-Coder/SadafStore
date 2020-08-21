@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SadafStore.DataLayer.Entities.Product;
 
 namespace SadafStore.Core.Services.Interfaces
@@ -10,6 +11,8 @@ namespace SadafStore.Core.Services.Interfaces
         #region Groups
 
         List<ProductGroup> GetAllGroups();
+        List<SelectListItem> GetGroupForManageProduct();
+        List<SelectListItem> GetSubGroupForManageProduct(int groupId);
 
         #endregion
     }
