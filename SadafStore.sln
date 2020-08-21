@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SadafStore.web", "SadafStore.web\SadafStore.web.csproj", "{A61CB38B-3421-4328-A51B-12449114C42B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SadafStore.web", "SadafStore.web\SadafStore.web.csproj", "{A61CB38B-3421-4328-A51B-12449114C42B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SadafStore.DataLayer", "SadafStore.DataLayer\SadafStore.DataLayer.csproj", "{1F6CEBC8-1779-4F97-B3D1-BC4A82FC1975}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SadafStore.DataLayer", "SadafStore.DataLayer\SadafStore.DataLayer.csproj", "{1F6CEBC8-1779-4F97-B3D1-BC4A82FC1975}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SadafStore.Core", "SadafStore.Core\SadafStore.Core.csproj", "{23D88EA4-4718-4F80-952D-EB7CB4FDE43E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SadafStore.Core", "SadafStore.Core\SadafStore.Core.csproj", "{23D88EA4-4718-4F80-952D-EB7CB4FDE43E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

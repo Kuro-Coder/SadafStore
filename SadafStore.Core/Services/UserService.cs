@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using SadafStore.Core.CodeGenerator;
 using SadafStore.Core.Convertors;
@@ -125,39 +126,6 @@ namespace SadafStore.Core.Services
                 }).Single();
         }
 
-        public void EditProfile(string username, UserPanelViewModel.EditProfileViewModel profile)
-        {
-            if (profile.AvatarImage != null)
-            {
-                string imagePath = "";
-                if (profile.ImageName != "null.jpg")
-                {
-                    imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/AvatarsImg", profile.ImageName);
-                    if (File.Exists(imagePath))
-                    {
-                        File.Delete(imagePath);
-                    }
-                }
-
-                profile.ImageName = GeneratorCode.GenerateGuidCode() + Path.GetExtension(profile.AvatarImage.FileName);
-                imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/AvatarsImg", profile.ImageName);
-
-                using (var stream = new FileStream(imagePath, FileMode.Create))
-                {
-                    profile.AvatarImage.CopyTo(stream);
-                }
-            }
-
-            var user = GetUserByUserName(username);
-            user.UserName = profile.UserName;
-            user.AvatarName = profile.AvatarName;
-            user.AvatarAddress = profile.AvatarAddress;
-            user.AvatarPhone = profile.AvatarPhone;
-            user.AvatarImg = profile.ImageName;
-
-            UpdateUser(user);
-        }
-
         public bool CompareOldPasswordForChange(string oldPassword, string userName)
         {
             string hashOldPassword = PasswordHelper.EncodePasswordMd5(oldPassword);
@@ -194,12 +162,12 @@ namespace SadafStore.Core.Services
         {
             int userId = GetUserIdByUserName(userName);
             return _context.Wallets.Where(w => w.IsPay && w.UserId == userId).Select(w => new WalletViewModel()
-                {
-                    Amount = w.Amount,
-                    TransactionDate = w.TransactionDate,
-                    Description = w.Description,
-                    PayType = w.TypeId
-                })
+            {
+                Amount = w.Amount,
+                TransactionDate = w.CreateDate,
+                Description = w.Description,
+                PayType = w.TypeId
+            })
                 .ToList();
         }
 
@@ -208,7 +176,7 @@ namespace SadafStore.Core.Services
             Wallet wallet = new Wallet()
             {
                 Amount = amount,
-                TransactionDate = DateTime.Now,
+                CreateDate = DateTime.Now,
                 Description = description,
                 IsPay = isPay,
                 TypeId = 1,
@@ -233,6 +201,196 @@ namespace SadafStore.Core.Services
         {
             _context.Wallets.Update(wallet);
             _context.SaveChanges();
+        }
+
+        public UserForUserListViewModel GetUsers(int pageId = 1, string filterEmail = "", string filterUserName = "")
+        {
+            IQueryable<User> result = _context.Users;
+            if (!string.IsNullOrEmpty(filterEmail))
+            {
+                result = result.Where(u => u.Email.Contains(filterEmail));
+            }
+            if (!string.IsNullOrEmpty(filterUserName))
+            {
+                result = result.Where(u => u.UserName.Contains(filterUserName));
+            }
+            //Show Paging
+            int take = 20;
+            int skip = (pageId - 1) * take;
+            UserForUserListViewModel list = new UserForUserListViewModel();
+            list.CurrentPage = pageId;
+            list.PageCount = result.Count() / take;
+            list.Users = result.OrderBy(u => u.RegisterDate).Skip(skip).Take(take).ToList();
+            return list;
+        }
+
+        public void EditProfile(string username, UserPanelViewModel.EditProfileViewModel profile)
+        {
+            if (profile.AvatarImage != null)
+            {
+                string imagePath = "";
+                if (profile.ImageName != "null.jpg")
+                {
+                    imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/AvatarsImg", profile.ImageName);
+                    if (File.Exists(imagePath))
+                    {
+                        File.Delete(imagePath);
+                    }
+                }
+                profile.ImageName = GeneratorCode.GenerateGuidCode() + Path.GetExtension(profile.AvatarImage.FileName);
+                imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/AvatarsImg", profile.ImageName);
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    profile.AvatarImage.CopyTo(stream);
+                }
+            }
+            #region GetData
+
+            var user = GetUserByUserName(username);
+            user.UserName = profile.UserName;
+            user.AvatarName = profile.AvatarName;
+            user.AvatarAddress = profile.AvatarAddress;
+            user.AvatarPhone = profile.AvatarPhone;
+            user.AvatarImg = profile.ImageName;
+
+            #endregion
+            UpdateUser(user);
+        }
+
+        public int AddUserFromAdmin(CreateUserViewModel user)
+        {
+            #region GetData
+
+            User addUser = new User();
+            addUser.Password = PasswordHelper.EncodePasswordMd5(user.Password);
+            addUser.ActiveCode = GeneratorCode.GenerateGuidCode();
+            addUser.Email = user.Email;
+            addUser.IsActive = true;
+            addUser.RegisterDate = DateTime.Now;
+            addUser.UserName = user.UserName;
+
+            #endregion
+            #region Save Avatar
+
+            if (user.AvatarImg != null)
+            {
+                string imagePath = "";
+                addUser.AvatarImg = GeneratorCode.GenerateGuidCode() + Path.GetExtension(user.AvatarImg.FileName);
+                imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/AvatarsImg", addUser.AvatarImg);
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    user.AvatarImg.CopyTo(stream);
+                }
+            }
+
+            #endregion
+            return AddUser(addUser);
+        }
+
+        public EditUserViewModel GetUserForShowInEditMode(int userId)
+        {
+            return _context.Users.Where(u => u.UserId == userId)
+                .Select(u => new EditUserViewModel()
+                {
+                    UserId = u.UserId,
+                    UserName = u.UserName,
+                    Email = u.Email,
+                    ImageName = u.AvatarImg,
+                    IsActive = u.IsActive,
+                    UserRoles = u.UserRoles.Select(r => r.RoleId).ToList()
+                }).Single();
+        }
+
+        public void EditUserFromAdmin(EditUserViewModel editUser)
+        {
+            User user = GetUserById(editUser.UserId);
+            user.Email = editUser.Email;
+            user.IsActive = editUser.IsActive;
+            if (!string.IsNullOrEmpty(editUser.Password))
+            {
+                user.Password = PasswordHelper.EncodePasswordMd5(editUser.Password);
+            }
+
+            if (editUser.AvatarImg != null)
+            {
+                //Delete old Image
+                if (editUser.ImageName != "null.jpg")
+                {
+                    string deletePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/AvatarsImg",
+                        editUser.ImageName);
+                    if (File.Exists(deletePath))
+                    {
+                        File.Delete(deletePath);
+                    }
+                }
+
+                //Save New Image
+                user.AvatarImg = GeneratorCode.GenerateGuidCode() + Path.GetExtension(editUser.AvatarImg.FileName);
+                string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/AvatarsImg", user.AvatarImg);
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    editUser.AvatarImg.CopyTo(stream);
+                }
+            }
+            _context.Users.Update(user);
+            _context.SaveChanges();
+        }
+
+        public User GetUserById(int userId)
+        {
+            return _context.Users.Find(userId);
+        }
+
+        public UserForUserListViewModel GetDeleteUsers(int pageId = 1, string filterEmail = "", string filterUserName = "")
+        {
+            IQueryable<User> result = _context.Users.IgnoreQueryFilters().Where(u => u.IsDelete);
+            if (!string.IsNullOrEmpty(filterEmail))
+            {
+                result = result.Where(u => u.Email.Contains(filterEmail));
+            }
+            if (!string.IsNullOrEmpty(filterUserName))
+            {
+                result = result.Where(u => u.UserName.Contains(filterUserName));
+            }
+            //Show Paging
+            int take = 20;
+            int skip = (pageId - 1) * take;
+            UserForUserListViewModel list = new UserForUserListViewModel();
+            list.CurrentPage = pageId;
+            list.PageCount = result.Count() / take;
+            list.Users = result.OrderBy(u => u.RegisterDate).Skip(skip).Take(take).ToList();
+            return list;
+        }
+
+        public void DeleteUser(int userId)
+        {
+            User user = GetUserById(userId);
+            user.IsDelete = true;
+            user.IsActive = false;
+            UpdateUser(user);
+        }
+
+        public void UnDeleteUser(int userId)
+        {
+            User user = GetUserById(userId);
+            user.IsDelete = false;
+            user.IsActive = true;
+            UpdateUser(user);
+        }
+
+        public UserPanelViewModel.InformationUserViewModel GetUserInformationInAdminPanel(int userId)
+        {
+            var user = GetUserById(userId);
+            UserPanelViewModel.InformationUserViewModel information = new UserPanelViewModel.InformationUserViewModel();
+            information.Email = user.Email;
+            information.AvatarName = user.AvatarName;
+            information.RegisterDate = user.RegisterDate;
+            information.Wallet = BalanceUserWallet(user.UserName);
+            information.UserAddress = user.AvatarAddress;
+            information.TelNumber = user.AvatarPhone;
+            information.UserName = user.UserName;
+
+            return information;
         }
     }
 }

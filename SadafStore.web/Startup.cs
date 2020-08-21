@@ -1,20 +1,24 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using SadafStore.Core.Services;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Context;
 using SendEmail;
+
 
 namespace SadafStore.web
 {
@@ -32,6 +36,7 @@ namespace SadafStore.web
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
+
 
             #region Authentication
 
@@ -59,11 +64,13 @@ namespace SadafStore.web
                 });
 
             #endregion
-
+            
             #region IoC
 
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IViewRenderService, RenderViewToString>();
+            services.AddTransient<IPermissionService, PermissionService>();
+            services.AddTransient<IProductService, ProductService>();
 
             #endregion
         }
@@ -91,17 +98,15 @@ namespace SadafStore.web
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
-
                     name: "MyAreas",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
                 endpoints.MapControllerRoute(
-
                     name: "Default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
-                
             });
+
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");

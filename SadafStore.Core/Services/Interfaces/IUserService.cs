@@ -17,9 +17,12 @@ namespace SadafStore.Core.Services.Interfaces
         User LoginUser(LoginViewModel login);
         User GetUserByEmail(string email);
         User GetUserByActiveCode(string activeCode);
+        User GetUserById(int userId);
         User GetUserByUserName(string username);
         void UpdateUser(User user);
         bool ActiveAccount(string activeCode);
+        void DeleteUser(int userId);
+        void UnDeleteUser(int userId);
 
         #endregion
 
@@ -28,7 +31,6 @@ namespace SadafStore.Core.Services.Interfaces
         UserPanelViewModel.InformationUserViewModel GetUserInformation(string userName);
         UserPanelViewModel.NavBarsUserPanelViewModel GetNavBarUserPanelData(string userName);
         UserPanelViewModel.EditProfileViewModel GetDataForEditProfile(string userName);
-
         //username id old data and profile is new data to save
         void EditProfile(string username, UserPanelViewModel.EditProfileViewModel profile);
         //check OldPassword For Change
@@ -55,6 +57,16 @@ namespace SadafStore.Core.Services.Interfaces
 
         void UpdateWallet(Wallet wallet);
 
+        #endregion
+
+        #region Admin Panel
+
+        UserForUserListViewModel GetUsers(int pageId = 1, string filterEmail = "", string filterUserName = "");
+        UserForUserListViewModel GetDeleteUsers(int pageId = 1, string filterEmail = "", string filterUserName = "");
+        int AddUserFromAdmin(CreateUserViewModel user);
+        EditUserViewModel GetUserForShowInEditMode(int userId);
+        void EditUserFromAdmin(EditUserViewModel editUser);
+        UserPanelViewModel.InformationUserViewModel GetUserInformationInAdminPanel(int userId);
         #endregion
     }
 }

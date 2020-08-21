@@ -17,6 +17,8 @@ namespace SadafStore.Core.DTOs
             public int Wallet { get; set; }
             public string UserAddress { get; set; }
             public string TelNumber { get; set; }
+            public string UserName { get; set; }
+
         }
 
         public class NavBarsUserPanelViewModel

@@ -1,0 +1,58 @@
+﻿
+.linkinhead {
+    padding: 8px 15px;
+    margin-bottom: 0px !important;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px
+}
+
+.linkinhead > li {
+        display: inline-block
+    }
+
+.linkinhead > li + li:before {
+        padding: 0 5px;
+        color: #ccc;
+        content: "/\00a0"
+    }
+
+.linkinhead > .active {
+        color: #777
+    }
+
+
+.Myform-control {
+padding: 6px 10px 6px !important;
+}
+
+.table-title {
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: 25px;
+    color: inherit;
+}
+
+.create-user-avatar {
+    width: 150px;
+    height: 150px;
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
+.my-card-box {
+    background-color: #fff;
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    padding: 20px;
+    position: relative;
+}

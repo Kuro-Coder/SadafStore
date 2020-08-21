@@ -8,22 +8,20 @@ namespace SadafStore.DataLayer.Entities.Wallet
 {
     public class WalletType
     {
+        public WalletType()
+        {
+
+        }
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TypeId { get; set; }
 
-        [Display(Name = "نوع واریز")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
-        [MaxLength(150, ErrorMessage = "{0} نمیتواند بیشتر از {1} کاراکتر باشد!!!")]
+        [Required]
+        [MaxLength(150)]
         public string TypeTitle { get; set; }
 
-        #region Navigations and Ctor
-
-        public WalletType()
-        {
-            
-        }
+        #region Relations
         public virtual List<Wallet> Wallets { get; set; }
-
         #endregion
     }
 }

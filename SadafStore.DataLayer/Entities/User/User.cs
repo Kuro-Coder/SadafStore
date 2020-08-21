@@ -7,6 +7,11 @@ namespace SadafStore.DataLayer.Entities.User
 {
     public class User
     {
+        public User()
+        {
+
+        }
+
         [Key]
         public int UserId { get; set; }
 
@@ -36,6 +41,8 @@ namespace SadafStore.DataLayer.Entities.User
         [Display(Name = "تاریخ ثبت نام")]
         public DateTime RegisterDate { get; set; }
 
+        public bool IsDelete { get; set; }
+
         #region User Avatar
 
         [Display(Name = "تصویرکاربری شما")]
@@ -53,15 +60,8 @@ namespace SadafStore.DataLayer.Entities.User
 
         #endregion
 
-        #region Navigations And Ctors
-
-        public User()
-        {
-
-        }
-
-        public virtual List<UserRole> UserRole { get; set; }
-
+        #region Relations
+        public virtual List<UserRole> UserRoles { get; set; }
         public virtual List<Wallet.Wallet> Wallets { get; set; }
 
         #endregion

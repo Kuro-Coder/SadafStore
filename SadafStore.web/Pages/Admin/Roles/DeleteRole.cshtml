@@ -1,0 +1,33 @@
+﻿@page "{id}"
+@model SadafStore.Web.Pages.Admin.Roles.DeleteRoleModel
+@{
+    ViewData["Title"] = "حذف نقش";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div>
+                <ol class="linkinhead ">
+                    <li><a href="/">خانه</a></li>
+                    <li><a href="/Admin">پنل مدیریت</a></li>
+                    <li><a href="/admin/Roles">لیست نقش‌ها</a></li>
+                    <li class="#">حذف نقش</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container alert alert-danger">
+    <form method="post">
+        <input type="hidden" asp-for="Role.RoleId" />
+        <input type="hidden" asp-for="Role.RoleName" />
+        <h2>آیا از حذف نقش "@Model.Role.RoleName" مطمئن هستید </h2>
+        <p>
+            <input type="submit" value="حذف کن" class="btn btn-outline btn-danger" />
+            <a asp-page="Index" class="btn btn-outline btn-info">انصراف</a>
+        </p>
+    </form>
+</div>
+

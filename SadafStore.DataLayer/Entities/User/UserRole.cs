@@ -7,6 +7,11 @@ namespace SadafStore.DataLayer.Entities.User
 {
     public class UserRole
     {
+        public UserRole()
+        {
+
+        }
+
         [Key]
         public int UR_Id { get; set; }
 
@@ -14,13 +19,7 @@ namespace SadafStore.DataLayer.Entities.User
 
         public int RoleId { get; set; }
 
-
-        #region Navigations And Ctors
-
-        public UserRole()
-        {
-
-        }
+        #region Relations
 
         public virtual User User { get; set; }
         public virtual Role Role { get; set; }

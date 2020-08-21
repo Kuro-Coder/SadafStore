@@ -2,27 +2,32 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using SadafStore.DataLayer.Entities.Permissions;
 
 namespace SadafStore.DataLayer.Entities.User
 {
     public class Role
     {
-        [Key]
-        public int RoleId { get; set; }
-
-        [Display(Name = "")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
-        [MaxLength(50, ErrorMessage = "{0} نمیتواند بیشتر از {1} کاراکتر باشد!!!")]
-        public int RoleName { get; set; }
-
-        #region Navigations And Ctors
-
         public Role()
         {
 
         }
 
-        public virtual List<UserRole> UserRole { get; set; }
+        [Key]
+        public int RoleId { get; set; }
+
+        [Display(Name = "نام نقش")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
+        [MaxLength(50, ErrorMessage = "{0} نمیتواند بیشتر از {1} کاراکتر باشد!!!")]
+        public string RoleName { get; set; }
+
+        public bool IsDelete { get; set; }
+
+
+        #region Relations
+
+        public virtual List<UserRole> UserRoles { get; set; }
+        public List<RolePermission> RolePermissions { get; set; }
 
         #endregion
     }

@@ -1,0 +1,89 @@
+﻿@page
+@model SadafStore.Web.Pages.Admin.Roles.IndexModel
+@{
+    ViewData["Title"] = "لیست نقش ها";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div>
+                <ol class="linkinhead ">
+                    <li><a href="/">خانه</a></li>
+                    <li><a href="/Admin">داشبورد مدیریت</a></li>
+                    <li class="#">لیست نقش‌ها</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-table">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-5">
+                        <a href="/admin/roles/createrole">
+                            <button type="button" class="btn btn-success">افزودن نقش جدید</button>
+                        </a>
+                        <a href="/admin/users/deleterolelist">
+                            <button type="button" class="btn btn-danger">لیست و بازگردانی نقش‌های حذف شده</button>
+                        </a>
+                    </div>
+
+                    <div class="col-md-7">
+                        <h2 class="table-title">لیست کاربرها</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped custom-table m-b-0">
+                        <thead>
+                            <tr>
+                                <th style="min-width:200px;">نقش</th>
+                                <th class="text-right">اعمال</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var role in Model.RolesList)
+                            {
+                                <tr>
+                                    <td style="min-width: 200px;">
+                                        <a href="#" class="avatar">B</a>
+                                        <h2><a href="#">@role.RoleName <span> </span></a></h2>
+                                    </td>
+
+                                    <td class="text-right">
+                                        <div class="dropdown">
+                                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="/Admin/Roles/EditRole/@role.RoleId" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                <li><a href="/Admin/Roles/DeleteRole/@role.RoleId" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div>
+                    <ul class="pagination">
+                        @*@for (int i = 1; i <= Model.UserForUserListViewModel.PageCount; i++)
+                            {
+                                <li class="paginate_button @((i==Model.UserForUserListViewModel.CurrentPage)?"active":"")" aria-controls="dataTables-example" tabindex="0">
+                                    <a href="/Admin/Users?PageId=@i">@i</a>
+                                </li>
+                            }*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

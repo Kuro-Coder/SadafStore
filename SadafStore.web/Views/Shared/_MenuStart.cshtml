@@ -11,12 +11,21 @@
                         <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                     </div>
                     <div class="antomi_message">
-                        <p>ارسال رایگان - ضمانت بازگشت وجه 30 روزه</p>
+                        <p>ارسال رایگان - در آمل</p>
                     </div>
                     <div class="header_top_settings text-right">
                         <ul>
-                            <li><a href="#">عضویت</a></li>
-                            <li><a href="#">ورود</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a href="/UserPanel">@User.Identity.Name عزیز</a></li>
+                                <li><a href="/admin">پنل مدیریت</a></li>
+                                <li><a href="/Logout">خروج</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/Register">ثبت نام</a></li>
+                                <li><a href="/Login">ورود</a></li>
+                            }
                             <li>تلفن تماس: <a class="ltr-text" href="tel:+(+98)800456789">(+98) 800 456 789 </a></li>
                             <li>ضمانت کیفیت محصولات</li>
                         </ul>
