@@ -25,8 +25,4 @@
     <ProjectReference Include="..\SadafStore.DataLayer\SadafStore.DataLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Admin\Products\" />
-  </ItemGroup>
-
 </Project>
