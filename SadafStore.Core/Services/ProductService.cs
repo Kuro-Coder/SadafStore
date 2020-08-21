@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SadafStore.Core.CodeGenerator;
 using SadafStore.Core.DTOs.ProductViewModels;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Context;
@@ -22,7 +24,27 @@ namespace SadafStore.Core.Services
 
         public int AddProduct(Product product, IFormFile imgProduct)
         {
-            throw new NotImplementedException();
+            product.CreateTime = DateTime.Now;
+            product.IsDelete = false;
+             product.ProductImage = "no-photo.jpg";
+            //TODO Check Image
+            if (imgProduct != null)
+            {
+                product.ProductImage = GeneratorCode.GenerateGuidCode() + Path.GetExtension(imgProduct.FileName);
+                string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/images", product.ProductImage);
+
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    imgProduct.CopyTo(stream);
+                }
+            }
+
+            //ToDO Upload Demo 
+
+            _context.Add(product);
+            _context.SaveChanges();
+
+            return product.ProductId;
         }
 
         public List<ProductGroup> GetAllGroups()
@@ -42,7 +64,17 @@ namespace SadafStore.Core.Services
 
         public List<ShowProductForAdminViewModel> GetProductsForAdmin()
         {
-            throw new NotImplementedException();
+            return _context.Products.Select(p => new ShowProductForAdminViewModel()
+            {
+                ProductId = p.ProductId,
+                ProductName = p.ProductTitle,
+                ProductFeature = p.ShortDescription,
+                ProductPrice = p.Price,
+                ProductNumber = p.ProductNumber,
+                ProductDescription = p.Description,
+                ProductIsActive = p.IsActive,
+                ProductImageName = p.ProductImage
+            }).ToList();
         }
 
         public List<SelectListItem> GetSubGroupForManageProduct(int groupId)

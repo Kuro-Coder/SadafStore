@@ -6,14 +6,14 @@ namespace SadafStore.Core.DTOs.ProductViewModels
 {
     public class ShowProductForAdminViewModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Price { get; set; }
-        public int Number { get; set; }
-        public string Feature { get; set; }
-        public bool IsActive { get; set; }
-        public string Description { get; set; }
-        public string ImageName { get; set; }
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+        public int ProductPrice { get; set; }
+        public int ProductNumber { get; set; }
+        public string ProductFeature { get; set; }
+        public bool ProductIsActive { get; set; }
+        public string ProductDescription { get; set; }
+        public string ProductImageName { get; set; }
 
     }
 }
