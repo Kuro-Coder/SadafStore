@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SadafStore.Core.DTOs.ProductViewModels;
 using SadafStore.DataLayer.Entities.Product;
 
 namespace SadafStore.Core.Services.Interfaces
@@ -13,6 +15,14 @@ namespace SadafStore.Core.Services.Interfaces
         List<ProductGroup> GetAllGroups();
         List<SelectListItem> GetGroupForManageProduct();
         List<SelectListItem> GetSubGroupForManageProduct(int groupId);
+
+        #endregion
+
+        #region Product
+
+        List<ShowProductForAdminViewModel> GetProductsForAdmin();
+
+        int AddProduct(Product product, IFormFile imgProduct);
 
         #endregion
     }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SadafStore.Core.DTOs.ProductViewModels;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Context;
 using SadafStore.DataLayer.Entities.Product;
@@ -18,6 +20,11 @@ namespace SadafStore.Core.Services
             _context = context;
         }
 
+        public int AddProduct(Product product, IFormFile imgProduct)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<ProductGroup> GetAllGroups()
         {
             return _context.ProductGroups.ToList();
@@ -31,6 +38,11 @@ namespace SadafStore.Core.Services
                     Text = g.GroupTitle,
                     Value = g.GroupId.ToString()
                 }).ToList();
+        }
+
+        public List<ShowProductForAdminViewModel> GetProductsForAdmin()
+        {
+            throw new NotImplementedException();
         }
 
         public List<SelectListItem> GetSubGroupForManageProduct(int groupId)

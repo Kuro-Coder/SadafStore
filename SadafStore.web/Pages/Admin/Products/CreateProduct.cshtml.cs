@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,6 +24,16 @@ namespace SadafStore.web.Pages.Admin.Products
         public void OnGet()
         {
             ViewData["Groups"] = _productService.GetAllGroups();
+        }
+
+        public IActionResult OnPost(IFormFile ImageUp)
+        {
+            if (!ModelState.IsValid)
+                return Page();
+
+            _productService.AddProduct(Product, ImageUp);
+
+            return RedirectToPage("Index");
         }
     }
 }
