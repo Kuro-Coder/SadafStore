@@ -10,11 +10,11 @@ using SadafStore.Core.Services.Interfaces;
 
 namespace SadafStore.web.Pages.Admin.Products
 {
-    public class EditeProductModel : PageModel
+    public class EditProductModel : PageModel
     {
         private IProductService _productService;
 
-        public EditeProductModel(IProductService productService)
+        public EditProductModel(IProductService productService)
         {
             _productService = productService;
         }
@@ -25,6 +25,20 @@ namespace SadafStore.web.Pages.Admin.Products
         {
             EditProductViewModel = _productService.GetProductForEdit(id);
             ViewData["Groups"] = _productService.GetAllGroups();
+        }
+
+        public IActionResult OnPost(List<int> selectedGroups)
+        {
+            if (ModelState.IsValid)
+            {
+                return Page();
+            }
+            //Edit User
+            _productService.EditProductFromAdmin(EditProductViewModel);
+            //Edit Roles
+            _productService.EditProductGroups(EditProductViewModel.ProductId, selectedGroups);
+
+            return RedirectToPage("Index");
         }
     }
 }

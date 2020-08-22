@@ -209,7 +209,7 @@ F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.w
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.pdb
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.genruntimeconfig.cache
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\CreateProduct.cshtml.g.cs
-F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\EditeProduct.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\Index.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\DeleteProductList.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\CoreCompat.System.Drawing.dll
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\EditProduct.cshtml.g.cs
