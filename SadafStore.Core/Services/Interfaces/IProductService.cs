@@ -20,10 +20,17 @@ namespace SadafStore.Core.Services.Interfaces
 
         #region Product
 
+        //Before Create 
         ProductForProductListViewModel GetProduct(int pageId = 1, string filterTags = "", string filterProductTitle = "");
         int AddProduct(Product product);
         int CreateProductsForAdmin(CreateProductViewModel product);
         void AddGroupsToProduct(List<int> groupIds, int productId);
+        //after Create Product
+        Product GetProductById(int productId);
+        EditProductViewModel GetProductForEdit(int productId);
+        void EditProductFromAdmin(EditProductViewModel editProduct);
+        void DeleteProduct(int productId);
+        void UpdateProduct(Product product);
 
         #endregion
     }

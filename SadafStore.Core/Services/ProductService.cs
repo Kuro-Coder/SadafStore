@@ -124,5 +124,87 @@ namespace SadafStore.Core.Services
                     Value = g.GroupId.ToString()
                 }).ToList();
         }
+
+        public EditProductViewModel GetProductForEdit(int productId)
+        {
+            return _context.Products.Where(u => u.ProductId == productId)
+                .Select(u => new EditProductViewModel()
+                {
+                    ProductId = u.ProductId,
+                    ProductName = u.ProductTitle,
+                    ProductPrice = u.Price,
+                    ImageName = u.ProductImage,
+                    ProductIsActive = u.IsActive,
+                    ProductDescription = u.Description,
+                    ProductTags = u.Tags,
+                    ProductFeature = u.ShortDescription,
+                    ProductNumber = u.ProductNumber,
+                    ProductGroups = u.ProductSelectedGroups.Select(r => r.GroupId).ToList()
+                }).Single();
+        }
+
+        public void EditProductFromAdmin(EditProductViewModel editProduct)
+        {
+            Product product = GetProductById(editProduct.ProductId);
+            product.ProductTitle = editProduct.ProductName;
+            product.IsActive = editProduct.ProductIsActive;
+            product.Description = editProduct.ProductDescription;
+            product.Price = editProduct.ProductPrice;
+            product.ProductNumber = editProduct.ProductNumber;
+            product.Tags = editProduct.ProductTags;
+            product.ShortDescription = editProduct.ProductFeature;
+
+            if (editProduct.ProductImageName != null)
+            {
+                //Delete old Image
+                if (editProduct.ImageName != "null.jpg")
+                {
+                    string deletePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ProductImg/images",
+                        editProduct.ImageName);
+                    if (File.Exists(deletePath))
+                    {
+                        File.Delete(deletePath);
+                    }
+                    string deleteThumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ProductImg/thumbs",
+                        editProduct.ImageName);
+                    if (File.Exists(deletePath))
+                    {
+                        File.Delete(deletePath);
+                    }
+                }
+
+                //Save New Image
+                product.ProductImage = GeneratorCode.GenerateGuidCode() + Path.GetExtension(editProduct.ProductImageName.FileName);
+                string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ProductImg/images", product.ProductImage);
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    editProduct.ProductImageName.CopyTo(stream);
+                }
+                ImageConvertor imgResizer = new ImageConvertor();
+                string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ProductImg/thumbs", product.ProductImage);
+
+                imgResizer.Image_resize(imagePath, thumbPath, 100);
+            }
+            _context.Products.Update(product);
+            _context.SaveChanges();
+        }
+
+        public void DeleteProduct(int productId)
+        {
+            Product product = GetProductById(productId);
+            product.IsDelete = true;
+            product.IsActive = false;
+            UpdateProduct(product);
+        }
+
+        public Product GetProductById(int productId)
+        {
+            return _context.Products.Find(productId);
+        }
+        public void UpdateProduct(Product product)
+        {
+            _context.Update(product);
+            _context.SaveChanges();
+        }
     }
 }
