@@ -22,28 +22,28 @@ namespace SadafStore.Core.Services
             _context = context;
         }
 
-        //public int AddProduct(Product product, IFormFile imgProduct)
-        //{
-        //    product.CreateTime = DateTime.Now;
-        //    product.IsDelete = false;
-        //     product.ProductImage = "no-photo.jpg";
-        //    //TODO Check Image
-        //    if (imgProduct != null)
-        //    {
-        //        product.ProductImage = GeneratorCode.GenerateGuidCode() + Path.GetExtension(imgProduct.FileName);
-        //        string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/images", product.ProductImage);
+        public ProductForProductListViewModel GetProduct(int pageId = 1, string filterTags = "", string filterProductTitle = "")
+        {
+            IQueryable<Product> result = _context.Products;
+            if (!string.IsNullOrEmpty(filterProductTitle))
+            {
+                result = result.Where(u => u.ProductTitle.Contains(filterProductTitle));
+            }
 
-        //        using (var stream = new FileStream(imagePath, FileMode.Create))
-        //        {
-        //            imgProduct.CopyTo(stream);
-        //        }
-        //    }
+            if (!string.IsNullOrEmpty(filterTags))
+            {
+                result = result.Where(u => u.Tags.Contains(filterTags));
+            }
+            //Show Paging
+            int take = 20;
+            int skip = (pageId - 1) * take;
+            ProductForProductListViewModel list = new ProductForProductListViewModel();
+            list.CurrentPage = pageId;
+            list.PageCount = result.Count() / take;
+            list.Products = result.OrderBy(u => u.CreateTime).Skip(skip).Take(take).ToList();
+            return list;
+        }
 
-        //    _context.Add(product);
-        //    _context.SaveChanges();
-
-        //    return product.ProductId;
-        //}
         public int AddProduct(Product product)
         {
             _context.Products.Add(product);

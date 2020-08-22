@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Microsoft.AspNetCore.Http;
+using SadafStore.DataLayer.Entities.Product;
 
 namespace SadafStore.Core.DTOs.ProductViewModels
 {
@@ -40,6 +41,14 @@ namespace SadafStore.Core.DTOs.ProductViewModels
         public string ProductTags { get; set; }
 
         public IFormFile ProductImageName { get; set; }
+
+    }
+
+    public class ProductForProductListViewModel
+    {
+        public List<Product> Products { get; set; }
+        public int CurrentPage { get; set; }
+        public int PageCount { get; set; }
 
     }
 

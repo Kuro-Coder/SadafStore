@@ -67,21 +67,22 @@
                                 <th>نام</th>
                                 <th>ارزش</th>
                                 <th>تعداد</th>
+                                <th>وضعیت</th>
                                 <th class="text-right">اعمال</th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            @*@foreach (var user in Model.UserForUserListViewModel.Users)
+                            @foreach (var product in Model.ProductForProductListViewModel.Products)
                             {
                                 <tr>
                                     <td style="min-width: 200px;">
-                                        <a href="#" class="avatar">B</a>
-                                        <h2><a href="#">@user.UserName <span>@user.UserRoles</span></a></h2>
+                                        <img src="/ProductImg/thumb/@product.ProductImage" class="thumbnail" />
                                     </td>
-                                    <td>@user.Email</td>
+                                    <td>@product.ProductTitle</td>
+                                    <td>@product.Price</td>
+                                    <td>@product.ProductNumber</td>
                                     <td>
-                                        @if (user.IsActive)
+                                        @if (product.IsActive)
                                         {
                                             <a class="btn btn-white btn-sm rounded " value="" readonly="readonly">
                                                 <i class="fa fa-dot-circle-o text-success"></i> فعال <i class=""></i>
@@ -95,18 +96,18 @@
                                         }
 
                                     </td>
-                                    <td>@user.RegisterDate.ToShamsi()</td>
+
                                     <td class="text-right">
                                         <div class="dropdown">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                             <ul class="dropdown-menu pull-right">
-                                                <li><a href="/Admin/Users/EditUser/@user.UserId" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
-                                                <li><a href="/Admin/Users/DeleteUser/@user.UserId" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
+                                                <li><a href="/Admin/Products/EditProduct/@product.ProductId" title="Edit"><i class="fa fa-pencil m-l-5"></i> ویرایش</a></li>
+                                                <li><a href="/Admin/Products/DeleteProduct/@product.ProductId" title="Delete"><i class="fa fa-trash-o m-l-5"></i> حذف</a></li>
                                             </ul>
                                         </div>
                                     </td>
                                 </tr>
-                            }*@
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -114,12 +115,12 @@
             <div class="panel-footer">
                 <div>
                     <ul class="pagination">
-                        @*@for (int i = 1; i <= Model.UserForUserListViewModel.PageCount; i++)
+                        @for (int i = 1; i <= Model.ProductForProductListViewModel.PageCount; i++)
                         {
-                            <li class="paginate_button @((i==Model.UserForUserListViewModel.CurrentPage)?"active":"")" aria-controls="dataTables-example" tabindex="0">
-                                <a href="/Admin/Users?PageId=@i">@i</a>
+                            <li class="paginate_button @((i==Model.ProductForProductListViewModel.CurrentPage)?"active":"")" aria-controls="dataTables-example" tabindex="0">
+                                <a href="/Admin/Products?PageId=@i">@i</a>
                             </li>
-                        }*@
+                        }
                     </ul>
                 </div>
             </div>
