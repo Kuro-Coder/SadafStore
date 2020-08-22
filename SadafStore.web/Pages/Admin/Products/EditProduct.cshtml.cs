@@ -29,7 +29,7 @@ namespace SadafStore.web.Pages.Admin.Products
 
         public IActionResult OnPost(List<int> selectedGroups)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }

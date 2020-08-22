@@ -24,6 +24,8 @@
 <div class="card-box">
     <div class="row">
         <form class="form-horizontal" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="EditProductViewModel.ProductId" />
+            <input type="hidden" asp-for="EditProductViewModel.ImageName" />
             <h4 class="card-title">ویرایش محصول</h4>
             <div class="col-md-8">
                 <div class="form-group">
@@ -55,16 +57,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                        <label class="control-label col-md-2">‌دارایی :</label>
-                        <div class="col-md-10">
-                            <input type="checkbox" class="form-control" asp-for="EditProductViewModel.ProductIsActive" value="دارا بودن محصول در فروشگاه؟">
-                            <span asp-validation-for="EditProductViewModel.ProductIsActive"></span>
-                        </div>
-                    </div>
-                <div class="form-group">
                     <label class="control-label col-md-2">‌توضیح :</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" asp-for="EditProductViewModel.ProductDescription"  placeholder="توضیح محصول را وارد کنید">
+                        <input type="text" class="form-control" asp-for="EditProductViewModel.ProductDescription" placeholder="توضیح محصول را وارد کنید">
                         <span asp-validation-for="EditProductViewModel.ProductDescription"></span>
                     </div>
                 </div>
@@ -75,6 +70,14 @@
                         <span asp-validation-for="EditProductViewModel.ProductTags"></span>
                     </div>
                 </div>
+                @*<div class="form-group">
+            <label class="control-label col-md-2">‌دارایی :</label>
+            <div class="col-md-10">
+                <input type="checkbox" class="form-control" asp-for="EditProductViewModel.ProductIsActive" value="دارا بودن محصول در فروشگاه؟">
+                <span asp-validation-for="EditProductViewModel.ProductIsActive"></span>
+            </div>
+        </div>*@
+
                 <button type="submit" class="btn btn-success">ویرایش محصول</button>
             </div>
             <div class="col-md-4">
@@ -101,7 +104,7 @@
                             @foreach (var group in groups.Where(g => g.ParentId == null))
                             {
                                 <li>
-                                    <input type="checkbox" name="selectedGroups" @((Model.EditProductViewModel.ProductGroups.Any(g => g == group.GroupId) ? "checked" : "")) value="@group.GroupId" />
+                                    <input type="checkbox" name="selectedGroups" value="@group.GroupId" @((Model.EditProductViewModel.ProductGroups.Any(g => g == group.GroupId) ? "checked" : ""))/>
                                     <span>@group.GroupTitle</span>
                                     @if (groups.Any(g => g.ParentId == group.GroupId))
                                     {
@@ -109,7 +112,7 @@
                                             @foreach (var subGroupLvl1 in groups.Where(g => g.ParentId == group.GroupId))
                                             {
                                                 <li>
-                                                    <input type="checkbox" name="selectedGroups" @((Model.EditProductViewModel.ProductGroups.Any(g => g == subGroupLvl1.GroupId) ? "checked" : "")) value="@subGroupLvl1.GroupId" />
+                                                    <input type="checkbox" name="selectedGroups" value="@subGroupLvl1.GroupId" @((Model.EditProductViewModel.ProductGroups.Any(g => g == subGroupLvl1.GroupId) ? "checked" : ""))/>
                                                     <span>@subGroupLvl1.GroupTitle</span>
                                                     @if (groups.Any(g => g.ParentId != null && subGroupLvl1.ParentId == g.ParentId))
                                                     {
@@ -117,7 +120,7 @@
                                                             @foreach (var subGroupLvl2 in groups.Where(g => g.ParentId != null && subGroupLvl1.GroupId == g.ParentId))
                                                             {
                                                                 <li>
-                                                                    <input type="checkbox" name="selectedGroups" @((Model.EditProductViewModel.ProductGroups.Any(g => g == subGroupLvl2.GroupId) ? "checked" : "")) value="@subGroupLvl2.GroupId" />
+                                                                    <input type="checkbox" name="selectedGroups" value="@subGroupLvl2.GroupId" @((Model.EditProductViewModel.ProductGroups.Any(g => g == subGroupLvl2.GroupId) ? "checked" : ""))/>
                                                                     <span>@subGroupLvl2.GroupTitle</span>
                                                                 </li>
                                                             }

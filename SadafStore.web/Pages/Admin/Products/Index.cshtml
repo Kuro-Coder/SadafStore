@@ -27,7 +27,7 @@
         </div>
         <div class="col-sm-3 col-xs-6">
             <div class="form-group form-focus select-focus focused">
-                <input type="text" class="Myform-control form-control" name="filterEmail" placeholder="تگ محصول">
+                <input type="text" class="Myform-control form-control" name="filterTags" placeholder="تگ محصول">
             </div>
         </div>
         <div class="col-sm-3 col-xs-6">
@@ -67,7 +67,7 @@
                                 <th>نام</th>
                                 <th>ارزش</th>
                                 <th>تعداد</th>
-                                <th>وضعیت</th>
+                                <th>کلمه کلیدی</th>
                                 <th class="text-right">اعمال</th>
                             </tr>
                         </thead>
@@ -81,22 +81,7 @@
                                     <td>@product.ProductTitle</td>
                                     <td>@product.Price</td>
                                     <td>@product.ProductNumber</td>
-                                    <td>
-                                        @if (product.IsActive)
-                                        {
-                                            <a class="btn btn-white btn-sm rounded " value="" readonly="readonly">
-                                                <i class="fa fa-dot-circle-o text-success"></i> فعال <i class=""></i>
-                                            </a>
-                                        }
-                                        else
-                                        {
-                                            <a class="btn btn-white btn-sm rounded dropdown-toggle" value="" readonly="readonly">
-                                                <i class="fa fa-dot-circle-o text-danger"></i> غیرفعال <i class=""></i>
-                                            </a>
-                                        }
-
-                                    </td>
-
+                                    <td>@product.Tags</td>
                                     <td class="text-right">
                                         <div class="dropdown">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>

@@ -74,8 +74,8 @@ namespace SadafStore.Core.DTOs.ProductViewModels
         [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
         public int ProductNumber { get; set; }
 
-        [Display(Name = "وضعیت")]
-        public bool ProductIsActive { get; set; }
+        //[Display(Name = "وضعیت")]
+        //public bool ProductIsActive { get; set; }
 
         public List<int> ProductGroups { get; set; }
 

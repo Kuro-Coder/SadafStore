@@ -134,7 +134,7 @@ namespace SadafStore.Core.Services
                     ProductName = u.ProductTitle,
                     ProductPrice = u.Price,
                     ImageName = u.ProductImage,
-                    ProductIsActive = u.IsActive,
+                    //ProductIsActive = u.IsActive,
                     ProductDescription = u.Description,
                     ProductTags = u.Tags,
                     ProductFeature = u.ShortDescription,
@@ -147,7 +147,7 @@ namespace SadafStore.Core.Services
         {
             Product product = GetProductById(editProduct.ProductId);
             product.ProductTitle = editProduct.ProductName;
-            product.IsActive = editProduct.ProductIsActive;
+            //product.IsActive = editProduct.ProductIsActive;
             product.Description = editProduct.ProductDescription;
             product.Price = editProduct.ProductPrice;
             product.ProductNumber = editProduct.ProductNumber;
@@ -205,6 +205,16 @@ namespace SadafStore.Core.Services
         {
             _context.Update(product);
             _context.SaveChanges();
+        }
+
+        public void EditProductGroups(int productId, List<int> groupId)
+        {
+            //Delete All Product Groups
+            _context.ProductSelectedGroups.Where(g => g.ProductId == productId).ToList().ForEach(g => _context.ProductSelectedGroups.Remove(g));
+
+            //Add New Product Groups
+            AddGroupsToProduct(groupId, productId);
+
         }
     }
 }

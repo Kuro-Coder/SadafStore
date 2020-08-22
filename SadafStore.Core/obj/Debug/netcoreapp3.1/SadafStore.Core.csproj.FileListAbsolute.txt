@@ -6,7 +6,7 @@ F:\MyProject Core\SadafStore\SadafStore.Core\bin\Debug\netcoreapp3.1\SadafStore.
 F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.csprojAssemblyReference.cache
 F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.AssemblyInfoInputs.cache
 F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.AssemblyInfo.cs
+F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.csproj.CoreCompileInputs.cache
 F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.csproj.CopyComplete
 F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.dll
 F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.pdb
-F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.csproj.CoreCompileInputs.cache

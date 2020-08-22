@@ -15,6 +15,7 @@ namespace SadafStore.Core.Services.Interfaces
         List<ProductGroup> GetAllGroups();
         List<SelectListItem> GetGroupForManageProduct();
         List<SelectListItem> GetSubGroupForManageProduct(int groupId);
+        void EditProductGroups(int productId, List<int> groupId);
 
         #endregion
 
