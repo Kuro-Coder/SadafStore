@@ -1,4 +1,161 @@
-﻿@page
+﻿@page "{id}"
+@using SadafStore.DataLayer.Entities.Product
 @model SadafStore.web.Pages.Admin.Products.EditeProductModel
 @{
+    ViewData["Title"] = "ویرایش محصول";
+    List<ProductGroup> groups = ViewData["Groups"] as List<ProductGroup>;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div>
+                <ol class="linkinhead ">
+                    <li><a href="/">خانه</a></li>
+                    <li><a href="/Admin">پنل مدیریت</a></li>
+                    <li><a href="/Admin/Products">لیست محصول‌ها</a></li>
+                    <li class="#">افزودن محصول جدید</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-box">
+    <div class="row">
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+            <h4 class="card-title">ایجاد محصول جدید</h4>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="control-label col-md-2">نام :</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" asp-for="CreateProductViewModel.ProductName" placeholder="نام محصول را وارد کنید">
+                        <span asp-validation-for="CreateProductViewModel.ProductName"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">قیمت :</label>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" asp-for="CreateProductViewModel.ProductPrice" placeholder="قیمت محصول را وارد کنید">
+                        <span asp-validation-for="CreateProductViewModel.ProductPrice"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">‌تعداد :</label>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" asp-for="CreateProductViewModel.ProductNumber" placeholder="تعداد محصول را وارد کنید">
+                        <span asp-validation-for="CreateProductViewModel.ProductNumber"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">ویژگی‌ها :</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" asp-for="CreateProductViewModel.ProductFeature" placeholder="ویژگی محصول را وارد کنید">
+                        <span asp-validation-for="CreateProductViewModel.ProductFeature"></span>
+                    </div>
+                </div>
+                @*<div class="form-group">
+                        <label class="control-label col-md-2">‌دارایی :</label>
+                        <div class="col-md-10">
+                            <input type="checkbox" class="form-control" asp-for="CreateProductViewModel.ProductIsActive" value="دارا بودن محصول در فروشگاه؟">
+                            <span asp-validation-for="CreateProductViewModel.ProductIsActive"></span>
+                        </div>
+                    </div>*@
+                <div class="form-group">
+                    <label class="control-label col-md-2">‌توضیح :</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" asp-for="CreateProductViewModel.ProductDescription" placeholder="توضیح محصول را وارد کنید">
+                        <span asp-validation-for="CreateProductViewModel.ProductDescription"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">‌تگ‌ها :</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" asp-for="CreateProductViewModel.ProductTags" placeholder="تگ‌ها را با - جدا کنید">
+                        <span asp-validation-for="CreateProductViewModel.ProductTags"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">ایجاد محصول</button>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        تصویر محصول را انتخاب کنید
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <img id="imgAvatar" class="thumbnail col-md-12 col-lg-12 col-sm-12 col-xs-12" src="/AvatarsImg/null.jpg" />
+                        <div class="form-group">
+                            @*<label style="padding: 0px 10px">انتخاب تصویر</label>*@
+                            <div class="" style="padding: 0px 20px">
+                                <input class="form-control" type="file" asp-for="CreateProductViewModel.ProductImageName" id="imgAvatarUp">
+                                <span asp-validation-for="CreateProductViewModel.ProductImageName"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">انتخاب گروه</div>
+                    <div class="panel-body">
+                        <ol>
+                            @foreach (var group in groups.Where(g => g.ParentId == null))
+                            {
+                                <li>
+                                    <input type="checkbox" name="selectedGroups" value="@group.GroupId" />
+                                    <span>@group.GroupTitle</span>
+                                    @if (groups.Any(g => g.ParentId == group.GroupId))
+                                    {
+                                        <ol>
+                                            @foreach (var subGroupLvl1 in groups.Where(g => g.ParentId == group.GroupId))
+                                            {
+                                                <li>
+                                                    <input type="checkbox" name="selectedGroups" value="@subGroupLvl1.GroupId" />
+                                                    <span>@subGroupLvl1.GroupTitle</span>
+                                                    @if (groups.Any(g => g.ParentId != null && subGroupLvl1.ParentId == g.ParentId))
+                                                    {
+                                                        <ol>
+                                                            @foreach (var subGroupLvl2 in groups.Where(g => g.ParentId != null && subGroupLvl1.GroupId == g.ParentId))
+                                                            {
+                                                                <li>
+                                                                    <input type="checkbox" name="selectedGroups" value="@subGroupLvl2.GroupId" />
+                                                                    <span>@subGroupLvl2.GroupTitle</span>
+                                                                </li>
+                                                            }
+                                                        </ol>
+                                                    }
+                                                </li>
+                                            }
+                                        </ol>
+                                    }
+                                </li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAvatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgAvatarUp").change(function () {
+            readURL(this);
+        });
+    </script>
 }

@@ -52,4 +52,42 @@ namespace SadafStore.Core.DTOs.ProductViewModels
 
     }
 
+    public class EditProductViewModel
+    {
+        public int ProductId { get; set; }
+
+        [Display(Name = "نام")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
+        [MaxLength(500, ErrorMessage = "{0} نمیتواند بیشتر از {1} کاراکتر باشد!!!")]
+        public string ProductName { get; set; }
+
+        [Display(Name = "ویژگی")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
+        [MaxLength(2000, ErrorMessage = "{0} نمیتواند بیشتر از {1} کاراکتر باشد!!!")]
+        public string ProductFeature { get; set; }
+
+        [Display(Name = "قیمت")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
+        public int ProductPrice { get; set; }
+
+        [Display(Name = "تعداد")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
+        public int ProductNumber { get; set; }
+
+        [Display(Name = "وضعیت")]
+        public bool ProductIsActive { get; set; }
+
+        public List<int> ProductGroups { get; set; }
+
+        [Display(Name = "توضیح")]
+        public string ProductDescription { get; set; }
+
+        [Display(Name = "کلمه کلیدی")]
+        [MaxLength(500, ErrorMessage = "{0} نمیتواند بیشتر از {1} کاراکتر باشد!!!")]
+        public string ProductTags { get; set; }
+
+        public IFormFile ProductImageName { get; set; }
+        public string ImageName { get; set; }
+
+    }
 }
