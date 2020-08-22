@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SadafStore.Core.CodeGenerator;
 using SadafStore.Core.Convertors;
 using SadafStore.Core.DTOs;
@@ -231,6 +232,28 @@ namespace SadafStore.Core.Services
             information.DateTime = product.CreateTime;
 
             return information;
+        }
+
+        public ProductForProductListViewModel GetDeleteProducts(int pageId = 1, string filterTags = "", string filterProductTitle = "")
+        {
+            IQueryable<Product> result = _context.Products.IgnoreQueryFilters().Where(u => u.IsDelete);
+            if (!string.IsNullOrEmpty(filterProductTitle))
+            {
+                result = result.Where(u => u.ProductTitle.Contains(filterProductTitle));
+            }
+
+            if (!string.IsNullOrEmpty(filterTags))
+            {
+                result = result.Where(u => u.Tags.Contains(filterTags));
+            }
+            //Show Paging
+            int take = 20;
+            int skip = (pageId - 1) * take;
+            ProductForProductListViewModel list = new ProductForProductListViewModel();
+            list.CurrentPage = pageId;
+            list.PageCount = result.Count() / take;
+            list.Products = result.OrderBy(u => u.CreateTime).Skip(skip).Take(take).ToList();
+            return list;
         }
     }
 }

@@ -33,6 +33,8 @@ namespace SadafStore.Core.Services.Interfaces
         InformationProductViewModel GetProductInformationInAdminPanel(int productId);
         void DeleteProduct(int productId);
         void UpdateProduct(Product product);
+        ProductForProductListViewModel GetDeleteProducts(int pageId = 1, string filterTags = "", string filterProductTitle = "");
+
 
         #endregion
     }
