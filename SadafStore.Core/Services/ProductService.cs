@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SadafStore.Core.CodeGenerator;
+using SadafStore.Core.Convertors;
 using SadafStore.Core.DTOs.ProductViewModels;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Context;
@@ -75,6 +77,10 @@ namespace SadafStore.Core.Services
                     product.ProductImageName.CopyTo(stream);
                 }
 
+                ImageConvertor imgResizer = new ImageConvertor();
+                string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/thumbs", addProduct.ProductImage);
+
+                imgResizer.Image_resize(imagePath, thumbPath, 100);
             }
 
             return AddProduct(addProduct);

@@ -9,3 +9,4 @@ F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.
 F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.csproj.CopyComplete
 F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.dll
 F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.pdb
+F:\MyProject Core\SadafStore\SadafStore.Core\obj\Debug\netcoreapp3.1\SadafStore.Core.csproj.CoreCompileInputs.cache

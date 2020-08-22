@@ -212,3 +212,4 @@ F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\EditeProduct.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\Index.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\DeleteProductList.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\bin\Debug\netcoreapp3.1\CoreCompat.System.Drawing.dll
