@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "x41sP/cm5wt2wmo3HDvYMVI3RRNh6E35QFaZDssXsLbnYQaajPo7VtqKA6A/rZi0yU2Ra0f23PVKlxmzQrdMQw==",
+  "dgSpecHash": "maW260uF2yz00bbUYQwXmD0Vrjkiuti98BsMKAjVXGn7AaV2UCFNYwXRH2WzFceWZDwCE/trfu5qKBFLDi6zuQ==",
   "success": true,
   "projectFilePath": "F:\\MyProject Core\\SadafStore\\SadafStore.web\\SadafStore.web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\PCS\\.nuget\\packages\\corecompat.system.drawing.v2\\5.2.0-preview1-r131\\corecompat.system.drawing.v2.5.2.0-preview1-r131.nupkg.sha512",
     "C:\\Users\\PCS\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
     "C:\\Users\\PCS\\.nuget\\packages\\microsoft.aspnetcore\\2.2.0\\microsoft.aspnetcore.2.2.0.nupkg.sha512",
     "C:\\Users\\PCS\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",

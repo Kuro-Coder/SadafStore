@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Fcg8NELEoGLA0fBEvcUZmojobHjDSklTg4piPora5vQ7jJ2s1tCVEfRO/ycW28B/oGuTTdQNNa/DAqmC7Ej3MQ==",
+  "dgSpecHash": "ykoffYcUv7MDYUZ4pt2vkuMXiG1be3gGyExBkS1SUv7TMsFRk7fbiJrbTsPO8mnjwXLPI6lGzzc1gLuRVOqzVA==",
   "success": true,
   "projectFilePath": "F:\\MyProject Core\\SadafStore\\SadafStore.Core\\SadafStore.Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\PCS\\.nuget\\packages\\corecompat.system.drawing.v2\\5.2.0-preview1-r131\\corecompat.system.drawing.v2.5.2.0-preview1-r131.nupkg.sha512",
     "C:\\Users\\PCS\\.nuget\\packages\\microsoft.aspnetcore\\2.2.0\\microsoft.aspnetcore.2.2.0.nupkg.sha512",
     "C:\\Users\\PCS\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\PCS\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

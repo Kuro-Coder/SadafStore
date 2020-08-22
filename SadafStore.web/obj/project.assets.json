@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "CoreCompat.System.Drawing.v2/5.2.0-preview1-r131": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Permissions": "4.4.0-preview1-25305-02"
+        },
+        "compile": {
+          "lib/netstandard2.0/CoreCompat.System.Drawing.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/CoreCompat.System.Drawing.dll": {}
+        }
+      },
       "Libuv/1.9.1": {
         "type": "package",
         "dependencies": {
@@ -4215,6 +4227,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "CoreCompat.System.Drawing.v2": "5.2.0-preview1-r131",
           "Microsoft.AspNetCore": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
@@ -4246,6 +4259,18 @@
     }
   },
   "libraries": {
+    "CoreCompat.System.Drawing.v2/5.2.0-preview1-r131": {
+      "sha512": "+WrScg+skrIiNLBwbl+BFdlSyzUqKOZtAUskW2xfI8vcKQdDJp+UoreUFC9uMSEgSiAR32e5l3fTtFDUKEpRaA==",
+      "type": "package",
+      "path": "corecompat.system.drawing.v2/5.2.0-preview1-r131",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "corecompat.system.drawing.v2.5.2.0-preview1-r131.nupkg.sha512",
+        "corecompat.system.drawing.v2.nuspec",
+        "lib/netstandard2.0/CoreCompat.System.Drawing.dll"
+      ]
+    },
     "Libuv/1.9.1": {
       "sha512": "uqX2Frwf9PW8MaY7PRNY6HM5BpW1D8oj1EdqzrmbEFD5nH63Yat3aEjN/tws6Tw6Fk7LwmLBvtUh32tTeTaHiA==",
       "type": "package",
