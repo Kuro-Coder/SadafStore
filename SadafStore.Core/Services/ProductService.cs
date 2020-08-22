@@ -65,7 +65,6 @@ namespace SadafStore.Core.Services
             addProduct.CreateTime = DateTime.Now;
 
             //Product Image
-            //TODO Check Image
             if (product.ProductImageName != null)
             {
                 string imagePath = "";
@@ -75,6 +74,7 @@ namespace SadafStore.Core.Services
                 {
                     product.ProductImageName.CopyTo(stream);
                 }
+
             }
 
             return AddProduct(addProduct);
