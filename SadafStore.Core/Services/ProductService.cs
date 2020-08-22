@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SadafStore.Core.CodeGenerator;
 using SadafStore.Core.Convertors;
+using SadafStore.Core.DTOs;
 using SadafStore.Core.DTOs.ProductViewModels;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Context;
@@ -215,6 +216,21 @@ namespace SadafStore.Core.Services
             //Add New Product Groups
             AddGroupsToProduct(groupId, productId);
 
+        }
+
+        public InformationProductViewModel GetProductInformationInAdminPanel(int productId)
+        {
+            var product = GetProductById(productId);
+            InformationProductViewModel information = new InformationProductViewModel();
+            information.ProductName = product.ProductTitle;
+            information.ProductFeature = product.ShortDescription;
+            information.ProductPrice = product.Price;
+            information.ProductNumber = product.ProductNumber;
+            information.ProductDescription = product.Description;
+            information.ProductTags = product.Tags;
+            information.DateTime = product.CreateTime;
+
+            return information;
         }
     }
 }

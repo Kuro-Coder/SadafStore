@@ -1,0 +1,42 @@
+﻿@page "{id}"
+@using SadafStore.Core.Convertors
+@model SadafStore.web.Pages.Admin.Products.DeleteProductModel
+@{
+    ViewData["Title"] = "حذف محصول";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card-box">
+            <div>
+                <ol class="linkinhead ">
+                    <li><a href="/">خانه</a></li>
+                    <li><a href="/Admin">پنل مدیریت</a></li>
+                    <li><a href="/Admin/Products">لیست محصول‌ها</a></li>
+                    <li class="#">حذف محصول</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container alert alert-danger">
+    <form method="post">
+        <input type="hidden" name="ProductId" value="@ViewData["ProductId"].ToString()" />
+        <h2>آیا از حذف محصول "@Model.InformationProductViewModel.ProductName" مطمئن هستید؟ </h2>
+        <dl class="dl-horizontal">
+            <dt>قیمت کالا : </dt>
+            <dd>@Model.InformationProductViewModel.ProductPrice</dd>
+            <dt>تعداد : </dt>
+            <dd>@Model.InformationProductViewModel.ProductNumber</dd>
+            <dt>ویژگی محصول  : </dt>
+            <dd>@Model.InformationProductViewModel.ProductFeature</dd>
+            <dt>تاریخ ایجاد : </dt>
+            <dd>@Model.InformationProductViewModel.DateTime.ToShamsi()</dd>
+            <dt></dt>
+            <dd>
+                <input type="submit" value="حذف" class="btn btn-danger" />
+            </dd>
+        </dl>
+    </form>
+</div>

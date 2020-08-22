@@ -90,4 +90,17 @@ namespace SadafStore.Core.DTOs.ProductViewModels
         public string ImageName { get; set; }
 
     }
+
+    public class InformationProductViewModel
+    {
+        public string ProductName { get; set; }
+        public string ProductFeature { get; set; }
+        public int ProductPrice { get; set; }
+        public int ProductNumber { get; set; }
+        public string ProductDescription { get; set; }
+        public string ProductTags { get; set; }
+        public DateTime DateTime { get; set; }
+
+
+    }
 }

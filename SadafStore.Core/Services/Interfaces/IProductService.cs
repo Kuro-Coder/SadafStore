@@ -30,6 +30,7 @@ namespace SadafStore.Core.Services.Interfaces
         Product GetProductById(int productId);
         EditProductViewModel GetProductForEdit(int productId);
         void EditProductFromAdmin(EditProductViewModel editProduct);
+        InformationProductViewModel GetProductInformationInAdminPanel(int productId);
         void DeleteProduct(int productId);
         void UpdateProduct(Product product);
 
