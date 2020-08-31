@@ -10,13 +10,18 @@ namespace SadafStore.web.Controllers
     public class HomeController : Controller
     {
         private IUserService _userService;
+        private IProductService _productService;
 
-        public HomeController(IUserService userService)
+        public HomeController(IUserService userService, IProductService productService)
         {
             _userService = userService;
+            _productService = productService;
         }
 
-        public IActionResult Index() => View();
+        public IActionResult Index()
+        {
+            return View(_productService.GetProductsList(1,"","",0,0,0,null));
+        }
 
         [Route("OnlinePayment/{id}")]
         public IActionResult OnlinePayment(int id)

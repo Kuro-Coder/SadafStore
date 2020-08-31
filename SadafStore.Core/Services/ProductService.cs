@@ -17,7 +17,7 @@ using SadafStore.DataLayer.Entities.Product;
 
 namespace SadafStore.Core.Services
 {
-    public class ProductService: IProductService
+    public class ProductService : IProductService
     {
         private SadafStoreContext _context;
 
@@ -254,6 +254,70 @@ namespace SadafStore.Core.Services
             list.PageCount = result.Count() / take;
             list.Products = result.OrderBy(u => u.CreateTime).Skip(skip).Take(take).ToList();
             return list;
+        }
+
+        public List<ShowProductListViewModel> GetProductsList(int pageId, string filter = "", string orderBy = "",
+            int startPrice = 0, int endPrice = 0, int take = 0, List<int> selectedGroups = null)
+        {
+            IQueryable<Product> result = _context.Products;
+            //box number for show in home page
+            if (take == 0)
+                take = 10;
+            //filter Product Name
+            if (!string.IsNullOrEmpty(filter))
+            {
+                result = result.Where(p => p.ProductTitle.Contains(filter));
+            }
+            // Ordering By All, Buy, New, Free
+            switch (orderBy)
+            {
+                case "all":
+                    break;
+
+                case "buy":
+                {
+                    result = result.Where(p => p.Price != 0);
+                    break;
+                }
+
+                case "free":
+                {
+                    result = result.Where(p => p.Price == 0);
+                    break;
+                }
+
+                case "new":
+                {
+                    result = result.OrderByDescending(p => p.CreateTime);
+                    break;
+                }
+            }
+            // start and End Price
+            if (startPrice>0)
+            {
+                result = result.Where(p => p.Price > startPrice);
+            }
+
+            if (endPrice>0)
+            {
+                result = result.Where(p => p.Price < endPrice);
+            }
+            // Selected Groups
+            if (selectedGroups != null && selectedGroups.Any())
+            {
+                //ToDo
+            }
+            // Page Skip
+            int skip = (pageId - 1) * take;
+            // Finally Return
+            return result.Select(p => new ShowProductListViewModel()
+            {
+                Id = p.ProductId,
+                Title = p.ProductTitle,
+                Description = p.Description,
+                Price = p.Price,
+                Img = p.ProductImage
+            }).Skip(skip).Take(take).ToList();
         }
     }
 }

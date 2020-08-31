@@ -1,0 +1,35 @@
+﻿@model SadafStore.Core.DTOs.ProductViewModels.ShowProductListViewModel
+
+<div class="product_items">
+    <article class="single_product">
+        <figure>
+            <div class="product_thumb">
+                <a class="primary_img" href="product-details.html"><img style="height: 150px" src="/ProductImg/thumbs/@Model.Img" alt=""></a>
+                <a class="secondary_img" href="product-details.html"><img style="height: 150px" src="/ProductImg/thumbs/@Model.Img" alt=""></a>
+                <div class="label_product">
+                    <span class="label_sale">موجود</span>
+                </div>
+                <div class="action_links">
+                    <ul>
+                        <li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="ion-android-favorite-outline"></i></a></li>
+                        <li class="compare"><a href="#" title="افزودن به مقایسه"><i class="ion-ios-settings-strong"></i></a></li>
+                        <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"><i class="ion-ios-search-strong"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="product_content">
+                <div class="product_content_inner">
+                    <h4 class="product_name"><a href="product-details.html">@Model.Title</a></h4>
+                    <div class="price_box">
+                        @*<span class="old_price">86,000 تومان</span>*@
+                        <span class="current_price">@((Model.Price==0)?"رایگان":Model.Price.ToString("#,0")) تومان</span>
+                    </div>
+                </div>
+                <div class="add_to_cart">
+                    <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+                </div>
+            </div>
+        </figure>
+    </article>
+</div>
+@* Modal *@

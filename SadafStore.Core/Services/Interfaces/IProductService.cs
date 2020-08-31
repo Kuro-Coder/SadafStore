@@ -19,7 +19,7 @@ namespace SadafStore.Core.Services.Interfaces
 
         #endregion
 
-        #region Product
+        #region Product(Admin)
 
         //Before Create 
         ProductForProductListViewModel GetProduct(int pageId = 1, string filterTags = "", string filterProductTitle = "");
@@ -35,6 +35,12 @@ namespace SadafStore.Core.Services.Interfaces
         void UpdateProduct(Product product);
         ProductForProductListViewModel GetDeleteProducts(int pageId = 1, string filterTags = "", string filterProductTitle = "");
 
+        #endregion
+
+        #region Product Showing
+
+        List<ShowProductListViewModel> GetProductsList(int pageId, string filter = "", string orderBy = "",
+            int startPrice = 0, int endPrice = 0, int take = 0, List<int> selectedGroups = null);
 
         #endregion
     }
