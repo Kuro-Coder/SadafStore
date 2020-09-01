@@ -21,11 +21,7 @@
                                         <li><a href="#">ابزار شبکه</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">بازی و کنسول</a></li>
-                                <li><a href="#">هدفون و اسپیکر</a></li>
-                                <li><a href="#">فیلم و بازی ویدئویی</a></li>
-                                <li><a href="#">گوشی هوشمند</a> </li>
-                                <li><a href="#">بدون دسته</a></li>
+
                             </ul>
                         </div>
                         <div class="widget_list widget_filter">
@@ -57,21 +53,19 @@
                     <!--shop toolbar start-->
                     <div class="shop_toolbar_wrapper">
                         <div class="shop_toolbar_btn">
-                            <button data-role="grid_4" type="button" class=" active btn-grid-4" data-toggle="tooltip" title="4"></button>
-                            <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip" title="List"></button>
+                            @*<button data-role="grid_4" type="button" class=" active btn-grid-4" data-toggle="tooltip" title="4"></button>*@
+                            <button data-role="grid_list" type="button" class=" active btn-list" data-toggle="tooltip" title="List"></button>
                         </div>
                         <div class="niceselect_container">
-                            <form action="#">
-                                <label>ترتیب:</label>
-                                <select class="select_option" name="orderby" id="short" style="display: none;">
-                                    <option selected="" value="1">امتیاز متوسط</option>
-                                    <option value="2">محبوبیت</option>
-                                    <option value="3">تاریخ ارسال</option>
-                                    <option value="4">قیمت صعودی</option>
-                                    <option value="5">قیمت نزولی</option>
-                                    <option value="6">نام محصول</option>
-                                </select><div class="nice-select select_option" tabindex="0"><span class="current">امتیاز متوسط</span><ul class="list"><li data-value="1" class="option selected">امتیاز متوسط</li><li data-value="2" class="option">محبوبیت</li><li data-value="3" class="option">تاریخ ارسال</li><li data-value="4" class="option">قیمت صعودی</li><li data-value="5" class="option">قیمت نزولی</li><li data-value="6" class="option">نام محصول</li></ul></div>
-                            </form>
+
+                            <label>مرتب کردن براساس:</label>
+                            <select class="select_option" name="orderBy" id="short" >
+                                <option value="all">همه محصول‌ها</option>
+                                <option value="buy">قیمت محصول</option>
+                                <option value="free">رایگان</option>
+                                <option value="new">محصول جدید</option>
+                                <option value="old">محصول قدیمی</option>
+                            </select>
                         </div>
                         <div class="page_amount">
                             <p>نمایش 1-9 از 21 محصول</p>
@@ -105,147 +99,3 @@
 </div>
 
 
-@*<div class="row no-gutters shop_wrapper">
-        <div class="col-lg-3 col-md-4 col-12 ">
-            <article class="single_product">
-                <figure>
-                    <div class="product_thumb">
-                        <a class="primary_img" href="product-details.html"><img src="img/product/product5.jpg" alt=""></a>
-                        <a class="secondary_img" href="product-details.html"><img src="img/product/product6.jpg" alt=""></a>
-                        <div class="label_product">
-                            <span class="label_sale">فروش</span>
-                        </div>
-                        <div class="action_links">
-                            <ul>
-                                <li class="wishlist"><a href="wishlist.html" title="" data-original-title="افزودن به علاقه‌مندی‌ها"><i class="ion-android-favorite-outline"></i></a></li>
-                                <li class="compare"><a href="#" title="" data-original-title="افزودن به مقایسه"><i class="ion-ios-settings-strong"></i></a></li>
-                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box" title="" data-original-title="مشاهده سریع"><i class="ion-ios-search-strong"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="product_content grid_content">
-                        <div class="product_content_inner">
-                            <h4 class="product_name"><a href="product-details.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a></h4>
-                            <div class="product_rating">
-                                <ul>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="price_box">
-                                <span class="old_price">80,000 تومان</span>
-                                <span class="current_price">70,000 تومان</span>
-                            </div>
-                        </div>
-                        <div class="add_to_cart">
-                            <a href="cart.html" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
-                        </div>
-                    </div>
-                    <div class="product_content list_content">
-                        <h4 class="product_name"><a href="product-details.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت</a></h4>
-                        <div class="product_rating">
-                            <ul>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="price_box">
-                            <span class="old_price">80,000 تومان</span>
-                            <span class="current_price">70,000 تومان</span>
-                        </div>
-                        <div class="product_desc">
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی</p>
-                        </div>
-                        <div class="add_to_cart">
-                            <a href="cart.html" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
-                        </div>
-                        <div class="action_links">
-                            <ul>
-                                <li class="wishlist"><a href="wishlist.html" title="" data-original-title="افزودن به علاقه‌مندی‌ها"><i class="ion-android-favorite-outline"></i> افزودن به علاقه‌مندی‌ها</a></li>
-                                <li class="compare"><a href="#" title="" data-original-title="افزودن به مقایسه"><i class="ion-ios-settings-strong"></i> مقایسه</a></li>
-                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box" title="" data-original-title="مشاهده سریع"><i class="ion-ios-search-strong"></i> نمایش سریع</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </figure>
-            </article>
-        </div>
-        <div class="col-lg-3 col-md-4 col-12 ">
-            <article class="single_product">
-                <figure>
-                    <div class="product_thumb">
-                        <a class="primary_img" href="product-details.html"><img src="img/product/product7.jpg" alt=""></a>
-                        <a class="secondary_img" href="product-details.html"><img src="img/product/product8.jpg" alt=""></a>
-                        <div class="label_product">
-                            <span class="label_sale">فروش</span>
-                        </div>
-                        <div class="action_links">
-                            <ul>
-                                <li class="wishlist"><a href="wishlist.html" title="" data-original-title="افزودن به علاقه‌مندی‌ها"><i class="ion-android-favorite-outline"></i></a></li>
-                                <li class="compare"><a href="#" title="" data-original-title="افزودن به مقایسه"><i class="ion-ios-settings-strong"></i></a></li>
-                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box" title="" data-original-title="مشاهده سریع"><i class="ion-ios-search-strong"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="product_content grid_content">
-                        <div class="product_content_inner">
-                            <h4 class="product_name"><a href="product-details.html">هندزفری بلوتوثی بی سیم Xiaomi مدل iBfree</a></h4>
-                            <div class="product_rating">
-                                <ul>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="price_box">
-                                <span class="old_price">75,000 تومان</span>
-                                <span class="current_price">65,000 تومان</span>
-                            </div>
-                        </div>
-                        <div class="add_to_cart">
-                            <a href="cart.html" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
-                        </div>
-                    </div>
-                    <div class="product_content list_content">
-                        <h4 class="product_name"><a href="product-details.html">هندزفری بلوتوثی بی سیم Xiaomi مدل iBfree</a></h4>
-                        <div class="product_rating">
-                            <ul>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="price_box">
-                            <span class="old_price">75,000 تومان</span>
-                            <span class="current_price">65,000 تومان</span>
-                        </div>
-                        <div class="product_desc">
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی</p>
-                        </div>
-                        <div class="add_to_cart">
-                            <a href="cart.html" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
-                        </div>
-                        <div class="action_links">
-                            <ul>
-                                <li class="wishlist"><a href="wishlist.html" title="" data-original-title="افزودن به علاقه‌مندی‌ها"><i class="ion-android-favorite-outline"></i> افزودن به علاقه‌مندی‌ها</a></li>
-                                <li class="compare"><a href="#" title="" data-original-title="افزودن به مقایسه"><i class="ion-ios-settings-strong"></i> مقایسه</a></li>
-                                <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box" title="" data-original-title="مشاهده سریع"><i class="ion-ios-search-strong"></i> نمایش سریع</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </figure>
-            </article>
-        </div>
-    </div>*@
