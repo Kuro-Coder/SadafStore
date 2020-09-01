@@ -215,3 +215,4 @@ F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.w
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.genruntimeconfig.cache
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\DeleteProduct.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BoxCard.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Product\SearchArchive.cshtml.g.cs
