@@ -260,6 +260,7 @@ namespace SadafStore.Core.Services
             int startPrice = 0, int endPrice = 0, int take = 0, List<int> selectedGroups = null)
         {
             IQueryable<Product> result = _context.Products;
+            IQueryable<ProductSelectedGroup> selected = _context.ProductSelectedGroups;
             //box number for show in home page
             if (take == 0)
                 take = 10;
@@ -305,7 +306,10 @@ namespace SadafStore.Core.Services
             // Selected Groups
             if (selectedGroups != null && selectedGroups.Any())
             {
-                //ToDo
+                foreach (var groupId in selectedGroups)
+                {
+                    selected = selected.Where(g => g.GroupId == groupId);
+                }
             }
             // Page Skip
             int skip = (pageId - 1) * take;
