@@ -301,7 +301,7 @@ namespace SadafStore.Core.Services
 
             if (endPrice>0)
             {
-                result = result.Where(p => p.Price < endPrice);
+                result = result.Where(p => p.Price < startPrice);
             }
             // Selected Groups
             if (selectedGroups != null && selectedGroups.Any())

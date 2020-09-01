@@ -530,7 +530,7 @@
 		min: 0,
 		max: 5000000,
 		step: 10000,
-		values: [700000, 4000000],
+		values: [0, 5000000],
 		slide: function (event, ui) {
 			var $value0 = ui.values[0].toLocaleString();
 			var $value1 = ui.values[1].toLocaleString();
