@@ -39,7 +39,7 @@ namespace SadafStore.Core.Services.Interfaces
 
         #region Product Showing
 
-        List<ShowProductListViewModel> GetProductsList(int pageId, string filter = "", string orderBy = "",
+        List<ShowProductListViewModel> GetProductsList(int pageId = 1, string filter = "", string orderBy = "",
             int startPrice = 0, int endPrice = 0, int take = 0, List<int> selectedGroups = null);
 
         #endregion

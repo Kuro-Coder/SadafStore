@@ -16,16 +16,11 @@ namespace SadafStore.web.Controllers
             _productService = productService;
         }
 
-        public IActionResult Index()
-        {
-            return View(null);
-        }
-
-        [Route("SearchArchive")]
-        public IActionResult SearchArchive(int pageId, string filter = "", string orderBy = "",
+        public IActionResult Index(int pageId = 1, string filter = "", string orderBy = "data",
             int startPrice = 0, int endPrice = 0, int take = 0, List<int> selectedGroups = null)
         {
-            return View(_productService.GetProductsList(pageId,filter,orderBy,startPrice,endPrice,2,selectedGroups));
+            return View(_productService.GetProductsList(pageId, filter, orderBy, startPrice, endPrice, 2, selectedGroups));
         }
+
     }
 }
