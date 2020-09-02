@@ -314,7 +314,8 @@ namespace SadafStore.Core.Services
             // Page Skip
             int skip = (pageId - 1) * take;
             // Finally Return
-            return result.Select(p => new ShowProductListViewModel()
+
+            var query = result.Select(p => new ShowProductListViewModel()
             {
                 Id = p.ProductId,
                 Title = p.ProductTitle,
@@ -322,6 +323,17 @@ namespace SadafStore.Core.Services
                 Price = p.Price,
                 Img = p.ProductImage
             }).Skip(skip).Take(take).ToList();
+
+            int pageCount = result.Select(p => new ShowProductListViewModel()
+            {
+                Id = p.ProductId,
+                Title = p.ProductTitle,
+                Description = p.Description,
+                Price = p.Price,
+                Img = p.ProductImage
+            }).Count()/take;
+
+            return Tuple.Create(query, pageCount);
         }
     }
 }
