@@ -1,75 +1,39 @@
 ﻿@model SadafStore.Core.DTOs.ProductViewModels.ShowProductListViewModel
 
-<div class="row no-gutters shop_wrapper grid_list">
-    <div class="col-12">
-        <article class="single_product">
-            <figure>
-                <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 700px;" src="/ProductImg/images/@Model.Img" alt=""></a>
-                    @*<a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 700px;" src="/ProductImg/thumbs/@Model.Img" alt=""></a>*@
-                    <div class="label_product">
-                        <span class="label_sale">فروش</span>
-                    </div>
-                    <div class="action_links">
-                        <ul>
-                            <li class="wishlist"><a href="wishlist.html" title="" data-original-title="افزودن به علاقه‌مندی‌ها"><i class="ion-android-favorite-outline"></i></a></li>
-                            <li class="compare"><a href="#" title="" data-original-title="افزودن به مقایسه"><i class="ion-ios-settings-strong"></i></a></li>
-                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box" title="" data-original-title="مشاهده سریع"><i class="ion-ios-search-strong"></i></a></li>
-                        </ul>
-                    </div>
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <article class="single_product">
+        <figure>
+            <div class="product_thumb maxWidth">
+                <a class="primary_img" href="/ShowProduct/@Model.Id"><img style="height: 329px; width: 329px;" src="/ProductImg/images/@Model.Img" alt=""></a>
+                <a class="secondary_img" href="/ShowProduct/@Model.Id"><img style="height: 400px; width: 400px;" src="/ProductImg/images/@Model.Img" alt=""></a>
+                <div class="label_product">
+                    <span class="label_sale">فروش</span>
                 </div>
+            </div>
 
-                <div class="product_content grid_content">
-                    <div class="product_content_inner">
-                        <h4 class="product_name"><a href="product-details.html">@Model.Title</a></h4>
-                        <div class="product_rating">
-                            <ul>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="price_box">
-                            @*<span class="old_price">80,000 تومان</span>*@
-                            <span class="current_price">@((Model.Price==0)?"رایگان":Model.Price.ToString("#,0"))  تومان</span>
-                        </div>
-                    </div>
-                    <div class="add_to_cart">
-                        <a href="cart.html" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
-                    </div>
-                </div>
-                <div class="product_content list_content">
-                    <h4 class="product_name"><a href="product-details.html">@Model.Title</a></h4>
-                    <div class="product_rating">
-                        <ul>
-                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                        </ul>
-                    </div>
+            <div class="product_content grid_content">
+                <div class="product_content_inner">
+                    <h4 class="product_name"><a href="/ShowProduct/@Model.Id">@Model.Title</a></h4>
                     <div class="price_box">
-                        @*<span class="old_price">80,000 تومان</span>*@
                         <span class="current_price">@((Model.Price==0)?"رایگان":Model.Price.ToString("#,0"))  تومان</span>
                     </div>
-                    <div class="product_desc">
-                        <p>@Model.Description</p>
-                    </div>
-                    <div class="add_to_cart">
-                        <a href="cart.html" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
-                    </div>
-                    <div class="action_links">
-                        <ul>
-                            <li class="wishlist"><a href="wishlist.html" title="" data-original-title="افزودن به علاقه‌مندی‌ها"><i class="ion-android-favorite-outline"></i> افزودن به علاقه‌مندی‌ها</a></li>
-                            <li class="compare"><a href="#" title="" data-original-title="افزودن به مقایسه"><i class="ion-ios-settings-strong"></i> مقایسه</a></li>
-                            <li class="quick_button"><a href="#" data-toggle="modal" data-target="#modal_box" title="" data-original-title="مشاهده سریع"><i class="ion-ios-search-strong"></i> نمایش سریع</a></li>
-                        </ul>
-                    </div>
                 </div>
-            </figure>
-        </article>
-    </div>
+                <div class="add_to_cart">
+                    <a href="cart.html" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
+                </div>
+            </div>
+            <div class="product_content list_content">
+                <h4 class="product_name"><a href="/ShowProduct/@Model.Id">@Model.Title</a></h4>
+                <div class="price_box">
+                    <span class="current_price">@((Model.Price==0)?"رایگان":Model.Price.ToString("#,0"))  تومان</span>
+                </div>
+                <div class="product_desc">
+                    <p>@Model.Description</p>
+                </div>
+                <div class="add_to_cart">
+                    <a href="cart.html" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
+                </div>
+            </div>
+        </figure>
+    </article>
 </div>

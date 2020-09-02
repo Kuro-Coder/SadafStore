@@ -272,18 +272,9 @@ namespace SadafStore.Core.Services
             // Ordering By All, Buy, New, Free
             switch (orderBy)
             {
-                case "all":
-                    break;
-
-                case "buy":
+                case "price":
                 {
-                    result = result.Where(p => p.Price != 0);
-                    break;
-                }
-
-                case "free":
-                {
-                    result = result.Where(p => p.Price == 0);
+                    result = result.OrderByDescending(p => p.Price );
                     break;
                 }
 
@@ -292,6 +283,9 @@ namespace SadafStore.Core.Services
                     result = result.OrderByDescending(p => p.CreateTime);
                     break;
                 }
+
+                case "old":
+                    break;
             }
             // start and End Price
             if (startPrice>0)

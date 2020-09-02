@@ -4,73 +4,12 @@
     ViewData["Title"] = "جستجو";
 }
 
-<div class="shop_area shop_reverse">
+<div class="shop_area shop_fullwidth">
     <div class="container">
-        <form id="formFilter" action="/Product" method="get">
-            <input type="hidden" name="pageId" value="@ViewBag.pageId.ToString()" id="myPageId" />
-            <div class="row">
-                <div class="col-lg-3 col-md-12">
-                    <!--sidebar widget start-->
-                    <aside class="sidebar_widget">
-                        <div class="widget_list widget_categories">
-                            <h3>دسته بندی محصولات</h3>
-                            @{
-                                List<ProductGroup> groups = ViewBag.Groups as List<ProductGroup>;
-                                List<int> selected = ViewBag.SelectedGroups as List<int>;
-                            }
-                            <ul>
-                                @foreach (var group in groups.Where(g => g.ParentId == null))
-                                {
-                                    <li class="widget_sub_categories">
-                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s => s == group.GroupId) ? "checked" : "")) value="@group.GroupId" />
-                                        <label style="font-size: 17px"><b>@group.GroupTitle</b></label>
-                                        @if (groups.Any(g => g.ParentId == group.GroupId))
-                                        {
-                                            <ul>
-                                                @foreach (var subLvl1 in groups.Where(g => g.ParentId == group.GroupId))
-                                                {
-                                                    <li class="widget_sub_categories">
-                                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s => s == subLvl1.GroupId) ? "checked" : "")) value="@subLvl1.GroupId" />
-                                                        <label style="font-size: 15px">@subLvl1.GroupTitle</label>
-                                                        @if (groups.Any(g => g.ParentId == group.GroupId))
-                                                        {
-                                                            <ul>
-                                                                @foreach (var subLvl2 in groups.Where(g => g.ParentId == subLvl1.GroupId))
-                                                                {
-                                                                    <li class="widget_sub_categories">
-                                                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s => s == subLvl2.GroupId) ? "checked" : "")) value="@subLvl2.GroupId" />
-                                                                        <label>@subLvl2.GroupTitle</label>
-                                                                    </li>
-                                                                }
-                                                            </ul>
-                                                        }
-                                                    </li>
-                                                }
-                                            </ul>
-                                        }
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                        @*<div class="widget_list widget_filter">
-                                <h3>فیلتر بر اساس قیمت</h3>
-
-                                <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                    <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 14%; width: 66%;"></div>
-                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 14%;"></span>
-                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 80%;"></span>
-                                </div>
-                                <input type="hidden" id="price-min" name="startPrice" value="0">
-                                <input type="hidden" id="price-max" name="endPrice" value="5000000">
-
-                                <input style="background: none; border: none; font-size: 12px; float: right; line-height: 30px; width: 100%;" type="text" name="filter" id="amount">
-                                <button style=" height: 30px; line-height: 30px; padding: 0 20px; color: #ffffff; background: #222222; border: 0; border-radius: 30px; -webkit-transition: 0.3s; transition: 0.3s; margin-top: 15px;" type="submit">جستجوی محصول مشخص شده</button>
-
-                            </div>*@
-                    </aside>
-                    <!--sidebar widget end-->
-                </div>
-                <div class="col-lg-9 col-md-12">
+        <div class="row">
+            <form action="Product" method="get">
+                <input type="hidden" id="myPageId" name="pageId" value="@ViewBag.pageId.ToString()" />
+                <div class="col-12">
 
                     <!--shop banner area start-->
                     <div class="shop_banner_area mb-30">
@@ -85,54 +24,54 @@
                     <!--shop banner area end-->
                     <!--shop toolbar start-->
                     <div class="shop_toolbar_wrapper">
-                        <button style=" height: 30px; line-height: 30px; padding: 0 20px; color: #ffffff; background: #222222; border: 0; border-radius: 10px; -webkit-transition: 0.3s; transition: 0.3s; margin-top: 0px;" type="submit">جستجوی محصول مشخص شده</button>
-                        <a href="/Product" style=" height: 30px; line-height: 30px; padding: 0 20px; color: #ffffff; background: #dc143c; border: 0; border-radius: 10px; -webkit-transition: 0.3s; transition: 0.3s; margin-top: 0px;" type="submit">حذف فیلترها</a>
+                        <div class="shop_toolbar_btn">
+                            <button data-role="grid_4" type="button" class="btn-grid-4 active" data-toggle="tooltip" title="4"></button>
+                            <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip" title="List"></button>
+                        </div>
                         <div class="niceselect_container">
 
                             <label>مرتب کردن براساس:</label>
                             <select class="select_option" name="orderBy" id="short">
-                                <option value="all">همه محصول‌ها</option>
-                                <option value="buy">قیمت محصول</option>
-                                <option value="free">رایگان</option>
+                                <option value="">انتخاب کنید</option>
+                                <option value="price">قیمت محصول</option>
                                 <option value="new">محصول جدید</option>
                                 <option value="old">محصول قدیمی</option>
                             </select>
-                        </div>
-                        <div class="shop_toolbar_btn">
-                            @*<button data-role="grid_4" type="button" class=" active btn-grid-4" data-toggle="tooltip" title="4"></button>*@
-                            <button data-role="grid_list" type="button" class=" active btn-list" data-toggle="tooltip" title="List"></button>
-                        </div>
 
+                        </div>
+                        <button class="myBtn1" type="submit">مرتب کن!!</button>
+                        <a href="/Product" class="myBtn2 btn" type="submit">پارک کردن ترتیب</a>
                     </div>
                     <!--shop toolbar end-->
                     <!--shop wrapper start-->
-
-                    @foreach (var item in Model.Item1)
-                    {
-                        <partial name="_BoxCardList" model="@item" />
-                    }
-
-                    <div class="shop_toolbar t_bottom">
-                        @if (Model.Item2 > 1)
+                    <div class="row no-gutters shop_wrapper grid_4">
+                        @foreach (var item in Model.Item1)
                         {
+                            <partial name="_BoxCardList" model="@item" />
+                        }
+
+                    </div>
+
+
+                    @if (Model.Item2 > 1)
+                    {
+                        <div class="shop_toolbar t_bottom">
                             <div class="pagination">
                                 <ul>
                                     @for (int i = 1; i <= (int)Model.Item2; i++)
                                     {
-                                        <li ><a class="page-link" style=" height: 20px;" onclick="changePage(@i)" href="#">@i</a></li>
+                                        <li class="current"><a href="/Product?pageId=@i">@i</a></li>
                                     }
                                 </ul>
                             </div>
-                        }
-                        @*<li><a href="#">3</a></li>
-                            <li class="next"><a href="#">بعدی</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>*@
-                    </div>
+                        </div>
+                    }
+
                     <!--shop toolbar end-->
                     <!--shop wrapper end-->
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 
