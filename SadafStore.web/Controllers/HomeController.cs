@@ -20,7 +20,7 @@ namespace SadafStore.web.Controllers
 
         public IActionResult Index()
         {
-            return View(_productService.GetProductsList(1,"","",0,0,0,null));
+            return View(_productService.GetProductsList(1,"","",0,0,0,null).Item1);
         }
 
         [Route("OnlinePayment/{id}")]
