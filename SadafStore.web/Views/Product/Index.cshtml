@@ -1,5 +1,5 @@
 ﻿@using SadafStore.DataLayer.Entities.Product
-@model IEnumerable<SadafStore.Core.DTOs.ProductViewModels.ShowProductListViewModel>
+@model Tuple<List<SadafStore.Core.DTOs.ProductViewModels.ShowProductListViewModel>, int>
 @{
     ViewData["Title"] = "جستجو";
 }
@@ -107,7 +107,7 @@
                     <!--shop toolbar end-->
                     <!--shop wrapper start-->
 
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Item1)
                     {
                         <partial name="_BoxCardList" model="@item" />
                     }
