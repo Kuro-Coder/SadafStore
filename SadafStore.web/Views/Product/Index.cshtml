@@ -7,7 +7,7 @@
 <div class="shop_area shop_reverse">
     <div class="container">
         <form id="formFilter" action="/Product" method="get">
-            <input type="hidden" name="pageId" value="@ViewBag.pageId.ToString()" id="myPageId"/>
+            <input type="hidden" name="pageId" value="@ViewBag.pageId.ToString()" id="myPageId" />
             <div class="row">
                 <div class="col-lg-3 col-md-12">
                     <!--sidebar widget start-->
@@ -22,7 +22,7 @@
                                 @foreach (var group in groups.Where(g => g.ParentId == null))
                                 {
                                     <li class="widget_sub_categories">
-                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s=>s==group.GroupId)?"checked":"")) value="@group.GroupId" />
+                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s => s == group.GroupId) ? "checked" : "")) value="@group.GroupId" />
                                         <label style="font-size: 17px"><b>@group.GroupTitle</b></label>
                                         @if (groups.Any(g => g.ParentId == group.GroupId))
                                         {
@@ -30,7 +30,7 @@
                                                 @foreach (var subLvl1 in groups.Where(g => g.ParentId == group.GroupId))
                                                 {
                                                     <li class="widget_sub_categories">
-                                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s=>s==subLvl1.GroupId)?"checked":"")) value="@subLvl1.GroupId" />
+                                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s => s == subLvl1.GroupId) ? "checked" : "")) value="@subLvl1.GroupId" />
                                                         <label style="font-size: 15px">@subLvl1.GroupTitle</label>
                                                         @if (groups.Any(g => g.ParentId == group.GroupId))
                                                         {
@@ -38,7 +38,7 @@
                                                                 @foreach (var subLvl2 in groups.Where(g => g.ParentId == subLvl1.GroupId))
                                                                 {
                                                                     <li class="widget_sub_categories">
-                                                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s=>s==subLvl2.GroupId)?"checked":"")) value="@subLvl2.GroupId" />
+                                                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s => s == subLvl2.GroupId) ? "checked" : "")) value="@subLvl2.GroupId" />
                                                                         <label>@subLvl2.GroupTitle</label>
                                                                     </li>
                                                                 }
@@ -113,15 +113,20 @@
                     }
 
                     <div class="shop_toolbar t_bottom">
-                        <div class="pagination">
-                            <ul>
-                                <li class="current">1</li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li class="next"><a href="#">بعدی</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                            </ul>
-                        </div>
+                        @if (Model.Item2 > 1)
+                        {
+                            <div class="pagination">
+                                <ul>
+                                    @for (int i = 1; i <= (int)Model.Item2; i++)
+                                    {
+                                        <li ><a class="page-link" style=" height: 20px;" onclick="changePage(@i)" href="#">@i</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                        @*<li><a href="#">3</a></li>
+                            <li class="next"><a href="#">بعدی</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>*@
                     </div>
                     <!--shop toolbar end-->
                     <!--shop wrapper end-->
@@ -132,8 +137,13 @@
 </div>
 
 @section Scripts{
-    
-    <script >
+
+    <script>
+
+        function changePage(myPageId) {
+            $("#myPageId").val(myPageId);
+            $("#formFilter").submit();
+        }
 
         function changeGroup() {
             $("#formFilter").submit();

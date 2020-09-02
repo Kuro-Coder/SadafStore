@@ -22,7 +22,7 @@ namespace SadafStore.web.Controllers
             ViewBag.pageId = pageId;
             ViewBag.Groups = _productService.GetAllGroups();
             ViewBag.SelectedGroups = selectedGroups;
-            return View(_productService.GetProductsList(pageId, filter, orderBy, startPrice, endPrice, 6, selectedGroups));
+            return View(_productService.GetProductsList(pageId, filter, orderBy, startPrice, endPrice, 3, selectedGroups));
         }
 
     }
