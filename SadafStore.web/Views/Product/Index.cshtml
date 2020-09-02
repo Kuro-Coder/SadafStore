@@ -6,8 +6,8 @@
 
 <div class="shop_area shop_reverse">
     <div class="container">
-        <form action="/Product" method="get">
-            <input type="hidden" name="pageId" value="@ViewBag.pageId.ToString() " />
+        <form id="formFilter" action="/Product" method="get">
+            <input type="hidden" name="pageId" value="@ViewBag.pageId.ToString()" id="myPageId"/>
             <div class="row">
                 <div class="col-lg-3 col-md-12">
                     <!--sidebar widget start-->
@@ -16,12 +16,13 @@
                             <h3>دسته بندی محصولات</h3>
                             @{
                                 List<ProductGroup> groups = ViewBag.Groups as List<ProductGroup>;
+                                List<int> selected = ViewBag.SelectedGroups as List<int>;
                             }
                             <ul>
                                 @foreach (var group in groups.Where(g => g.ParentId == null))
                                 {
                                     <li class="widget_sub_categories">
-                                        <input type="checkbox" name="selectedGroups" value="@group.GroupId" />
+                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s=>s==group.GroupId)?"checked":"")) value="@group.GroupId" />
                                         <label style="font-size: 17px"><b>@group.GroupTitle</b></label>
                                         @if (groups.Any(g => g.ParentId == group.GroupId))
                                         {
@@ -29,7 +30,7 @@
                                                 @foreach (var subLvl1 in groups.Where(g => g.ParentId == group.GroupId))
                                                 {
                                                     <li class="widget_sub_categories">
-                                                        <input type="checkbox" name="selectedGroups" value="@subLvl1.GroupId" />
+                                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s=>s==subLvl1.GroupId)?"checked":"")) value="@subLvl1.GroupId" />
                                                         <label style="font-size: 15px">@subLvl1.GroupTitle</label>
                                                         @if (groups.Any(g => g.ParentId == group.GroupId))
                                                         {
@@ -37,7 +38,7 @@
                                                                 @foreach (var subLvl2 in groups.Where(g => g.ParentId == subLvl1.GroupId))
                                                                 {
                                                                     <li class="widget_sub_categories">
-                                                                        <input type="checkbox" name="selectedGroups" value="@subLvl2.GroupId" />
+                                                                        <input onchange="changeGroup" type="checkbox" name="selectedGroups" @((selected.Any(s=>s==subLvl2.GroupId)?"checked":"")) value="@subLvl2.GroupId" />
                                                                         <label>@subLvl2.GroupTitle</label>
                                                                     </li>
                                                                 }
@@ -84,10 +85,8 @@
                     <!--shop banner area end-->
                     <!--shop toolbar start-->
                     <div class="shop_toolbar_wrapper">
-                        <div class="shop_toolbar_btn">
-                            @*<button data-role="grid_4" type="button" class=" active btn-grid-4" data-toggle="tooltip" title="4"></button>*@
-                            <button data-role="grid_list" type="button" class=" active btn-list" data-toggle="tooltip" title="List"></button>
-                        </div>
+                        <button style=" height: 30px; line-height: 30px; padding: 0 20px; color: #ffffff; background: #222222; border: 0; border-radius: 10px; -webkit-transition: 0.3s; transition: 0.3s; margin-top: 0px;" type="submit">جستجوی محصول مشخص شده</button>
+                        <a href="/Product" style=" height: 30px; line-height: 30px; padding: 0 20px; color: #ffffff; background: #dc143c; border: 0; border-radius: 10px; -webkit-transition: 0.3s; transition: 0.3s; margin-top: 0px;" type="submit">حذف فیلترها</a>
                         <div class="niceselect_container">
 
                             <label>مرتب کردن براساس:</label>
@@ -99,9 +98,11 @@
                                 <option value="old">محصول قدیمی</option>
                             </select>
                         </div>
-                        <div class="page_amount">
-                            <p>نمایش 1-9 از 21 محصول</p>
+                        <div class="shop_toolbar_btn">
+                            @*<button data-role="grid_4" type="button" class=" active btn-grid-4" data-toggle="tooltip" title="4"></button>*@
+                            <button data-role="grid_list" type="button" class=" active btn-list" data-toggle="tooltip" title="List"></button>
                         </div>
+
                     </div>
                     <!--shop toolbar end-->
                     <!--shop wrapper start-->
@@ -129,3 +130,14 @@
         </form>
     </div>
 </div>
+
+@section Scripts{
+    
+    <script >
+
+        function changeGroup() {
+            $("#formFilter").submit();
+        }
+
+    </script>
+}

@@ -14,7 +14,7 @@
     <!--Offcanvas menu area end-->
     <!--header area start-->
     <partial name="_Header" />
-<!--header area end-->
+    <!--header area end-->
     <!--slider area start-->
     @RenderSection("Slider", false)
     <!--slider area end-->
@@ -42,6 +42,7 @@
     <script src="/js/main.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/jquery.validate.unobtrusive.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>
