@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SadafStore.Core.DTOs.ProductViewModels.ShowProductListViewModel>
+﻿@using SadafStore.DataLayer.Entities.Product
+@model IEnumerable<SadafStore.Core.DTOs.ProductViewModels.ShowProductListViewModel>
 @{
     ViewData["Title"] = "جستجو";
 }
@@ -6,39 +7,65 @@
 <div class="shop_area shop_reverse">
     <div class="container">
         <form action="/Product" method="get">
+            <input type="hidden" name="pageId" value="@ViewBag.pageId.ToString() " />
             <div class="row">
                 <div class="col-lg-3 col-md-12">
                     <!--sidebar widget start-->
                     <aside class="sidebar_widget">
                         <div class="widget_list widget_categories">
                             <h3>دسته بندی محصولات</h3>
+                            @{
+                                List<ProductGroup> groups = ViewBag.Groups as List<ProductGroup>;
+                            }
                             <ul>
-                                <li><a href="#">دوربین عکاسی و فیلمبرداری</a></li>
-                                <li class="widget_sub_categories">
-                                    <a href="javascript:void(0)">کامپیوتر و شبکه</a>
-                                    <ul class="widget_dropdown_categories">
-                                        <li><a href="#">کامپیوتر</a></li>
-                                        <li><a href="#">ابزار شبکه</a></li>
-                                    </ul>
-                                </li>
-
+                                @foreach (var group in groups.Where(g => g.ParentId == null))
+                                {
+                                    <li class="widget_sub_categories">
+                                        <input type="checkbox" name="selectedGroups" value="@group.GroupId" />
+                                        <label style="font-size: 17px"><b>@group.GroupTitle</b></label>
+                                        @if (groups.Any(g => g.ParentId == group.GroupId))
+                                        {
+                                            <ul>
+                                                @foreach (var subLvl1 in groups.Where(g => g.ParentId == group.GroupId))
+                                                {
+                                                    <li class="widget_sub_categories">
+                                                        <input type="checkbox" name="selectedGroups" value="@subLvl1.GroupId" />
+                                                        <label style="font-size: 15px">@subLvl1.GroupTitle</label>
+                                                        @if (groups.Any(g => g.ParentId == group.GroupId))
+                                                        {
+                                                            <ul>
+                                                                @foreach (var subLvl2 in groups.Where(g => g.ParentId == subLvl1.GroupId))
+                                                                {
+                                                                    <li class="widget_sub_categories">
+                                                                        <input type="checkbox" name="selectedGroups" value="@subLvl2.GroupId" />
+                                                                        <label>@subLvl2.GroupTitle</label>
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                        }
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
                             </ul>
                         </div>
                         @*<div class="widget_list widget_filter">
-                            <h3>فیلتر بر اساس قیمت</h3>
+                                <h3>فیلتر بر اساس قیمت</h3>
 
-                            <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 14%; width: 66%;"></div>
-                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 14%;"></span>
-                                <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 80%;"></span>
-                            </div>
-                            <input type="hidden" id="price-min" name="startPrice" value="0">
-                            <input type="hidden" id="price-max" name="endPrice" value="5000000">
+                                <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                    <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 14%; width: 66%;"></div>
+                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 14%;"></span>
+                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 80%;"></span>
+                                </div>
+                                <input type="hidden" id="price-min" name="startPrice" value="0">
+                                <input type="hidden" id="price-max" name="endPrice" value="5000000">
 
-                            <input style="background: none; border: none; font-size: 12px; float: right; line-height: 30px; width: 100%;" type="text" name="filter" id="amount">
-                            <button style=" height: 30px; line-height: 30px; padding: 0 20px; color: #ffffff; background: #222222; border: 0; border-radius: 30px; -webkit-transition: 0.3s; transition: 0.3s; margin-top: 15px;" type="submit">جستجوی محصول مشخص شده</button>
+                                <input style="background: none; border: none; font-size: 12px; float: right; line-height: 30px; width: 100%;" type="text" name="filter" id="amount">
+                                <button style=" height: 30px; line-height: 30px; padding: 0 20px; color: #ffffff; background: #222222; border: 0; border-radius: 30px; -webkit-transition: 0.3s; transition: 0.3s; margin-top: 15px;" type="submit">جستجوی محصول مشخص شده</button>
 
-                        </div>*@
+                            </div>*@
                     </aside>
                     <!--sidebar widget end-->
                 </div>

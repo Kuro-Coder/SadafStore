@@ -19,6 +19,8 @@ namespace SadafStore.web.Controllers
         public IActionResult Index(int pageId = 1, string filter = "", string orderBy = "data",
             int startPrice = 0, int endPrice = 0, int take = 0, List<int> selectedGroups = null)
         {
+            ViewBag.pageId = pageId;
+            ViewBag.Groups = _productService.GetAllGroups();
             return View(_productService.GetProductsList(pageId, filter, orderBy, startPrice, endPrice, 6, selectedGroups));
         }
 
