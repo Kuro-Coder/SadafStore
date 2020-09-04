@@ -4,11 +4,30 @@
     ViewData["Title"] = "جستجو";
 }
 
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">خانه</a></li>
+                        <li>جستجو</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="shop_area shop_fullwidth">
     <div class="container">
         <div class="row">
             <form action="Product" method="get">
                 <input type="hidden" id="myPageId" name="pageId" value="@ViewBag.pageId.ToString()" />
+                @{
+                    List<ProductGroup> groups = ViewBag.Groups as List<ProductGroup>;
+                    List<int> selected = ViewBag.selectedGroups as List<int>;
+                }
                 <div class="col-12">
 
                     <!--shop banner area start-->

@@ -166,6 +166,7 @@ F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Areas\UserPanel\Views\_ViewStart.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Index.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\CreateProduct.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\DeleteProduct.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\DeleteProductList.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\EditProduct.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\Index.cshtml.g.cs
@@ -190,8 +191,12 @@ F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Account\SuccessRegister.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Home\OnlinePayment.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Product\ShowProduct.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\ProductGroupComponent\ProductGroup.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ActiveEmail.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BoxCard.cshtml.g.cs
+F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BoxCardList.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DefaultLayout.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Footer.cshtml.g.cs
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ForgotPassword.cshtml.g.cs
@@ -213,7 +218,3 @@ F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\staticwebass
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.dll
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.pdb
 F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\SadafStore.web.genruntimeconfig.cache
-F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Products\DeleteProduct.cshtml.g.cs
-F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BoxCard.cshtml.g.cs
-F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Product\Index.cshtml.g.cs
-F:\MyProject Core\SadafStore\SadafStore.web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BoxCardList.cshtml.g.cs

@@ -10,20 +10,20 @@
             @foreach (var group in Model.Where(g => g.ParentId == null))
             {
                 <li class="menu_item_children">
-                    <a href="/Product?selectedGroups=@group.GroupId">@group.GroupTitle <i class="fa fa-angle-left"></i></a>
+                    <a onchange="changeGroup()" href="/Product?selectedGroups=@group.GroupId">@group.GroupTitle <i class="fa fa-angle-left"></i></a>
                     @if (Model.Any(g => g.ParentId == group.GroupId))
                     {
                         <ul class="categories_mega_menu">
                             @foreach (var subGroupLevel1 in Model.Where(g => g.ParentId == group.GroupId))
                             {
                                 <li class="menu_item_children">
-                                    <a href="/Product?selectedGroups=@subGroupLevel1.GroupId">@subGroupLevel1.GroupTitle</a>
+                                    <a onchange="changeGroup()" href="/Product?selectedGroups=@subGroupLevel1.GroupId">@subGroupLevel1.GroupTitle</a>
                                     @if (Model.Any(g => g.ParentId == subGroupLevel1.GroupId))
                                     {
                                         <ul class="categorie_sub_menu">
                                             @foreach (var subGroupLevel2 in Model.Where(g => g.ParentId == subGroupLevel1.ParentId))
                                             {
-                                                <li><a href="/Product?selectedGroups=@subGroupLevel2.GroupId">@subGroupLevel2.GroupTitle</a></li>
+                                                <li><a onchange="changeGroup()" href="/Product?selectedGroups=@subGroupLevel2.GroupId">@subGroupLevel2.GroupTitle</a></li>
                                             }
                                         </ul>
                                     }
@@ -43,3 +43,14 @@
         </ul>
     </div>
 </div>
+
+@section Scripts{
+
+    <script>
+
+        function changeGroup() {
+            $("#formFilter").submit();
+        }
+
+    </script>
+}

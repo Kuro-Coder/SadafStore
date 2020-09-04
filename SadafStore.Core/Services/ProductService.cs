@@ -329,5 +329,11 @@ namespace SadafStore.Core.Services
 
             return Tuple.Create(query, pageCount);
         }
+
+        public Product GetProductForShow(int productId)
+        {
+            //return _context.Products.Include(p=>p.ProductId == productId).FirstOrDefault(p=>p.ProductId == productId);
+            return _context.Products.Find(productId);
+        }
     }
 }

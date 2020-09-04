@@ -22,7 +22,18 @@ namespace SadafStore.web.Controllers
             ViewBag.pageId = pageId;
             ViewBag.Groups = _productService.GetAllGroups();
             ViewBag.SelectedGroups = selectedGroups;
-            return View(_productService.GetProductsList(pageId, filter, orderBy, startPrice, endPrice, 12, selectedGroups));
+            return View(_productService.GetProductsList(pageId, filter, orderBy, startPrice, endPrice, 4, selectedGroups));
+        }
+
+        [Route("ShowProduct/{id}")]
+        public IActionResult ShowProduct(int id)
+        {
+            var product = _productService.GetProductForShow(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
         }
 
     }

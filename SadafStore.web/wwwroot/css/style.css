@@ -5957,7 +5957,7 @@ textarea:-ms-input-placeholder {
 	-webkit-box-flex: 0;
 	-ms-flex: 0 0 20%;
 	flex: 0 0 20%;
-	max-width: max-width;
+	max-width: ;
 	padding-left: 15px;
 	padding-right: 15px;
 }
@@ -6290,7 +6290,7 @@ textarea:-ms-input-placeholder {
 .product_variant.quantity button {
 	border: 0;
 	font-size: 16px;
-	margin-right: 20px;
+	margin-right: 0px;
 	background: #c40316;
 	height: 42px;
 	line-height: 42px;

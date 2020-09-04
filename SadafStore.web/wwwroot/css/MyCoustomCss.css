@@ -127,3 +127,13 @@
 .maxWidth {
     max-width: 100% !important;
 }
+
+.myMargin0 {
+    margin-right: 0px !important;
+    border: 0;
+    font-size: 16px;
+    background: #c40316;
+    height: 42px;
+    line-height: 42px;
+    min-width: 270px;
+}
