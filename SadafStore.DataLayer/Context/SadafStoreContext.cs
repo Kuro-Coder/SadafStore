@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using SadafStore.DataLayer.Entities.Order;
 using SadafStore.DataLayer.Entities.Permissions;
 using SadafStore.DataLayer.Entities.Product;
 using SadafStore.DataLayer.Entities.User;
@@ -44,6 +45,14 @@ namespace SadafStore.DataLayer.Context
         public DbSet<ProductGroup> ProductGroups { get; set; }
         public DbSet<ProductGallery> ProductGalleries { get; set; }
         public DbSet<ProductSelectedGroup> ProductSelectedGroups { get; set; }
+
+
+        #endregion
+
+        #region Orders
+
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
 
         #endregion
