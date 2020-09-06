@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using SadafStore.DataLayer.Entities.Order;
@@ -59,6 +60,18 @@ namespace SadafStore.DataLayer.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Off Cascade
+            var cascadeFks = modelBuilder.Model.GetEntityTypes()
+                .SelectMany(t => t.GetForeignKeys())
+                .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
+
+            foreach (var fk in cascadeFks)
+            {
+                fk.DeleteBehavior = DeleteBehavior.Restrict;
+                base.OnModelCreating(modelBuilder);
+            }
+
+
             //Filter For DeletedUser in UserTable
             modelBuilder.Entity<User>()
                 .HasQueryFilter(u => !u.IsDelete);

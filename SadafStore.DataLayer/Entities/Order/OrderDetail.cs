@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SadafStore.DataLayer.Entities.Order
@@ -15,7 +16,9 @@ namespace SadafStore.DataLayer.Entities.Order
 
         #region Releations
 
+        [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
+        [ForeignKey("ProductId")]
         public virtual Product.Product Product { get; set; }
 
         #endregion
