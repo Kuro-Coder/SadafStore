@@ -90,7 +90,7 @@ namespace SadafStore.web.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public IActionResult Login(LoginViewModel login)
+        public IActionResult Login(LoginViewModel login, string ReturnUrl="/")
         {
             if (!ModelState.IsValid)
             {
@@ -118,6 +118,10 @@ namespace SadafStore.web.Controllers
                     HttpContext.SignInAsync(principal, properties);
 
                     ViewBag.IsSuccess = true;
+                    if (ReturnUrl != "/")
+                    {
+                        return Redirect(ReturnUrl);
+                    }
                     return View();
                 }
                 else
