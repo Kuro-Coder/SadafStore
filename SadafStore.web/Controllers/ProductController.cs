@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SadafStore.Core.Services.Interfaces;
 
@@ -10,10 +11,12 @@ namespace SadafStore.web.Controllers
     public class ProductController : Controller
     {
         private IProductService _productService;
+        private IOrderService _orderService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IOrderService orderService)
         {
             _productService = productService;
+            _orderService = orderService;
         }
 
         public IActionResult Index(int pageId = 1, string filter = "", string orderBy = "",
@@ -34,6 +37,13 @@ namespace SadafStore.web.Controllers
                 return NotFound();
             }
             return View(product);
+        }
+
+        [Authorize]
+        public IActionResult BuyProduct(int id)
+        {
+            _orderService.AddOrder(User.Identity.Name, id);
+            return Redirect("/ShowProduct/" + id);
         }
 
     }
