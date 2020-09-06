@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using SadafStore.DataLayer.Entities.Order;
 
 namespace SadafStore.DataLayer.Entities.Product
 {
@@ -54,7 +55,7 @@ namespace SadafStore.DataLayer.Entities.Product
 
         public List<ProductSelectedGroup> ProductSelectedGroups { get; set; }
         public List<ProductGallery> ProductGalleries { get; set; }
-
+        public virtual List<OrderDetail> OrderDetails { get; set; } 
 
         #endregion
     }
