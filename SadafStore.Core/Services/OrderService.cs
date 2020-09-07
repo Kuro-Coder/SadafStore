@@ -79,7 +79,7 @@ namespace SadafStore.Core.Services
         public Order GetOrderForUserPanel(string userName, int orderId)
         {
             int userId = _userService.GetUserIdByUserName(userName);
-            return _context.Orders.Include(o => o.OrderDetails)
+            return _context.Orders.Include(o => o.OrderDetails).ThenInclude(od=>od.Product)
                 .FirstOrDefault(o => o.UserId == userId && o.OrderId == orderId);
         }
 

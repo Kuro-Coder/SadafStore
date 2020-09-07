@@ -8,8 +8,8 @@ using SadafStore.Core.Services.Interfaces;
 
 namespace SadafStore.web.Areas.UserPanel.Controllers
 {
-    [Authorize]
     [Area("UserPanel")]
+    [Authorize]
     public class MyOrdersController : Controller
     {
         private IOrderService _orderService;

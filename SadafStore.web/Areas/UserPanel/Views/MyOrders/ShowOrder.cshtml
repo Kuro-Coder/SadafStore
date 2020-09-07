@@ -1,7 +1,143 @@
-﻿
+﻿@using SadafStore.Core.Services.Interfaces
+@model SadafStore.DataLayer.Entities.Order.Order
+@inject IUserService _UserService;
+
 @{
-    ViewData["Title"] = "ShowOrder";
+    ViewData["Title"] = "نمایش فاکتور";
+    int sumOrder = Model.OrderDetails.Sum(od => od.Price * od.Count);
 }
 
-<h2>ShowOrder</h2>
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li><a href="/UserPanel">حساب کاربری</a></li>
+                        <li>سبد خرید</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="account_page_bg">
+    <div class="container">
+        <section class="main_content_area">
+            <div class="account_dashboard">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <!-- Nav tabs -->
+                        <partial name="_NavTabs" />
+                    </div>
+                    <div class="col-sm-12 col-md-9 col-lg-9">
+                        <!-- Tab panes -->
+                        <div class="cart_page_bg">
+                            <div class="container">
+                                <div class="shopping_cart_area">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="table_desc">
+                                                    <div class="cart_page table-responsive">
+                                                        <table>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="product_remove">حذف</th>
+                                                                    <th class="product_thumb">تصویر</th>
+                                                                    <th class="product_name">محصول</th>
+                                                                    <th class="product-price">قیمت</th>
+                                                                    <th class="product_quantity">تعداد</th>
+                                                                    <th class="product_total">جمع</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                @foreach (var item in Model.OrderDetails)
+                                                                {
+                                                                    <tr>
+                                                                        <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                                                        <td class="product_thumb"><a href="/Product/ShowProduct/@item.ProductId"><img src="ProductImg/thumbs/@item.Product.ProductImage" alt=""></a></td>
+                                                                        <td class="product_name"><a href="#">@item.Product.ProductTitle</a></td>
+                                                                        <td class="product-price">@item.Price.ToString("#,0") تومان</td>
+                                                                        <td class="product_quantity"><label>تعداد</label> <input min="1" max="100" value="@item.Count" type="number"></td>
+                                                                        <td class="product_total">@((item.Count * item.Price).ToString("#,0")) تومان</td>
+                                                                    </tr>
+                                                                }
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="cart_submit">
+                                                        <button type="submit">به روز رسانی سبد</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--coupon code area start-->
+                                        <div class="coupon_area">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="coupon_code left">
+                                                        <h3>کد تخفیف</h3>
+                                                        <div class="coupon_inner">
+                                                            <p>کد تخفیف خود را در صورت وجود وارد نمایید</p>
+                                                            <input placeholder="کد تخفیف" type="text">
+                                                            <button type="submit">اعمال کد تخفیف</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="coupon_code right">
+                                                        <h3>مجموع سبد</h3>
+                                                        <div class="coupon_inner">
+                                                            <div class="cart_subtotal">
+                                                                <p>جمع جزء</p>
+                                                                <p class="cart_amount">@sumOrder.ToString("#,0")  تومان</p>
+                                                            </div>
+                                                            <div class="cart_subtotal">
+                                                                <p>حمل و نقل</p>
+                                                                <p class="cart_amount">رایگان</p>
+                                                            </div>
+                                                            <a href="#">محاسبه هزینه</a>
+
+                                                            <div class="cart_subtotal has-border">
+                                                                <p>جمع کل</p>
+                                                                <p class="cart_amount">@sumOrder.ToString("#,0") تومان</p>
+                                                            </div>
+                                                            <div class="checkout_btn row">
+                                                                @if (_UserService.BalanceUserWallet(User.Identity.Name) >= sumOrder)
+                                                                {
+                                                                    <a href="/UserPanel/MyOrders/FinalyOrder/@Model.OrderId">پرداخت با کیف پول</a>
+                                                                    <a href="#">پرداخت با درگاه بانکی</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a href="#">پرداخت با درگاه بانکی</a>
+                                                                    <div class="alert alert-danger">
+                                                                        موجودی کیف پول شما کافی نمی‌باشد، میتوانین از طریق این
+                                                                        <a href="/UserPanel/Wallet" class="alert-link">لینک</a>
+                                                                        آن را شارژ کنید.
+                                                                    </div>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--coupon code area end-->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
 
