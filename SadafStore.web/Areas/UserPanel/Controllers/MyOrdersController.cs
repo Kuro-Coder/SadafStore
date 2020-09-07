@@ -23,5 +23,16 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
         {
             return View();
         }
+
+        public IActionResult ShowOrder(int id)
+        {
+            var order = _orderService.GetOrderForUserPanel(User.Identity.Name, id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            return View(order);
+        }
     }
 }
