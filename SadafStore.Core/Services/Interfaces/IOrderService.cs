@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SadafStore.DataLayer.Entities.Order;
 
 namespace SadafStore.Core.Services.Interfaces
 {
@@ -8,5 +9,6 @@ namespace SadafStore.Core.Services.Interfaces
     {
         int AddOrder(string userName, int productId);
         void UpdatePriceOrder(int orderId);
+        Order GetOrderForUserPanel(string userName, int userId);
     }
 }
