@@ -9,6 +9,6 @@ namespace SadafStore.Core.Services.Interfaces
     {
         int AddOrder(string userName, int productId);
         void UpdatePriceOrder(int orderId);
-        Order GetOrderForUserPanel(string userName, int userId);
+        Order GetOrderForUserPanel(string userName, int orderId);
     }
 }

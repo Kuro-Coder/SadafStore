@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Context;
 using SadafStore.DataLayer.Entities.Order;
@@ -73,6 +74,13 @@ namespace SadafStore.Core.Services
             }
 
             return order.OrderId;
+        }
+
+        public Order GetOrderForUserPanel(string userName, int orderId)
+        {
+            int userId = _userService.GetUserIdByUserName(userName);
+            return _context.Orders.Include(o => o.OrderDetails)
+                .FirstOrDefault(o => o.UserId == userId && o.OrderId == orderId);
         }
 
         public void UpdatePriceOrder(int orderId)
