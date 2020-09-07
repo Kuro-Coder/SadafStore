@@ -40,7 +40,7 @@ namespace SadafStore.web.Controllers
         }
 
         [Authorize]
-        public IActionResult BuyProduct(int id)
+        public ActionResult BuyProduct(int id)
         {
             _orderService.AddOrder(User.Identity.Name, id);
             return Redirect("/ShowProduct/" + id);

@@ -26,7 +26,7 @@ namespace SadafStore.Core.Services
 
             var product = _context.Products.Find(productId);
 
-            if (product == null)
+            if (order == null)
             {
                 order = new Order()
                 {
@@ -63,15 +63,24 @@ namespace SadafStore.Core.Services
                         OrderId = order.OrderId,
                         Count = 1,
                         ProductId = productId,
-                        Price = product.Price
+                        Price = product.Price,
                     };
                     _context.OrderDetails.Add(detail);
                 }
-                _context.SaveChanges();
 
+                _context.SaveChanges();
+                UpdatePriceOrder(order.OrderId);
             }
 
             return order.OrderId;
+        }
+
+        public void UpdatePriceOrder(int orderId)
+        {
+            var order = _context.Orders.Find(orderId);
+            order.OrderSum = _context.OrderDetails.Where(d => d.OrderId == orderId).Sum(d => d.Price);
+            _context.Orders.Update(order);
+            _context.SaveChanges();
         }
     }
 }
