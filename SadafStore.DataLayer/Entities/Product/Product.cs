@@ -45,8 +45,11 @@ namespace SadafStore.DataLayer.Entities.Product
         [MaxLength(50)]
         public string ProductImage { get; set; }
 
-        [MaxLength(600)]
+        [MaxLength(400)]
         public string Tags { get; set; }
+
+        [MaxLength(800)]
+        public string Features { get; set; } 
 
         public bool IsDelete { get; set; }
 
