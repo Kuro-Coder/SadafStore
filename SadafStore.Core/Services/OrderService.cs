@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Context;
 using SadafStore.DataLayer.Entities.Order;
+using SadafStore.DataLayer.Entities.Wallet;
 
 namespace SadafStore.Core.Services
 {
@@ -74,6 +75,39 @@ namespace SadafStore.Core.Services
             }
 
             return order.OrderId;
+        }
+
+        public bool FinalyOrder(string userName, int orderId)
+        {
+            int userId = _userService.GetUserIdByUserName(userName);
+            var order = _context.Orders.Include(o => o.OrderDetails).ThenInclude(od => od.Product)
+                .FirstOrDefault(o => o.OrderId == orderId && o.UserId == userId);
+
+            if (order == null || order.IsFinaly)
+            {
+                return false;
+            }
+
+            if (_userService.BalanceUserWallet(userName)>= order.OrderSum)
+            {
+                order.IsFinaly = true;
+                _userService.AddWallet(new Wallet()
+                {
+                    Amount = order.OrderSum,
+                    CreateDate = DateTime.Now,
+                    IsPay = true,
+                    Description = "فاکتور شماره #" + order.OrderId,
+                    UserId = userId,
+                    TypeId = 2
+                });
+                _context.Orders.Update(order);
+
+
+
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public Order GetOrderForUserPanel(string userName, int orderId)
