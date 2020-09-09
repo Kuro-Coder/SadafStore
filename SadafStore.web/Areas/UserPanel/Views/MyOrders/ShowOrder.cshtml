@@ -107,22 +107,25 @@
                                                                 <p>جمع کل</p>
                                                                 <p class="cart_amount">@sumOrder.ToString("#,0") تومان</p>
                                                             </div>
-                                                            <div class="checkout_btn row">
-                                                                @if (_UserService.BalanceUserWallet(User.Identity.Name) >= sumOrder)
-                                                                {
-                                                                    <a href="/UserPanel/MyOrders/FinalyOrder/@Model.OrderId">پرداخت با کیف پول</a>
-                                                                    <a href="#">پرداخت با درگاه بانکی</a>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <a href="#">پرداخت با درگاه بانکی</a>
-                                                                    <div class="alert alert-danger">
-                                                                        موجودی کیف پول شما کافی نمی‌باشد، میتوانین از طریق این
-                                                                        <a href="/UserPanel/Wallet" class="alert-link">لینک</a>
-                                                                        آن را شارژ کنید.
-                                                                    </div>
-                                                                }
-                                                            </div>
+                                                            @if (!Model.IsFinaly)
+                                                            {
+                                                                <div class="checkout_btn row">
+                                                                    @if (_UserService.BalanceUserWallet(User.Identity.Name) >= sumOrder)
+                                                                    {
+                                                                        <a href="/UserPanel/MyOrders/FinalyOrder/@Model.OrderId">پرداخت با کیف پول</a>
+                                                                        <a href="#">پرداخت با درگاه بانکی</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <a href="#">پرداخت با درگاه بانکی</a>
+                                                                        <div class="alert alert-danger">
+                                                                            موجودی کیف پول شما کافی نمی‌باشد، میتوانین از طریق این
+                                                                            <a href="/UserPanel/Wallet" class="alert-link">لینک</a>
+                                                                            آن را شارژ کنید.
+                                                                        </div>
+                                                                    }
+                                                                </div>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>

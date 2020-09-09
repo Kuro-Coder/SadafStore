@@ -10,7 +10,7 @@ namespace SadafStore.DataLayer.Entities.Product
     {
         public Product()
         {
-            
+
         }
 
         [Key]
@@ -30,9 +30,13 @@ namespace SadafStore.DataLayer.Entities.Product
         [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
         public string Description { get; set; }
 
-        [Display(Name = "قیمت محصول")]
+        [Display(Name = "قیمت جدید")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
         public int Price { get; set; }
+
+        [Display(Name = "قیمت قدیم")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
+        public int OldPrice { get; set; }
 
         [Display(Name = "تعداد")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
@@ -55,7 +59,7 @@ namespace SadafStore.DataLayer.Entities.Product
 
         public List<ProductSelectedGroup> ProductSelectedGroups { get; set; }
         public List<ProductGallery> ProductGalleries { get; set; }
-        public virtual List<OrderDetail> OrderDetails { get; set; } 
+        public virtual List<OrderDetail> OrderDetails { get; set; }
 
         #endregion
     }
