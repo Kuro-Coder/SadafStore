@@ -23,6 +23,12 @@
     <Compile Remove="Migrations\20200820113945_ProductGroup.Designer.cs" />
     <Compile Remove="Migrations\20200820140825_CreateProductTables.cs" />
     <Compile Remove="Migrations\20200820140825_CreateProductTables.Designer.cs" />
+    <Compile Remove="Migrations\20200821082155_CreateDatabase.cs" />
+    <Compile Remove="Migrations\20200821082155_CreateDatabase.Designer.cs" />
+    <Compile Remove="Migrations\20200821130940_ForgotProductNumberColemn.cs" />
+    <Compile Remove="Migrations\20200821130940_ForgotProductNumberColemn.Designer.cs" />
+    <Compile Remove="Migrations\20200906115418_OrderTables.cs" />
+    <Compile Remove="Migrations\20200906115418_OrderTables.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +43,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
