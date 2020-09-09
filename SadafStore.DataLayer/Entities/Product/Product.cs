@@ -21,7 +21,7 @@ namespace SadafStore.DataLayer.Entities.Product
         [MaxLength(500, ErrorMessage = "{0} نمیتواند بیشتر از {1} کاراکتر باشد!!!")]
         public string ProductTitle { get; set; }
 
-        [Display(Name = "توضیح ویژگی‌های محصول")]
+        [Display(Name = "توضیح مختصر")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید!!!")]
         [MaxLength(2000, ErrorMessage = "{0} نمیتواند بیشتر از {1} کاراکتر باشد!!!")]
         public string ShortDescription { get; set; }

@@ -59,12 +59,14 @@ namespace SadafStore.Core.Services
         {
             Product addProduct = new Product();
             addProduct.ProductTitle = product.ProductName;
-            addProduct.Price = product.ProductPrice;
+            addProduct.Price = product.ProductNewPrice;
+            addProduct.OldPrice = product.ProductOldPrice;
             addProduct.ProductNumber = product.ProductNumber;
-            addProduct.ShortDescription = product.ProductFeature;
+            addProduct.ShortDescription = product.ProductShortDescription;
             addProduct.Description = product.ProductDescription;
             addProduct.IsActive = true;
             addProduct.IsDelete = false;
+            addProduct.Features = product.ProductFeatures;
             addProduct.Tags = product.ProductTags;
             addProduct.CreateTime = DateTime.Now;
 
@@ -134,12 +136,13 @@ namespace SadafStore.Core.Services
                 {
                     ProductId = u.ProductId,
                     ProductName = u.ProductTitle,
-                    ProductPrice = u.Price,
+                    ProductShortDescription = u.ShortDescription,
+                    ProductNewPrice = u.Price,
+                    ProductOldPrice = u.OldPrice,
                     ImageName = u.ProductImage,
-                    //ProductIsActive = u.IsActive,
                     ProductDescription = u.Description,
                     ProductTags = u.Tags,
-                    ProductFeature = u.ShortDescription,
+                    ProductFeatures = u.Features,
                     ProductNumber = u.ProductNumber,
                     ProductGroups = u.ProductSelectedGroups.Select(r => r.GroupId).ToList()
                 }).Single();
@@ -149,13 +152,13 @@ namespace SadafStore.Core.Services
         {
             Product product = GetProductById(editProduct.ProductId);
             product.ProductTitle = editProduct.ProductName;
-            //product.IsActive = editProduct.ProductIsActive;
             product.Description = editProduct.ProductDescription;
-            product.Price = editProduct.ProductPrice;
+            product.Price = editProduct.ProductNewPrice;
+            product.OldPrice = editProduct.ProductOldPrice;
             product.ProductNumber = editProduct.ProductNumber;
             product.Tags = editProduct.ProductTags;
-            product.ShortDescription = editProduct.ProductFeature;
-
+            product.ShortDescription = editProduct.ProductShortDescription;
+            product.Features = editProduct.ProductFeatures;
             if (editProduct.ProductImageName != null)
             {
                 //Delete old Image
@@ -224,10 +227,12 @@ namespace SadafStore.Core.Services
             var product = GetProductById(productId);
             InformationProductViewModel information = new InformationProductViewModel();
             information.ProductName = product.ProductTitle;
-            information.ProductFeature = product.ShortDescription;
-            information.ProductPrice = product.Price;
+            information.ProductShortDescription = product.ShortDescription;
+            information.ProductNewPrice = product.Price;
+            information.ProductOldPrice = product.OldPrice;
             information.ProductNumber = product.ProductNumber;
             information.ProductDescription = product.Description;
+            information.ProductFeature = product.Features;
             information.ProductTags = product.Tags;
             information.DateTime = product.CreateTime;
 
@@ -313,8 +318,9 @@ namespace SadafStore.Core.Services
             {
                 Id = p.ProductId,
                 Title = p.ProductTitle,
-                Description = p.Description,
-                Price = p.Price,
+                ShortDescription = p.ShortDescription,
+                NewPrice = p.Price,
+                OldPrice = p.OldPrice,
                 Img = p.ProductImage
             }).Skip(skip).Take(take).ToList();
 
@@ -322,8 +328,9 @@ namespace SadafStore.Core.Services
             {
                 Id = p.ProductId,
                 Title = p.ProductTitle,
-                Description = p.Description,
-                Price = p.Price,
+                ShortDescription = p.ShortDescription,
+                NewPrice = p.Price,
+                OldPrice = p.OldPrice,
                 Img = p.ProductImage
             }).Count()/take;
 

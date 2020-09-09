@@ -21,8 +21,8 @@
                 <div class="product_content_inner">
                     <h4 class="product_name"><a href="product-details.html">@Model.Title</a></h4>
                     <div class="price_box">
-                        @*<span class="old_price">86,000 تومان</span>*@
-                        <span class="current_price">@((Model.Price==0)?"رایگان":Model.Price.ToString("#,0")) تومان</span>
+                        <span class="old_price">@((Model.OldPrice==0)?"رایگان":Model.OldPrice.ToString("#,0")) تومان</span>
+                        <span class="current_price">@((Model.NewPrice==0)?"رایگان":Model.NewPrice.ToString("#,0")) تومان</span>
                     </div>
                 </div>
                 <div class="add_to_cart">

@@ -15,7 +15,8 @@
                 <div class="product_content_inner">
                     <h4 class="product_name"><a href="/ShowProduct/@Model.Id">@Model.Title</a></h4>
                     <div class="price_box">
-                        <span class="current_price">@((Model.Price==0)?"رایگان":Model.Price.ToString("#,0"))  تومان</span>
+                        <span class="current_price">@((Model.NewPrice == 0) ? "رایگان" : Model.NewPrice.ToString("#,0")) تومان</span>
+                        <span class="old_price">@((Model.OldPrice == 0) ? "رایگان" : Model.OldPrice.ToString("#,0")) تومان</span>
                     </div>
                 </div>
                 <div class="add_to_cart">
@@ -25,10 +26,11 @@
             <div class="product_content list_content">
                 <h4 class="product_name"><a href="/ShowProduct/@Model.Id">@Model.Title</a></h4>
                 <div class="price_box">
-                    <span class="current_price">@((Model.Price==0)?"رایگان":Model.Price.ToString("#,0"))  تومان</span>
+                    <span class="current_price">@((Model.NewPrice == 0) ? "رایگان" : Model.NewPrice.ToString("#,0")) تومان</span>
+                    <span class="old_price">@((Model.OldPrice == 0) ? "رایگان" : Model.OldPrice.ToString("#,0")) تومان</span>
                 </div>
                 <div class="product_desc">
-                    <p>@Model.Description</p>
+                    <p>@Model.ShortDescription</p>
                 </div>
                 <div class="add_to_cart">
                     <a href="cart.html" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>

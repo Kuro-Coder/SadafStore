@@ -36,10 +36,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">قیمت :</label>
+                    <label class="control-label col-md-2">قیمت جدید :</label>
                     <div class="col-md-10">
-                        <input type="number" class="form-control" asp-for="EditProductViewModel.ProductPrice" placeholder="قیمت محصول را وارد کنید">
-                        <span asp-validation-for="EditProductViewModel.ProductPrice"></span>
+                        <input type="number" class="form-control" asp-for="EditProductViewModel.ProductNewPrice" placeholder="قیمت محصول را وارد کنید">
+                        <span asp-validation-for="EditProductViewModel.ProductNewPrice"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">قیمت قدیم :</label>
+                    <div class="col-md-10">
+                        <input type="number" class="form-control" asp-for="EditProductViewModel.ProductOldPrice" placeholder="قیمت محصول را وارد کنید">
+                        <span asp-validation-for="EditProductViewModel.ProductOldPrice"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -50,17 +57,24 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">ویژگی‌ها :</label>
+                    <label class="control-label col-md-2">توضیح مختصر :</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" asp-for="EditProductViewModel.ProductFeature" placeholder="ویژگی محصول را وارد کنید">
-                        <span asp-validation-for="EditProductViewModel.ProductFeature"></span>
+                        <input type="text" class="form-control" asp-for="EditProductViewModel.ProductShortDescription" placeholder="ویژگی محصول را وارد کنید">
+                        <span asp-validation-for="EditProductViewModel.ProductShortDescription"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">‌توضیح :</label>
+                    <label class="control-label col-md-2">‌توضیح کامل :</label>
                     <div class="col-md-10">
                         <input type="text" class="form-control" asp-for="EditProductViewModel.ProductDescription" placeholder="توضیح محصول را وارد کنید">
                         <span asp-validation-for="EditProductViewModel.ProductDescription"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">ویژگی‌ها :</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" asp-for="EditProductViewModel.ProductFeatures" placeholder="ویژگی محصول را وارد کنید">
+                        <span asp-validation-for="EditProductViewModel.ProductFeatures"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -70,13 +84,6 @@
                         <span asp-validation-for="EditProductViewModel.ProductTags"></span>
                     </div>
                 </div>
-                @*<div class="form-group">
-            <label class="control-label col-md-2">‌دارایی :</label>
-            <div class="col-md-10">
-                <input type="checkbox" class="form-control" asp-for="EditProductViewModel.ProductIsActive" value="دارا بودن محصول در فروشگاه؟">
-                <span asp-validation-for="EditProductViewModel.ProductIsActive"></span>
-            </div>
-        </div>*@
 
                 <button type="submit" class="btn btn-success">ویرایش محصول</button>
             </div>
