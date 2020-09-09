@@ -21,7 +21,7 @@
                                     @if (Model.Any(g => g.ParentId == subGroupLevel1.GroupId))
                                     {
                                         <ul class="categorie_sub_menu">
-                                            @foreach (var subGroupLevel2 in Model.Where(g => g.ParentId == subGroupLevel1.ParentId))
+                                            @foreach (var subGroupLevel2 in Model.Where(g => g.ParentId == subGroupLevel1.GroupId))
                                             {
                                                 <li><a onchange="changeGroup()" href="/Product?selectedGroups=@subGroupLevel2.GroupId">@subGroupLevel2.GroupTitle</a></li>
                                             }
@@ -34,12 +34,12 @@
                     }
                 </li>
             }
-            <li id="cat_toggle" class="has-sub">
+            @*<li id="cat_toggle" class="has-sub">
                 <a href="#"> دسته های بیشتر</a>
                 <ul class="categorie_sub">
                     <li><a href="#">دسته های پنهان</a></li>
                 </ul>
-            </li>
+            </li>*@
         </ul>
     </div>
 </div>
