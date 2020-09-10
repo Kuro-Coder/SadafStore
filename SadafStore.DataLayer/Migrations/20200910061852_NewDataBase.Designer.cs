@@ -10,8 +10,8 @@ using SadafStore.DataLayer.Context;
 namespace SadafStore.DataLayer.Migrations
 {
     [DbContext(typeof(SadafStoreContext))]
-    [Migration("20200909052127_NewDataBaseAndSeedData")]
-    partial class NewDataBaseAndSeedData
+    [Migration("20200910061852_NewDataBase")]
+    partial class NewDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -254,78 +254,8 @@ namespace SadafStore.DataLayer.Migrations
                         new
                         {
                             GroupId = 6,
-                            GroupTitle = "رمان",
+                            GroupTitle = "رمان و کتاب",
                             IsDelete = false
-                        },
-                        new
-                        {
-                            GroupId = 7,
-                            GroupTitle = "خط کش T",
-                            IsDelete = false,
-                            ParentId = 1
-                        },
-                        new
-                        {
-                            GroupId = 8,
-                            GroupTitle = "میز طراحی",
-                            IsDelete = false,
-                            ParentId = 1
-                        },
-                        new
-                        {
-                            GroupId = 9,
-                            GroupTitle = "رومیزی",
-                            IsDelete = false,
-                            ParentId = 8
-                        },
-                        new
-                        {
-                            GroupId = 10,
-                            GroupTitle = "جا مدادی",
-                            IsDelete = false,
-                            ParentId = 2
-                        },
-                        new
-                        {
-                            GroupId = 11,
-                            GroupTitle = "خودکار",
-                            IsDelete = false,
-                            ParentId = 3
-                        },
-                        new
-                        {
-                            GroupId = 12,
-                            GroupTitle = "خودکار بیک",
-                            IsDelete = false,
-                            ParentId = 11
-                        },
-                        new
-                        {
-                            GroupId = 13,
-                            GroupTitle = "مداد",
-                            IsDelete = false,
-                            ParentId = 3
-                        },
-                        new
-                        {
-                            GroupId = 14,
-                            GroupTitle = "گام به گام",
-                            IsDelete = false,
-                            ParentId = 4
-                        },
-                        new
-                        {
-                            GroupId = 15,
-                            GroupTitle = "CD",
-                            IsDelete = false,
-                            ParentId = 4
-                        },
-                        new
-                        {
-                            GroupId = 16,
-                            GroupTitle = "داستان",
-                            IsDelete = false,
-                            ParentId = 6
                         });
                 });
 
@@ -462,58 +392,17 @@ namespace SadafStore.DataLayer.Migrations
                         new
                         {
                             UserId = 1,
-                            ActiveCode = "73be1ca0-5c87-4195-af24-a91b50dd0e0c",
+                            ActiveCode = "b643730f-c1be-48e3-b908-c86d59efe2ed",
                             AvatarAddress = "بابل - جاده قدیم آمل - روستای بالااحمدچاپی",
+                            AvatarImg = "null.jpg",
                             AvatarName = "حبیب پورخانلر احمدی",
                             AvatarPhone = "09333635633",
                             Email = "habib.pa98@gmail.com",
                             IsActive = true,
                             IsDelete = false,
-                            Password = "55555",
-                            RegisterDate = new DateTime(2020, 9, 9, 9, 51, 26, 541, DateTimeKind.Local).AddTicks(2731),
+                            Password = "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34",
+                            RegisterDate = new DateTime(2020, 9, 10, 10, 48, 52, 409, DateTimeKind.Local).AddTicks(8462),
                             UserName = "Habib"
-                        },
-                        new
-                        {
-                            UserId = 2,
-                            ActiveCode = "dc972f5b-3043-4a4f-8986-1ebcfbe9ba65",
-                            AvatarAddress = "",
-                            AvatarName = "فرهاد چرچیل",
-                            AvatarPhone = "",
-                            Email = "fahad.90@gmail.com",
-                            IsActive = true,
-                            IsDelete = false,
-                            Password = "55555",
-                            RegisterDate = new DateTime(2020, 9, 9, 9, 51, 26, 544, DateTimeKind.Local).AddTicks(3611),
-                            UserName = "Farhad"
-                        },
-                        new
-                        {
-                            UserId = 3,
-                            ActiveCode = "0b25dc31-cb8f-4bd2-bbb6-62fed6da8dc6",
-                            AvatarAddress = "آمل - کوچمون",
-                            AvatarName = "شبنم ایزدی",
-                            AvatarPhone = "09333635633",
-                            Email = "shabnam.iz90@gmail.com",
-                            IsActive = true,
-                            IsDelete = false,
-                            Password = "55555",
-                            RegisterDate = new DateTime(2020, 9, 9, 9, 51, 26, 544, DateTimeKind.Local).AddTicks(3709),
-                            UserName = "Shabnam"
-                        },
-                        new
-                        {
-                            UserId = 4,
-                            ActiveCode = "cc0789dc-e707-449a-b0c5-24df58b0109a",
-                            AvatarAddress = "بابل - جاده قدیم آمل - روستای بالااحمدچاپی",
-                            AvatarName = "کاربر تستیم",
-                            AvatarPhone = "09333635633",
-                            Email = "test.tt98@gmail.com",
-                            IsActive = false,
-                            IsDelete = true,
-                            Password = "55555",
-                            RegisterDate = new DateTime(2020, 9, 9, 9, 51, 26, 544, DateTimeKind.Local).AddTicks(3719),
-                            UserName = "testUser"
                         });
                 });
 
@@ -544,30 +433,6 @@ namespace SadafStore.DataLayer.Migrations
                             UR_Id = 1,
                             RoleId = 1,
                             UserId = 1
-                        },
-                        new
-                        {
-                            UR_Id = 2,
-                            RoleId = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            UR_Id = 3,
-                            RoleId = 3,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            UR_Id = 4,
-                            RoleId = 3,
-                            UserId = 3
-                        },
-                        new
-                        {
-                            UR_Id = 5,
-                            RoleId = 3,
-                            UserId = 4
                         });
                 });
 

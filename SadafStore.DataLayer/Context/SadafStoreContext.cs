@@ -132,53 +132,15 @@ namespace SadafStore.DataLayer.Context
                 UserId = 1,
                 UserName = "Habib",
                 Email = "habib.pa98@gmail.com",
-                Password = "55555",
+                Password = "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34",
                 IsActive = true,
                 IsDelete = false,
                 ActiveCode = Guid.NewGuid().ToString(),
                 RegisterDate = DateTime.Now,
                 AvatarName = "حبیب پورخانلر احمدی",
                 AvatarPhone = "09333635633",
-                AvatarAddress = "بابل - جاده قدیم آمل - روستای بالااحمدچاپی"
-            }, new User()
-            {
-                UserId = 2,
-                UserName = "Farhad",
-                Email = "fahad.90@gmail.com",
-                Password = "55555",
-                IsActive = true,
-                IsDelete = false,
-                ActiveCode = Guid.NewGuid().ToString(),
-                RegisterDate = DateTime.Now,
-                AvatarName = "فرهاد چرچیل",
-                AvatarPhone = "",
-                AvatarAddress = ""
-            }, new User()
-            {
-                UserId = 3,
-                UserName = "Shabnam",
-                Email = "shabnam.iz90@gmail.com",
-                Password = "55555",
-                IsActive = true,
-                IsDelete = false,
-                ActiveCode = Guid.NewGuid().ToString(),
-                RegisterDate = DateTime.Now,
-                AvatarName = "شبنم ایزدی",
-                AvatarPhone = "09333635633",
-                AvatarAddress = "آمل - کوچمون"
-            }, new User()
-            {
-                UserId = 4,
-                UserName = "testUser",
-                Email = "test.tt98@gmail.com",
-                Password = "55555",
-                IsActive = false,
-                IsDelete = true,
-                ActiveCode = Guid.NewGuid().ToString(),
-                RegisterDate = DateTime.Now,
-                AvatarName = "کاربر تستیم",
-                AvatarPhone = "09333635633",
-                AvatarAddress = "بابل - جاده قدیم آمل - روستای بالااحمدچاپی"
+                AvatarAddress = "بابل - جاده قدیم آمل - روستای بالااحمدچاپی",
+                AvatarImg = "null.jpg"
             });
 
             #endregion
@@ -190,26 +152,6 @@ namespace SadafStore.DataLayer.Context
                 UR_Id = 1,
                 UserId = 1,
                 RoleId = 1
-            }, new UserRole()
-            {
-                UR_Id = 2,
-                UserId = 1,
-                RoleId = 2
-            }, new UserRole()
-            {
-                UR_Id = 3,
-                UserId = 2,
-                RoleId = 3
-            }, new UserRole()
-            {
-                UR_Id = 4,
-                UserId = 3,
-                RoleId = 3
-            }, new UserRole()
-            {
-                UR_Id = 5,
-                UserId = 4,
-                RoleId = 3
             });
 
             #endregion
@@ -249,69 +191,9 @@ namespace SadafStore.DataLayer.Context
             }, new ProductGroup()
             {
                 GroupId = 6,
-                GroupTitle = "رمان",
+                GroupTitle = "رمان و کتاب",
                 IsDelete = false,
                 ParentId = null
-            }, new ProductGroup()
-            {
-                GroupId = 7,
-                GroupTitle = "خط کش T",
-                IsDelete = false,
-                ParentId = 1
-            }, new ProductGroup()
-            {
-                GroupId = 8,
-                GroupTitle = "میز طراحی",
-                IsDelete = false,
-                ParentId = 1
-            }, new ProductGroup()
-            {
-                GroupId = 9,
-                GroupTitle = "رومیزی",
-                IsDelete = false,
-                ParentId = 8
-            }, new ProductGroup()
-            {
-                GroupId = 10,
-                GroupTitle = "جا مدادی",
-                IsDelete = false,
-                ParentId = 2
-            }, new ProductGroup()
-            {
-                GroupId = 11,
-                GroupTitle = "خودکار",
-                IsDelete = false,
-                ParentId = 3
-            }, new ProductGroup()
-            {
-                GroupId = 12,
-                GroupTitle = "خودکار بیک",
-                IsDelete = false,
-                ParentId = 11
-            }, new ProductGroup()
-            {
-                GroupId = 13,
-                GroupTitle = "مداد",
-                IsDelete = false,
-                ParentId = 3
-            }, new ProductGroup()
-            {
-                GroupId = 14,
-                GroupTitle = "گام به گام",
-                IsDelete = false,
-                ParentId = 4
-            }, new ProductGroup()
-            {
-                GroupId = 15,
-                GroupTitle = "CD",
-                IsDelete = false,
-                ParentId = 4
-            }, new ProductGroup()
-            {
-                GroupId = 16,
-                GroupTitle = "داستان",
-                IsDelete = false,
-                ParentId = 6
             });
 
             #endregion

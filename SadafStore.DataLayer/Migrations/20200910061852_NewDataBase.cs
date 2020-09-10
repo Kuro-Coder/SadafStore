@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SadafStore.DataLayer.Migrations
 {
-    public partial class NewDataBaseAndSeedData : Migration
+    public partial class NewDataBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -311,7 +311,7 @@ namespace SadafStore.DataLayer.Migrations
                     { 3, "نوشت افزار", false, null },
                     { 4, "کمک آموزشی", false, null },
                     { 5, "اسباب بازی", false, null },
-                    { 6, "رمان", false, null }
+                    { 6, "رمان و کتاب", false, null }
                 });
 
             migrationBuilder.InsertData(
@@ -329,50 +329,12 @@ namespace SadafStore.DataLayer.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "ActiveCode", "AvatarAddress", "AvatarImg", "AvatarName", "AvatarPhone", "Email", "IsActive", "IsDelete", "Password", "RegisterDate", "UserName" },
-                values: new object[,]
-                {
-                    { 1, "73be1ca0-5c87-4195-af24-a91b50dd0e0c", "بابل - جاده قدیم آمل - روستای بالااحمدچاپی", null, "حبیب پورخانلر احمدی", "09333635633", "habib.pa98@gmail.com", true, false, "55555", new DateTime(2020, 9, 9, 9, 51, 26, 541, DateTimeKind.Local).AddTicks(2731), "Habib" },
-                    { 2, "dc972f5b-3043-4a4f-8986-1ebcfbe9ba65", "", null, "فرهاد چرچیل", "", "fahad.90@gmail.com", true, false, "55555", new DateTime(2020, 9, 9, 9, 51, 26, 544, DateTimeKind.Local).AddTicks(3611), "Farhad" },
-                    { 3, "0b25dc31-cb8f-4bd2-bbb6-62fed6da8dc6", "آمل - کوچمون", null, "شبنم ایزدی", "09333635633", "shabnam.iz90@gmail.com", true, false, "55555", new DateTime(2020, 9, 9, 9, 51, 26, 544, DateTimeKind.Local).AddTicks(3709), "Shabnam" },
-                    { 4, "cc0789dc-e707-449a-b0c5-24df58b0109a", "بابل - جاده قدیم آمل - روستای بالااحمدچاپی", null, "کاربر تستیم", "09333635633", "test.tt98@gmail.com", false, true, "55555", new DateTime(2020, 9, 9, 9, 51, 26, 544, DateTimeKind.Local).AddTicks(3719), "testUser" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProductGroups",
-                columns: new[] { "GroupId", "GroupTitle", "IsDelete", "ParentId" },
-                values: new object[,]
-                {
-                    { 7, "خط کش T", false, 1 },
-                    { 8, "میز طراحی", false, 1 },
-                    { 10, "جا مدادی", false, 2 },
-                    { 11, "خودکار", false, 3 },
-                    { 13, "مداد", false, 3 },
-                    { 14, "گام به گام", false, 4 },
-                    { 15, "CD", false, 4 },
-                    { 16, "داستان", false, 6 }
-                });
+                values: new object[] { 1, "b643730f-c1be-48e3-b908-c86d59efe2ed", "بابل - جاده قدیم آمل - روستای بالااحمدچاپی", "null.jpg", "حبیب پورخانلر احمدی", "09333635633", "habib.pa98@gmail.com", true, false, "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34", new DateTime(2020, 9, 10, 10, 48, 52, 409, DateTimeKind.Local).AddTicks(8462), "Habib" });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
                 columns: new[] { "UR_Id", "RoleId", "UserId" },
-                values: new object[,]
-                {
-                    { 1, 1, 1 },
-                    { 2, 2, 1 },
-                    { 3, 3, 2 },
-                    { 4, 3, 3 },
-                    { 5, 3, 4 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProductGroups",
-                columns: new[] { "GroupId", "GroupTitle", "IsDelete", "ParentId" },
-                values: new object[] { 9, "رومیزی", false, 8 });
-
-            migrationBuilder.InsertData(
-                table: "ProductGroups",
-                columns: new[] { "GroupId", "GroupTitle", "IsDelete", "ParentId" },
-                values: new object[] { 12, "خودکار بیک", false, 11 });
+                values: new object[] { 1, 1, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_OrderId",
