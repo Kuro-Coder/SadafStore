@@ -282,6 +282,10 @@ namespace SadafStore.Core.Services
                     user.AvatarImg.CopyTo(stream);
                 }
             }
+            else
+            {
+                addUser.AvatarImg = "null.jpg";
+            }
 
             #endregion
             return AddUser(addUser);
