@@ -261,14 +261,13 @@ namespace SadafStore.Core.Services
             return list;
         }
 
-        public Tuple<List<ShowProductListViewModel>, int> GetProductsList(int pageId =1, string filter = "", string orderBy = "",
-            int startPrice = 0, int endPrice = 0, int take = 0, List<int> selectedGroups = null)
+        public Tuple<List<ShowProductListViewModel>, int> GetProductsList(int pageId =1, string filter = "", string orderBy = "", int take = 0, List<int> selectedGroups = null)
         {
             IQueryable<Product> result = _context.Products;
             IQueryable<ProductSelectedGroup> selected = _context.ProductSelectedGroups;
             //box number for show in home page
             if (take == 0)
-                take = 10;
+                take = 12;
             //filter Product Name
             if (!string.IsNullOrEmpty(filter))
             {
@@ -292,22 +291,12 @@ namespace SadafStore.Core.Services
                 case "old":
                     break;
             }
-            // start and End Price
-            if (startPrice>0)
-            {
-                result = result.Where(p => p.Price > startPrice);
-            }
-
-            if (endPrice>0)
-            {
-                result = result.Where(p => p.Price < startPrice);
-            }
             // Selected Groups
             if (selectedGroups != null && selectedGroups.Any())
             {
                 foreach (var groupId in selectedGroups)
                 {
-                    selected = selected.Where(g => g.GroupId == groupId);
+                    selected = selected.Where(g => g.GroupId == groupId || g.PSG_Id == g.GroupId);
                 }
             }
             // Page Skip

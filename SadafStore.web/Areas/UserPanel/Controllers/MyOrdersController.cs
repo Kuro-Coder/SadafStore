@@ -34,5 +34,15 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
 
             return View(order);
         }
+
+        public IActionResult Finaly(int id)
+        {
+            if (_orderService.FinalyOrder(User.Identity.Name,id))
+            {
+                return Redirect("/UserPanel/MyOrders/" + id + "?finaly=true");
+            }
+
+            return BadRequest();
+        }
     }
 }

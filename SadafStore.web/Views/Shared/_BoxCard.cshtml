@@ -4,8 +4,8 @@
     <article class="single_product">
         <figure>
             <div class="product_thumb">
-                <a class="primary_img" href="product-details.html"><img style="height: 150px" src="/ProductImg/thumbs/@Model.Img" alt=""></a>
-                <a class="secondary_img" href="product-details.html"><img style="height: 150px" src="/ProductImg/thumbs/@Model.Img" alt=""></a>
+                <a class="primary_img" href="/ShowProduct/@Model.Id"><img style="height: 150px" src="/ProductImg/thumbs/@Model.Img" alt=""></a>
+                <a class="secondary_img" href="/ShowProduct/@Model.Id"><img style="height: 150px" src="/ProductImg/thumbs/@Model.Img" alt=""></a>
                 <div class="label_product">
                     <span class="label_sale">موجود</span>
                 </div>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="add_to_cart">
-                    <a href="cart.html" title="افزودن به سبد">افزودن به سبد</a>
+                    <a href="/Product/BuyProduct/@Model.Id" title="افزودن به سبد">افزودن به سبد</a>
                 </div>
             </div>
         </figure>

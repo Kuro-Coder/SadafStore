@@ -19,23 +19,25 @@ namespace SadafStore.web.Controllers
             _orderService = orderService;
         }
 
-        public IActionResult Index(int pageId = 1, string filter = "", string orderBy = "",
-            int startPrice = 0, int endPrice = 0, int take = 0, List<int> selectedGroups = null)
+        public IActionResult Index(int pageId = 1, string filter = "", string orderBy = "", int take = 0, List<int> selectedGroups = null)
         {
             ViewBag.pageId = pageId;
             ViewBag.Groups = _productService.GetAllGroups();
             ViewBag.SelectedGroups = selectedGroups;
-            return View(_productService.GetProductsList(pageId, filter, orderBy, startPrice, endPrice, 4, selectedGroups));
+            return View(_productService.GetProductsList(pageId, filter, orderBy, 4 , selectedGroups));
         }
 
         [Route("ShowProduct/{id}")]
-        public IActionResult ShowProduct(int id)
+        public IActionResult ShowProduct(int id, bool finaly = false)
         {
+
             var product = _productService.GetProductForShow(id);
             if (product == null)
             {
                 return NotFound();
             }
+
+            ViewBag.Finaly = finaly;
             return View(product);
         }
 

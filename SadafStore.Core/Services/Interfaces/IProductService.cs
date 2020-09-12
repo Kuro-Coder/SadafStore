@@ -39,8 +39,7 @@ namespace SadafStore.Core.Services.Interfaces
 
         #region Product Showing
 
-        Tuple<List<ShowProductListViewModel>, int> GetProductsList(int pageId = 1, string filter = "", string orderBy = "",
-            int startPrice = 0, int endPrice = 0, int take = 0, List<int> selectedGroups = null);
+        Tuple<List<ShowProductListViewModel>, int> GetProductsList(int pageId = 1, string filter = "", string orderBy = "", int take = 0, List<int> selectedGroups = null);
 
         Product GetProductForShow(int productId);
 

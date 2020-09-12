@@ -34,6 +34,12 @@
                     </div>
                     <div class="col-sm-12 col-md-9 col-lg-9">
                         <!-- Tab panes -->
+                        @if (ViewBag.Finaly == true)
+                        {
+                            <div class="alert alert-success">
+                                پرداخت شما موفقیت آمیز بود
+                            </div>
+                        }
                         <div class="cart_page_bg">
                             <div class="container">
                                 <div class="shopping_cart_area">
@@ -79,16 +85,19 @@
                                         <!--coupon code area start-->
                                         <div class="coupon_area">
                                             <div class="row">
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="coupon_code left">
-                                                        <h3>کد تخفیف</h3>
-                                                        <div class="coupon_inner">
-                                                            <p>کد تخفیف خود را در صورت وجود وارد نمایید</p>
-                                                            <input placeholder="کد تخفیف" type="text">
-                                                            <button type="submit">اعمال کد تخفیف</button>
+                                                @if (!Model.IsFinaly)
+                                                {
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="coupon_code left">
+                                                            <h3>کد تخفیف</h3>
+                                                            <div class="coupon_inner">
+                                                                <p>کد تخفیف خود را در صورت وجود وارد نمایید</p>
+                                                                <input placeholder="کد تخفیف" type="text">
+                                                                <button type="submit">اعمال کد تخفیف</button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                }
                                                 <div class="col-lg-6 col-md-6">
                                                     <div class="coupon_code right">
                                                         <h3>مجموع سبد</h3>
