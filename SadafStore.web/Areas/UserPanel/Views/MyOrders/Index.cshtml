@@ -58,7 +58,7 @@
                                                                     <tr>
                                                                         <td class="product_thumb">@item.OrderId</td>
                                                                         <td class="product_name">@item.CreateTime.ToShamsi()</td>
-                                                                        <td class="product-price">@item.OrderDetails.Sum(od=>od.Count * od.Price).ToString("#,0") تومان</td>
+                                                                        <td class="product-price">@item.OrderSum.ToString("#,0") تومان</td>
                                                                         <td class="product_quantity">
                                                                             @if (item.IsFinaly)
                                                                             {

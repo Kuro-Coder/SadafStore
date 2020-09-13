@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SadafStore.Core.DTOs.Order;
 using SadafStore.Core.Services.Interfaces;
 
 namespace SadafStore.web.Areas.UserPanel.Controllers
@@ -39,10 +40,16 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
         {
             if (_orderService.FinalyOrder(User.Identity.Name,id))
             {
-                return Redirect("/UserPanel/MyOrders/" + id + "?finaly=true");
+                return Redirect("/UserPanel/MyOrders/ShowOrder" + id + "?finaly=true");
             }
 
             return BadRequest();
+        }
+
+        public IActionResult UseDisCount(int orderId, string code)
+        {
+            DisCountUseType type = _orderService.UseDisCount(orderId, code);
+            return Redirect("/UserPanel/MyOrders/ShowOrder/"+orderId+"?type="+type.ToString());
         }
     }
 }

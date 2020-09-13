@@ -26,6 +26,7 @@ namespace SadafStore.Core.Services
         {
             int userId = _userService.GetUserIdByUserName(userName);
             Order order = _context.Orders.FirstOrDefault(o => o.UserId == userId && !o.IsFinaly);
+            
 
             var product = _context.Products.Find(productId);
 
@@ -36,7 +37,6 @@ namespace SadafStore.Core.Services
                     UserId = userId,
                     IsFinaly = false,
                     CreateTime = DateTime.Now,
-                    OrderSum = product.Price,
                     OrderDetails = new List<OrderDetail>()
                     {
                         new OrderDetail()
@@ -45,7 +45,8 @@ namespace SadafStore.Core.Services
                             Count = 1,
                             Price = product.Price
                         }
-                    }
+                    },
+                    OrderSum = product.Price 
                 };
                 _context.Orders.Add(order);
                 _context.SaveChanges();
@@ -103,8 +104,6 @@ namespace SadafStore.Core.Services
                 });
                 _context.Orders.Update(order);
 
-
-
                 _context.SaveChanges();
                 return true;
             }
@@ -133,7 +132,7 @@ namespace SadafStore.Core.Services
         public void UpdatePriceOrder(int orderId)
         {
             var order = _context.Orders.Find(orderId);
-            order.OrderSum = _context.OrderDetails.Where(d => d.OrderId == orderId).Sum(d => d.Price);
+            order.OrderSum = _context.OrderDetails.Where(d => d.OrderId == orderId).Sum(d => d.Price * d.Count);
             _context.Orders.Update(order);
             _context.SaveChanges();
         }
