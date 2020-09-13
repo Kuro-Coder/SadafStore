@@ -34,19 +34,18 @@
                     </div>
                     <div class="col-sm-12 col-md-9 col-lg-9">
                         <!-- Tab panes -->
-                        @if (ViewBag.Finaly == true)
-                        {
-                            <div class="alert alert-success">
-                                پرداخت شما موفقیت آمیز بود
-                            </div>
-                        }
                         <div class="cart_page_bg">
                             <div class="container">
                                 <div class="shopping_cart_area">
-
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="table_desc">
+                                                @if (ViewBag.Finaly == true)
+                                                {
+                                                    <div class="alert alert-success">
+                                                        <p>پرداخت شما موفقیت آمیز بود</p>
+                                                    </div>
+                                                }
                                                 <div class="cart_page table-responsive">
                                                     <table>
                                                         <thead>
@@ -76,47 +75,42 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="cart_submit">
-                                                    <button type="submit">به روز رسانی سبد</button>
-                                                </div>
+                                                @if (!Model.IsFinaly)
+                                                {
+                                                    <div class="cart_submit">
+                                                        <button type="submit">به روز رسانی سبد</button>
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
                                     <!--coupon code area start-->
                                     <div class="coupon_area">
                                         <div class="row">
-                                            @if (!Model.IsFinaly)
-                                            {
-                                                <div class="col-lg-6 col-md-6">
-                                                    <div class="coupon_code left">
-                                                        <h3>کد تخفیف</h3>
-                                                        <div class="coupon_inner">
-                                                            <form action="/UserPanel/MyOrders/UseDisCount" method="post">
-                                                                <input type="hidden" name="orderId" value="@Model.OrderId">
-                                                                <p>کد تخفیف خود را در صورت وجود وارد نمایید</p>
-                                                                <input placeholder="کد تخفیف" type="text" name="code">
-                                                                <button type="submit">اعمال کد تخفیف</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
                                             <div class="col-lg-6 col-md-6">
                                                 <div class="coupon_code right">
                                                     <h3>مجموع سبد</h3>
                                                     <div class="coupon_inner">
-                                                        <div class="cart_subtotal">
-                                                            <p>جمع جزء</p>
-                                                            <p class="cart_amount">@sumOrder.ToString("#,0")  تومان</p>
-                                                        </div>
-                                                        <div class="cart_subtotal">
-                                                            <p>حمل و نقل</p>
-                                                            <p class="cart_amount">رایگان</p>
-                                                        </div>
-                                                        <a href="#">محاسبه هزینه</a>
-
+                                                        @if (!Model.IsFinaly)
+                                                        {
+                                                            <div class="cart_subtotal">
+                                                                <p>جمع جزء</p>
+                                                                <p class="cart_amount">@sumOrder.ToString("#,0") تومان</p>
+                                                            </div>
+                                                            <div class="cart_subtotal">
+                                                                <p>حمل و نقل</p>
+                                                                <p class="cart_amount">رایگان</p>
+                                                            </div>
+                                                        }
                                                         <div class="cart_subtotal has-border">
-                                                            <p>جمع کل</p>
+                                                            @if (!Model.IsFinaly)
+                                                            {
+                                                                <p>جمع کل</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p>مبلغ پرداخت شده</p>
+                                                            }
                                                             <p class="cart_amount">@sumOrder.ToString("#,0") تومان</p>
                                                         </div>
                                                         @if (!Model.IsFinaly)
@@ -141,6 +135,22 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @if (!Model.IsFinaly)
+                                            {
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="coupon_code left">
+                                                        <h3>کد تخفیف</h3>
+                                                        <div class="coupon_inner">
+                                                            <form action="/UserPanel/MyOrders/UseDisCount" method="post">
+                                                                <input type="hidden" name="orderId" value="@Model.OrderId">
+                                                                <p>کد تخفیف خود را در صورت وجود وارد نمایید</p>
+                                                                <input placeholder="کد تخفیف" type="text" name="code">
+                                                                <button type="submit">اعمال کد تخفیف</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                     <!--coupon code area end-->

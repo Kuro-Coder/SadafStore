@@ -25,22 +25,22 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
             return View(_orderService.GetUserOrders(User.Identity.Name));
         }
 
-        public IActionResult ShowOrder(int id)
+        public IActionResult ShowOrder(int id, bool finaly = false)
         {
             var order = _orderService.GetOrderForUserPanel(User.Identity.Name, id);
             if (order == null)
             {
                 return NotFound();
             }
-
+            ViewBag.finaly = finaly;
             return View(order);
         }
 
-        public IActionResult Finaly(int id)
+        public IActionResult FinalyOrder(int id)
         {
             if (_orderService.FinalyOrder(User.Identity.Name,id))
             {
-                return Redirect("/UserPanel/MyOrders/ShowOrder" + id + "?finaly=true");
+                return Redirect("/UserPanel/MyOrders/ShowOrder/" + id + "?finaly=true");
             }
 
             return BadRequest();
@@ -49,7 +49,7 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
         public IActionResult UseDisCount(int orderId, string code)
         {
             DisCountUseType type = _orderService.UseDisCount(orderId, code);
-            return Redirect("/UserPanel/MyOrders/ShowOrder/"+orderId+"?type="+type.ToString());
+            return Redirect("/UserPanel/MyOrders/ShowOrder/" + orderId + "?type=" + type.ToString());
         }
     }
 }
