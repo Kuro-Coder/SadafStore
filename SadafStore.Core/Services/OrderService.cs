@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using SadafStore.Core.DTOs.Order;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Context;
 using SadafStore.DataLayer.Entities.Order;
@@ -88,7 +89,7 @@ namespace SadafStore.Core.Services
                 return false;
             }
 
-            if (_userService.BalanceUserWallet(userName)>= order.OrderSum)
+            if (_userService.BalanceUserWallet(userName) >= order.OrderSum)
             {
                 order.IsFinaly = true;
                 _userService.AddWallet(new Wallet()
@@ -117,10 +118,15 @@ namespace SadafStore.Core.Services
                 .Where(o => o.UserId == userId).ToList();
         }
 
+        public Order GetOrderById(int orderId)
+        {
+            return _context.Orders.Find(orderId);
+        }
+
         public Order GetOrderForUserPanel(string userName, int orderId)
         {
             int userId = _userService.GetUserIdByUserName(userName);
-            return _context.Orders.Include(o => o.OrderDetails).ThenInclude(od=>od.Product)
+            return _context.Orders.Include(o => o.OrderDetails).ThenInclude(od => od.Product)
                 .FirstOrDefault(o => o.UserId == userId && o.OrderId == orderId);
         }
 
@@ -128,6 +134,55 @@ namespace SadafStore.Core.Services
         {
             var order = _context.Orders.Find(orderId);
             order.OrderSum = _context.OrderDetails.Where(d => d.OrderId == orderId).Sum(d => d.Price);
+            _context.Orders.Update(order);
+            _context.SaveChanges();
+        }
+
+        public DisCountUseType UseDisCount(int orderId, string code)
+        {
+            var disCount = _context.DisCounts.SingleOrDefault(d => d.DisCountCode == code);
+
+            #region check Types
+
+            if (disCount == null)
+                return DisCountUseType.NotFound;
+
+            if (disCount.StartDate != null && disCount.StartDate < DateTime.Now)
+                return DisCountUseType.ExpireDate;
+
+            if (disCount.EndDate != null && disCount.EndDate >= DateTime.Now)
+                return DisCountUseType.ExpireDate;
+
+            if (disCount.UsableCount != null && disCount.UsableCount <1)
+                return DisCountUseType.Finished;
+
+            #endregion
+
+            var order = GetOrderById(orderId);
+            int percent = (order.OrderSum * disCount.DisCountPercent) / 100;
+            order.OrderSum = order.OrderSum - percent;
+
+            UpdateOrder(order);
+            if (disCount.UsableCount!=null)
+            {
+                disCount.UsableCount -= 1;
+            }
+
+            _context.DisCounts.Update(disCount);
+            _context.SaveChanges();
+
+            return DisCountUseType.Success;
+
+        }
+
+        public void UpdateOrderDetail(OrderDetail detail)
+        {
+            _context.OrderDetails.Update(detail);
+            _context.SaveChanges();
+        }
+
+        public void UpdateOrder(Order order)
+        {
             _context.Orders.Update(order);
             _context.SaveChanges();
         }
