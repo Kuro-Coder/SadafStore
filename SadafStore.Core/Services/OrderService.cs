@@ -110,6 +110,12 @@ namespace SadafStore.Core.Services
             return false;
         }
 
+        public List<Order> GetUserOrders(string userName)
+        {
+            int userId = _userService.GetUserIdByUserName(userName);
+            return _context.Orders.Where(o => o.UserId == userId).ToList();
+        }
+
         public Order GetOrderForUserPanel(string userName, int orderId)
         {
             int userId = _userService.GetUserIdByUserName(userName);

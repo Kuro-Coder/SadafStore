@@ -12,5 +12,9 @@ namespace SadafStore.Core.Services.Interfaces
         Order GetOrderForUserPanel(string userName, int orderId);
         bool FinalyOrder(string userName, int orderId);
 
+
+        List<Order> GetUserOrders(string userName);
+
+
     }
 }
