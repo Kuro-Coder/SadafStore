@@ -21,7 +21,7 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_orderService.GetUserOrders(User.Identity.Name));
         }
 
         public IActionResult ShowOrder(int id)

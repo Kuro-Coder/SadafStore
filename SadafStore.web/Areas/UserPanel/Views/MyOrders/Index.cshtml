@@ -1,7 +1,97 @@
-﻿
+﻿@using SadafStore.Core.Convertors
+@model IEnumerable<SadafStore.DataLayer.Entities.Order.Order>
+
 @{
     ViewData["Title"] = "سفارش‌های من";
 }
 
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li><a href="/UserPanel">حساب کاربری</a></li>
+                        <li>فاکتورهای من</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="account_page_bg">
+    <div class="container">
+        <section class="main_content_area">
+            <div class="account_dashboard">
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3">
+                        <!-- Nav tabs -->
+                        <partial name="_NavTabs" />
+                    </div>
+                    <div class="col-sm-12 col-md-9 col-lg-9">
+                        <!-- Tab panes -->
+                        <div class="cart_page_bg">
+                            <div class="container">
+                                <div class="shopping_cart_area">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="table_desc">
+                                                    <div class="cart_page table-responsive">
+                                                        <table>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="product_remove">شماره فاکتور</th>
+                                                                    <th class="product_thumb">تاریخ</th>
+                                                                    <th class="product_name">جمع</th>
+                                                                    <th class="product-price">پرداخت</th>
+                                                                    <th class="product_quantity">دستورها</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                                @foreach (var item in Model)
+                                                                {
+                                                                    <tr>
+                                                                        <td class="product_thumb">@item.OrderId</td>
+                                                                        <td class="product_name">@item.CreateTime.ToShamsi()</td>
+                                                                        <td class="product-price">@item.OrderDetails.Sum(od=>od.Count * od.Price).ToString("#,0") تومان</td>
+                                                                        <td class="product_quantity">
+                                                                            @if (item.IsFinaly)
+                                                                            {
+                                                                                <p class="text text-success">
+                                                                                    انجام شده
+                                                                                </p>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <p class="text text-danger">
+                                                                                    انجام نشده
+                                                                                </p>
+                                                                            }
+                                                                        </td>
+                                                                        <td class="product_total"><a class="btn btn-info" href="/UserPanel/MyOrders/ShowOrder/@item.OrderId"> نمایش فاکتور </a></td>
+                                                                    </tr>
+                                                                }
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
 
 
