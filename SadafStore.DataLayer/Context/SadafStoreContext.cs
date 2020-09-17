@@ -56,6 +56,7 @@ namespace SadafStore.DataLayer.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<DisCount> DisCounts { get; set; }
+        public DbSet<UserDiscountCode> UserDiscountCodes { get; set; }
 
 
         #endregion
