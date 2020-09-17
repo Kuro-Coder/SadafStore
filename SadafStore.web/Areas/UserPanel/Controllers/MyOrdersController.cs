@@ -25,13 +25,15 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
             return View(_orderService.GetUserOrders(User.Identity.Name));
         }
 
-        public IActionResult ShowOrder(int id, bool finaly = false)
+        public IActionResult ShowOrder(int id, bool finaly = false, string type="")
         {
             var order = _orderService.GetOrderForUserPanel(User.Identity.Name, id);
             if (order == null)
             {
                 return NotFound();
             }
+
+            ViewBag.typeDiscount = type;
             ViewBag.finaly = finaly;
             return View(order);
         }

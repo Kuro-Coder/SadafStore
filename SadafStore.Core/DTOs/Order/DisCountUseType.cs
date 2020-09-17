@@ -6,6 +6,6 @@ namespace SadafStore.Core.DTOs.Order
 {
     public enum DisCountUseType
     {
-        Success, ExpireDate, NotFound, Finished 
+        Success, ExpireDate, NotFound, Finished, UsedDiscount
     }
 }

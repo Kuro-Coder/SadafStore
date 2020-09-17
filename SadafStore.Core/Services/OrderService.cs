@@ -7,6 +7,7 @@ using SadafStore.Core.DTOs.Order;
 using SadafStore.Core.Services.Interfaces;
 using SadafStore.DataLayer.Context;
 using SadafStore.DataLayer.Entities.Order;
+using SadafStore.DataLayer.Entities.User;
 using SadafStore.DataLayer.Entities.Wallet;
 
 namespace SadafStore.Core.Services
@@ -155,9 +156,13 @@ namespace SadafStore.Core.Services
             if (disCount.UsableCount != null && disCount.UsableCount <1)
                 return DisCountUseType.Finished;
 
+            var order = GetOrderById(orderId);
+
+            if (_context.UserDiscountCodes.Any(d => d.UserId == order.UserId && d.DiscountId == disCount.DiscountId))
+                return DisCountUseType.UsedDiscount;
+
             #endregion
 
-            var order = GetOrderById(orderId);
             int percent = (order.OrderSum * disCount.DisCountPercent) / 100;
             order.OrderSum = order.OrderSum - percent;
 
@@ -168,6 +173,11 @@ namespace SadafStore.Core.Services
             }
 
             _context.DisCounts.Update(disCount);
+            _context.UserDiscountCodes.Add(new UserDiscountCode()
+            {
+                UserId = order.UserId,
+                DiscountId = disCount.DiscountId
+            });
             _context.SaveChanges();
 
             return DisCountUseType.Success;
