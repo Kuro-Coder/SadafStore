@@ -47,6 +47,7 @@ namespace SadafStore.DataLayer.Context
         public DbSet<ProductGroup> ProductGroups { get; set; }
         public DbSet<ProductGallery> ProductGalleries { get; set; }
         public DbSet<ProductSelectedGroup> ProductSelectedGroups { get; set; }
+        public DbSet<ProductComment> ProductComments { get; set; }
 
 
         #endregion

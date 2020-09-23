@@ -195,5 +195,32 @@ namespace SadafStore.Core.Services
             _context.Orders.Update(order);
             _context.SaveChanges();
         }
+
+        public void AddDiscount(DisCount disCount)
+        {
+            _context.DisCounts.Add(disCount);
+            _context.SaveChanges();
+        }
+
+        public List<DisCount> GetAllDiscounts()
+        {
+            return _context.DisCounts.ToList();
+        }
+
+        public DisCount GetDisCountById(int discountId)
+        {
+            return _context.DisCounts.Find(discountId);
+        }
+
+        public void UpdateDiscount(DisCount disCount)
+        {
+            _context.DisCounts.Update(disCount);
+            _context.SaveChanges();
+        }
+
+        public bool IsExistCode(string code)
+        {
+            return _context.DisCounts.Any(d => d.DisCountCode == code);
+        }
     }
 }

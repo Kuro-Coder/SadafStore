@@ -55,7 +55,7 @@
                                             @Model.ProductNumber <span>عدد</span>
                                             <br />
 
-                                            <a class="btn btn-danger" href="/Product/BuyProduct/@Model.ProductId" > افزودن به سبد خربد کاربر</a>
+                                            <a class="btn btn-danger" href="/Product/BuyProduct/@Model.ProductId"> افزودن به سبد خربد کاربر</a>
                                         }
                                         else
                                         {
@@ -123,66 +123,48 @@
                                     </div>
                                 </div>
 
+
                                 <div class="tab-pane fade" id="reviews" role="tabpanel">
                                     <div class="reviews_wrapper">
-                                        <h2>1 نقد و بررسی برای این محصول</h2>
-                                        <div class="reviews_comment_box">
-                                            <div class="comment_thmb">
-                                                <img src="img/blog/comment2.jpg" alt="">
-                                            </div>
-                                            <div class="comment_text">
-                                                <div class="reviews_meta">
-                                                    <div class="product_rating">
-                                                        <ul>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                            <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <p><strong>مدیر </strong>- 12 آذر 1398</p>
-                                                </div>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
-                                            </div>
 
-                                        </div>
                                         <div class="comment_title">
-                                            <h2>یک نقد و بررسی بنویسید </h2>
-                                            <p>ایمیل شما منتشر نخواهد شد. فیلد های الزامی مشخص شده اند</p>
-                                        </div>
-                                        <div class="product_rating mb-10">
-                                            <h3>امتیاز شما</h3>
-                                            <ul>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
-                                            </ul>
+                                            <p>ایمیل شما منتشر نخواهد شد. نقد خود از محصول را بنویسید:</p>
                                         </div>
                                         <div class="product_review_form">
-                                            <form action="#">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <label for="review_comment">نقد و بررسی شما </label>
-                                                        <textarea name="comment" id="review_comment"></textarea>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <form asp-controller="Product" asp-action="CreateComment"
+                                                      data-ajax="true"
+                                                      data-ajax-method="post"
+                                                      data-ajax-mode="replace"
+                                                      data-ajax-update="#listComment"
+                                                      data-ajax-success="Success">
+                                                    <div class="row">
+                                                        <input type="hidden" name="comment.ProductId" value="@Model.ProductId" />
+                                                        <div class="col-12">
+                                                            <label for="review_comment">نقد و بررسی شما </label>
+                                                            <textarea name="comment.Comment" id="comment_Comment"></textarea>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-md-6">
-                                                        <label for="author">نام</label>
-                                                        <input id="author" type="text">
-
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6">
-                                                        <label for="email">ایمیل </label>
-                                                        <input id="email" type="email" dir="ltr">
-                                                    </div>
+                                                    <button type="submit">ثبت</button>
+                                                </form>
+                                            }
+                                            else
+                                            {
+                                                <div class="alert alert-danger">
+                                                    جهت درج نظر باید وارد سایت شوید
                                                 </div>
-                                                <button type="submit">ثبت</button>
-                                            </form>
+                                            }
+                                        </div>
+
+                                        <h2>1 نقد و بررسی برای این محصول</h2>
+                                        <div class="reviews_comment_box" id="listComment">
+
+
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -193,3 +175,20 @@
     </div>
 </div>
 
+@section Scripts
+{
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function Success() {
+            $("#comment_Comment").val("");
+        }
+
+        $(function() {
+            $("#listComment").load("/Product/ShowComment/" + @Model.ProductId);
+        });
+
+        function pageComment(pageid) {
+            $("#listComment").load("/Product/ShowComment/" + @Model.ProductId+"?pageId="+pageid);
+        }
+    </script>
+}

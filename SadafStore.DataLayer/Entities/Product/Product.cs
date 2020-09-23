@@ -63,6 +63,7 @@ namespace SadafStore.DataLayer.Entities.Product
         public List<ProductSelectedGroup> ProductSelectedGroups { get; set; }
         public List<ProductGallery> ProductGalleries { get; set; }
         public virtual List<OrderDetail> OrderDetails { get; set; }
+        public List<ProductComment> ProductComments { get; set; }
 
         #endregion
     }

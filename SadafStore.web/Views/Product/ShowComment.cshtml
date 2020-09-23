@@ -1,0 +1,33 @@
+﻿@using SadafStore.Core.Convertors
+@model Tuple<List<SadafStore.DataLayer.Entities.Product.ProductComment>, int>
+
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model.Item1)
+{
+    <div class="comment_thmb">
+        <img src="/AvatarsImg/@item.User.AvatarImg" alt="">
+    </div>
+    <div class="comment_text">
+        <div class="reviews_meta">
+
+            <p><strong>@item.User.UserName </strong>@item.CreateDate.ToShamsi()</p>
+        </div>
+        <p>
+            @item.Comment
+        </p>
+    </div>
+}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+
+        @for (int i = 1; i <= Model.Item2; i++)
+        {
+            <li class="page-item"><a class="page-link" onclick="pageComment(@i)">@i</a></li>
+        }
+
+    </ul>
+</nav>

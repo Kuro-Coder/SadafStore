@@ -44,5 +44,12 @@ namespace SadafStore.Core.Services.Interfaces
         Product GetProductForShow(int productId);
 
         #endregion
+
+        #region Comments
+
+        void AddComment(ProductComment comment);
+        Tuple<List<ProductComment>,int> GetProductComment(int productId, int pageId=1);
+
+        #endregion
     }
 }

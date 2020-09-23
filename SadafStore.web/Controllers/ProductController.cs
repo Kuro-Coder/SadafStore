@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SadafStore.Core.Services.Interfaces;
+using SadafStore.DataLayer.Entities.Product;
 
 namespace SadafStore.web.Controllers
 {
@@ -12,11 +13,13 @@ namespace SadafStore.web.Controllers
     {
         private IProductService _productService;
         private IOrderService _orderService;
+        private IUserService _userService;
 
-        public ProductController(IProductService productService, IOrderService orderService)
+        public ProductController(IProductService productService, IOrderService orderService, IUserService userService)
         {
             _productService = productService;
             _orderService = orderService;
+            _userService = userService;
         }
 
         public IActionResult Index(int pageId = 1, string filter = "", string orderBy = "", int take = 0, List<int> selectedGroups = null)
@@ -46,6 +49,23 @@ namespace SadafStore.web.Controllers
         {
             int orderId = _orderService.AddOrder(User.Identity.Name, id);
             return Redirect("/UserPanel/MyOrders/ShowOrder/" + orderId);
+        }
+
+        [HttpPost]
+        public IActionResult CreateComment(ProductComment comment)
+        {
+            comment.IsDelete = false;
+            comment.CreateDate = DateTime.Now;
+            comment.UserId = _userService.GetUserIdByUserName(User.Identity.Name);
+
+            _productService.AddComment(comment);
+
+            return View("ShowComment", _productService.GetProductComment(comment.ProductId));
+        }
+
+        public IActionResult ShowComment(int id, int pageId = 1)
+        {
+            return View(_productService.GetProductComment(id, pageId));
         }
 
     }

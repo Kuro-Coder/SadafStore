@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using SadafStore.DataLayer.Entities.Product;
 
 namespace SadafStore.DataLayer.Entities.User
 {
@@ -65,6 +66,7 @@ namespace SadafStore.DataLayer.Entities.User
         public virtual List<Wallet.Wallet> Wallets { get; set; }
         public virtual List<Order.Order> Orders { get; set; }
         public virtual List<UserDiscountCode> UserDiscountCodes { get; set; }
+        public List<ProductComment> ProductComments { get; set; }
 
 
         #endregion

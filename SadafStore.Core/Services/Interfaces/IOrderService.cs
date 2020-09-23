@@ -28,5 +28,16 @@ namespace SadafStore.Core.Services.Interfaces
         void UpdateOrder(Order order);
 
         #endregion
+
+        #region Admin
+
+        void AddDiscount(DisCount disCount);
+        List<DisCount> GetAllDiscounts();
+        DisCount GetDisCountById(int discountId);
+        void UpdateDiscount(DisCount disCount);
+        bool IsExistCode(string code);
+
+        #endregion
+
     }
 }
