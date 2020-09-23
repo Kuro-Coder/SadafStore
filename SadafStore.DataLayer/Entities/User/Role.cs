@@ -27,7 +27,7 @@ namespace SadafStore.DataLayer.Entities.User
         #region Relations
 
         public virtual List<UserRole> UserRoles { get; set; }
-        public List<RolePermission> RolePermissions { get; set; }
+        public virtual List<RolePermission> RolePermissions { get; set; }
 
         #endregion
     }

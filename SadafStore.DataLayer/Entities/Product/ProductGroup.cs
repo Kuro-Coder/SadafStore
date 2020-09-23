@@ -6,9 +6,9 @@ using System.Text;
 
 namespace SadafStore.DataLayer.Entities.Product
 {
-    public class ProductGroup
+    public class Group
     {
-        public ProductGroup()
+        public Group()
         {
             
         }
@@ -28,12 +28,12 @@ namespace SadafStore.DataLayer.Entities.Product
         public int? ParentId { get; set; }
 
         [ForeignKey("ParentId")]
-        public List<ProductGroup> ProductGroups { get; set; }
+        public List<Group> ProductGroups { get; set; }
 
 
         #region Relations
 
-        public List<ProductSelectedGroup> ProductSelectedGroups { get; set; }
+        public virtual List<ProductSelectedGroup> ProductSelectedGroups { get; set; }
 
         #endregion
 

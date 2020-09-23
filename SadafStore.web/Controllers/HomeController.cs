@@ -20,6 +20,7 @@ namespace SadafStore.web.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.PopularProduct = _productService.GetPopularProduct();
             return View(_productService.GetProductsList(1,"","",0,null).Item1);
         }
 

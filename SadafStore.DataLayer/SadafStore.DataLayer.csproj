@@ -31,6 +31,18 @@
     <Compile Remove="Migrations\20200906115418_OrderTables.Designer.cs" />
     <Compile Remove="Migrations\20200910052429_NewDataBase.cs" />
     <Compile Remove="Migrations\20200910052429_NewDataBase.Designer.cs" />
+    <Compile Remove="Migrations\20200910061852_NewDataBase.cs" />
+    <Compile Remove="Migrations\20200910061852_NewDataBase.Designer.cs" />
+    <Compile Remove="Migrations\20200913054951_DisCountTab.cs" />
+    <Compile Remove="Migrations\20200913054951_DisCountTab.Designer.cs" />
+    <Compile Remove="Migrations\20200917111717_UserUsedDiscountCode.cs" />
+    <Compile Remove="Migrations\20200917111717_UserUsedDiscountCode.Designer.cs" />
+    <Compile Remove="Migrations\20200921123155_Comment.cs" />
+    <Compile Remove="Migrations\20200921123155_Comment.Designer.cs" />
+    <Compile Remove="Migrations\20200923064422_FixGroupT.cs" />
+    <Compile Remove="Migrations\20200923064422_FixGroupT.Designer.cs" />
+    <Compile Remove="Migrations\20200923065619_newfix.cs" />
+    <Compile Remove="Migrations\20200923065619_newfix.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

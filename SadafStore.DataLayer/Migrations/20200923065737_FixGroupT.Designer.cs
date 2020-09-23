@@ -10,8 +10,8 @@ using SadafStore.DataLayer.Context;
 namespace SadafStore.DataLayer.Migrations
 {
     [DbContext(typeof(SadafStoreContext))]
-    [Migration("20200910061852_NewDataBase")]
-    partial class NewDataBase
+    [Migration("20200923065737_FixGroupT")]
+    partial class FixGroupT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,35 @@ namespace SadafStore.DataLayer.Migrations
                 .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("SadafStore.DataLayer.Entities.Order.DisCount", b =>
+                {
+                    b.Property<int>("DiscountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DisCountCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<int>("DisCountPercent")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UsableCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("DiscountId");
+
+                    b.ToTable("DisCounts");
+                });
 
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Order.Order", b =>
                 {
@@ -119,6 +148,69 @@ namespace SadafStore.DataLayer.Migrations
                     b.ToTable("RolePermissions");
                 });
 
+            modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.Group", b =>
+                {
+                    b.Property<int>("GroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GroupTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("GroupId");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Groups");
+
+                    b.HasData(
+                        new
+                        {
+                            GroupId = 1,
+                            GroupTitle = "هنری معماری",
+                            IsDelete = false
+                        },
+                        new
+                        {
+                            GroupId = 2,
+                            GroupTitle = "اداری",
+                            IsDelete = false
+                        },
+                        new
+                        {
+                            GroupId = 3,
+                            GroupTitle = "نوشت افزار",
+                            IsDelete = false
+                        },
+                        new
+                        {
+                            GroupId = 4,
+                            GroupTitle = "کمک آموزشی",
+                            IsDelete = false
+                        },
+                        new
+                        {
+                            GroupId = 5,
+                            GroupTitle = "اسباب بازی",
+                            IsDelete = false
+                        },
+                        new
+                        {
+                            GroupId = 6,
+                            GroupTitle = "رمان و کتاب",
+                            IsDelete = false
+                        });
+                });
+
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -175,6 +267,41 @@ namespace SadafStore.DataLayer.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.ProductComment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(700)")
+                        .HasMaxLength(700);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsAdminRead")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductComments");
+                });
+
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.ProductGallery", b =>
                 {
                     b.Property<int>("GalleryId")
@@ -196,69 +323,6 @@ namespace SadafStore.DataLayer.Migrations
                     b.ToTable("ProductGalleries");
                 });
 
-            modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.ProductGroup", b =>
-                {
-                    b.Property<int>("GroupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("GroupTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GroupId");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("ProductGroups");
-
-                    b.HasData(
-                        new
-                        {
-                            GroupId = 1,
-                            GroupTitle = "هنری معماری",
-                            IsDelete = false
-                        },
-                        new
-                        {
-                            GroupId = 2,
-                            GroupTitle = "اداری",
-                            IsDelete = false
-                        },
-                        new
-                        {
-                            GroupId = 3,
-                            GroupTitle = "نوشت افزار",
-                            IsDelete = false
-                        },
-                        new
-                        {
-                            GroupId = 4,
-                            GroupTitle = "کمک آموزشی",
-                            IsDelete = false
-                        },
-                        new
-                        {
-                            GroupId = 5,
-                            GroupTitle = "اسباب بازی",
-                            IsDelete = false
-                        },
-                        new
-                        {
-                            GroupId = 6,
-                            GroupTitle = "رمان و کتاب",
-                            IsDelete = false
-                        });
-                });
-
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.ProductSelectedGroup", b =>
                 {
                     b.Property<int>("PSG_Id")
@@ -269,15 +333,12 @@ namespace SadafStore.DataLayer.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductGroupGroupId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.HasKey("PSG_Id");
 
-                    b.HasIndex("ProductGroupGroupId");
+                    b.HasIndex("GroupId");
 
                     b.HasIndex("ProductId");
 
@@ -308,31 +369,13 @@ namespace SadafStore.DataLayer.Migrations
                         {
                             RoleId = 1,
                             IsDelete = false,
-                            RoleName = "مدیرکل سیستم"
+                            RoleName = "مدیر سیستم"
                         },
                         new
                         {
                             RoleId = 2,
                             IsDelete = false,
-                            RoleName = "مدیر سیستم"
-                        },
-                        new
-                        {
-                            RoleId = 3,
-                            IsDelete = false,
                             RoleName = "کاربر"
-                        },
-                        new
-                        {
-                            RoleId = 4,
-                            IsDelete = true,
-                            RoleName = "کاربر طلایی"
-                        },
-                        new
-                        {
-                            RoleId = 5,
-                            IsDelete = true,
-                            RoleName = "کاربر سیلور"
                         });
                 });
 
@@ -392,7 +435,7 @@ namespace SadafStore.DataLayer.Migrations
                         new
                         {
                             UserId = 1,
-                            ActiveCode = "b643730f-c1be-48e3-b908-c86d59efe2ed",
+                            ActiveCode = "6d3d045e-e5bc-445b-a574-f0df358884bc",
                             AvatarAddress = "بابل - جاده قدیم آمل - روستای بالااحمدچاپی",
                             AvatarImg = "null.jpg",
                             AvatarName = "حبیب پورخانلر احمدی",
@@ -401,9 +444,43 @@ namespace SadafStore.DataLayer.Migrations
                             IsActive = true,
                             IsDelete = false,
                             Password = "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34",
-                            RegisterDate = new DateTime(2020, 9, 10, 10, 48, 52, 409, DateTimeKind.Local).AddTicks(8462),
+                            RegisterDate = new DateTime(2020, 9, 23, 10, 27, 37, 373, DateTimeKind.Local).AddTicks(3220),
                             UserName = "Habib"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            ActiveCode = "2998c7f5-e994-4aa3-b3f7-811d5fbea48f",
+                            AvatarImg = "null.jpg",
+                            Email = "farhad.manager@gmail.com",
+                            IsActive = true,
+                            IsDelete = false,
+                            Password = "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34",
+                            RegisterDate = new DateTime(2020, 9, 23, 10, 27, 37, 376, DateTimeKind.Local).AddTicks(9851),
+                            UserName = "Farhad"
                         });
+                });
+
+            modelBuilder.Entity("SadafStore.DataLayer.Entities.User.UserDiscountCode", b =>
+                {
+                    b.Property<int>("UD_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DiscountId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UD_Id");
+
+                    b.HasIndex("DiscountId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserDiscountCodes");
                 });
 
             modelBuilder.Entity("SadafStore.DataLayer.Entities.User.UserRole", b =>
@@ -433,6 +510,12 @@ namespace SadafStore.DataLayer.Migrations
                             UR_Id = 1,
                             RoleId = 1,
                             UserId = 1
+                        },
+                        new
+                        {
+                            UR_Id = 2,
+                            RoleId = 2,
+                            UserId = 2
                         });
                 });
 
@@ -535,6 +618,28 @@ namespace SadafStore.DataLayer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.Group", b =>
+                {
+                    b.HasOne("SadafStore.DataLayer.Entities.Product.Group", null)
+                        .WithMany("ProductGroups")
+                        .HasForeignKey("ParentId");
+                });
+
+            modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.ProductComment", b =>
+                {
+                    b.HasOne("SadafStore.DataLayer.Entities.Product.Product", "Product")
+                        .WithMany("ProductComments")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SadafStore.DataLayer.Entities.User.User", "User")
+                        .WithMany("ProductComments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.ProductGallery", b =>
                 {
                     b.HasOne("SadafStore.DataLayer.Entities.Product.Product", "Product")
@@ -544,22 +649,32 @@ namespace SadafStore.DataLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.ProductGroup", b =>
-                {
-                    b.HasOne("SadafStore.DataLayer.Entities.Product.ProductGroup", null)
-                        .WithMany("ProductGroups")
-                        .HasForeignKey("ParentId");
-                });
-
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Product.ProductSelectedGroup", b =>
                 {
-                    b.HasOne("SadafStore.DataLayer.Entities.Product.ProductGroup", "ProductGroup")
+                    b.HasOne("SadafStore.DataLayer.Entities.Product.Group", "ProductGroup")
                         .WithMany("ProductSelectedGroups")
-                        .HasForeignKey("ProductGroupGroupId");
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("SadafStore.DataLayer.Entities.Product.Product", "Product")
                         .WithMany("ProductSelectedGroups")
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SadafStore.DataLayer.Entities.User.UserDiscountCode", b =>
+                {
+                    b.HasOne("SadafStore.DataLayer.Entities.Order.DisCount", "DisCount")
+                        .WithMany("UserDiscountCodes")
+                        .HasForeignKey("DiscountId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("SadafStore.DataLayer.Entities.User.User", "User")
+                        .WithMany("UserDiscountCodes")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

@@ -3,10 +3,48 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SadafStore.DataLayer.Migrations
 {
-    public partial class NewDataBase : Migration
+    public partial class FixGroupT : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "DisCounts",
+                columns: table => new
+                {
+                    DiscountId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DisCountCode = table.Column<string>(maxLength: 50, nullable: false),
+                    DisCountPercent = table.Column<int>(nullable: false),
+                    UsableCount = table.Column<int>(nullable: true),
+                    StartDate = table.Column<DateTime>(nullable: true),
+                    EndDate = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DisCounts", x => x.DiscountId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    GroupId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GroupTitle = table.Column<string>(maxLength: 200, nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
+                    ParentId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.GroupId);
+                    table.ForeignKey(
+                        name: "FK_Groups_Groups_ParentId",
+                        column: x => x.ParentId,
+                        principalTable: "Groups",
+                        principalColumn: "GroupId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Permissions",
                 columns: table => new
@@ -24,27 +62,6 @@ namespace SadafStore.DataLayer.Migrations
                         column: x => x.ParentId,
                         principalTable: "Permissions",
                         principalColumn: "PermissionId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductGroups",
-                columns: table => new
-                {
-                    GroupId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    GroupTitle = table.Column<string>(maxLength: 200, nullable: false),
-                    IsDelete = table.Column<bool>(nullable: false),
-                    ParentId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductGroups", x => x.GroupId);
-                    table.ForeignKey(
-                        name: "FK_ProductGroups_ProductGroups_ParentId",
-                        column: x => x.ParentId,
-                        principalTable: "ProductGroups",
-                        principalColumn: "GroupId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -147,17 +164,16 @@ namespace SadafStore.DataLayer.Migrations
                 {
                     PSG_Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(nullable: false),
                     GroupId = table.Column<int>(nullable: false),
-                    ProductGroupGroupId = table.Column<int>(nullable: true)
+                    ProductId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProductSelectedGroups", x => x.PSG_Id);
                     table.ForeignKey(
-                        name: "FK_ProductSelectedGroups_ProductGroups_ProductGroupGroupId",
-                        column: x => x.ProductGroupGroupId,
-                        principalTable: "ProductGroups",
+                        name: "FK_ProductSelectedGroups_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
                         principalColumn: "GroupId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -210,6 +226,62 @@ namespace SadafStore.DataLayer.Migrations
                     table.PrimaryKey("PK_Orders", x => x.OrderId);
                     table.ForeignKey(
                         name: "FK_Orders_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductComments",
+                columns: table => new
+                {
+                    CommentId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    Comment = table.Column<string>(maxLength: 700, nullable: true),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
+                    IsAdminRead = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductComments", x => x.CommentId);
+                    table.ForeignKey(
+                        name: "FK_ProductComments_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ProductComments_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserDiscountCodes",
+                columns: table => new
+                {
+                    UD_Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(nullable: false),
+                    DiscountId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserDiscountCodes", x => x.UD_Id);
+                    table.ForeignKey(
+                        name: "FK_UserDiscountCodes_DisCounts_DiscountId",
+                        column: x => x.DiscountId,
+                        principalTable: "DisCounts",
+                        principalColumn: "DiscountId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UserDiscountCodes_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
@@ -302,7 +374,7 @@ namespace SadafStore.DataLayer.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "ProductGroups",
+                table: "Groups",
                 columns: new[] { "GroupId", "GroupTitle", "IsDelete", "ParentId" },
                 values: new object[,]
                 {
@@ -319,22 +391,33 @@ namespace SadafStore.DataLayer.Migrations
                 columns: new[] { "RoleId", "IsDelete", "RoleName" },
                 values: new object[,]
                 {
-                    { 1, false, "مدیرکل سیستم" },
-                    { 2, false, "مدیر سیستم" },
-                    { 3, false, "کاربر" },
-                    { 4, true, "کاربر طلایی" },
-                    { 5, true, "کاربر سیلور" }
+                    { 1, false, "مدیر سیستم" },
+                    { 2, false, "کاربر" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "ActiveCode", "AvatarAddress", "AvatarImg", "AvatarName", "AvatarPhone", "Email", "IsActive", "IsDelete", "Password", "RegisterDate", "UserName" },
-                values: new object[] { 1, "b643730f-c1be-48e3-b908-c86d59efe2ed", "بابل - جاده قدیم آمل - روستای بالااحمدچاپی", "null.jpg", "حبیب پورخانلر احمدی", "09333635633", "habib.pa98@gmail.com", true, false, "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34", new DateTime(2020, 9, 10, 10, 48, 52, 409, DateTimeKind.Local).AddTicks(8462), "Habib" });
+                values: new object[,]
+                {
+                    { 1, "6d3d045e-e5bc-445b-a574-f0df358884bc", "بابل - جاده قدیم آمل - روستای بالااحمدچاپی", "null.jpg", "حبیب پورخانلر احمدی", "09333635633", "habib.pa98@gmail.com", true, false, "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34", new DateTime(2020, 9, 23, 10, 27, 37, 373, DateTimeKind.Local).AddTicks(3220), "Habib" },
+                    { 2, "2998c7f5-e994-4aa3-b3f7-811d5fbea48f", null, "null.jpg", null, null, "farhad.manager@gmail.com", true, false, "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34", new DateTime(2020, 9, 23, 10, 27, 37, 376, DateTimeKind.Local).AddTicks(9851), "Farhad" }
+                });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
                 columns: new[] { "UR_Id", "RoleId", "UserId" },
                 values: new object[] { 1, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "UserRoles",
+                columns: new[] { "UR_Id", "RoleId", "UserId" },
+                values: new object[] { 2, 2, 2 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Groups_ParentId",
+                table: "Groups",
+                column: "ParentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_OrderId",
@@ -357,19 +440,24 @@ namespace SadafStore.DataLayer.Migrations
                 column: "ParentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductComments_ProductId",
+                table: "ProductComments",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductComments_UserId",
+                table: "ProductComments",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProductGalleries_ProductId",
                 table: "ProductGalleries",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductGroups_ParentId",
-                table: "ProductGroups",
-                column: "ParentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductSelectedGroups_ProductGroupGroupId",
+                name: "IX_ProductSelectedGroups_GroupId",
                 table: "ProductSelectedGroups",
-                column: "ProductGroupGroupId");
+                column: "GroupId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductSelectedGroups_ProductId",
@@ -385,6 +473,16 @@ namespace SadafStore.DataLayer.Migrations
                 name: "IX_RolePermissions_RoleId",
                 table: "RolePermissions",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserDiscountCodes_DiscountId",
+                table: "UserDiscountCodes",
+                column: "DiscountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserDiscountCodes_UserId",
+                table: "UserDiscountCodes",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_RoleId",
@@ -413,6 +511,9 @@ namespace SadafStore.DataLayer.Migrations
                 name: "OrderDetails");
 
             migrationBuilder.DropTable(
+                name: "ProductComments");
+
+            migrationBuilder.DropTable(
                 name: "ProductGalleries");
 
             migrationBuilder.DropTable(
@@ -420,6 +521,9 @@ namespace SadafStore.DataLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "RolePermissions");
+
+            migrationBuilder.DropTable(
+                name: "UserDiscountCodes");
 
             migrationBuilder.DropTable(
                 name: "UserRoles");
@@ -431,13 +535,16 @@ namespace SadafStore.DataLayer.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "ProductGroups");
+                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Permissions");
+
+            migrationBuilder.DropTable(
+                name: "DisCounts");
 
             migrationBuilder.DropTable(
                 name: "Roles");

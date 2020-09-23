@@ -60,10 +60,10 @@ namespace SadafStore.DataLayer.Entities.Product
 
         #region Relations
 
-        public List<ProductSelectedGroup> ProductSelectedGroups { get; set; }
-        public List<ProductGallery> ProductGalleries { get; set; }
+        public virtual List<ProductSelectedGroup> ProductSelectedGroups { get; set; }
+        public virtual List<ProductGallery> ProductGalleries { get; set; }
         public virtual List<OrderDetail> OrderDetails { get; set; }
-        public List<ProductComment> ProductComments { get; set; }
+        public virtual List<ProductComment> ProductComments { get; set; }
 
         #endregion
     }

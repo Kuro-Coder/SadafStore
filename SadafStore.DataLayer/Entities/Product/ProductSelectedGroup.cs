@@ -15,14 +15,14 @@ namespace SadafStore.DataLayer.Entities.Product
         [Key]
         public int PSG_Id { get; set; }
 
-        public int ProductId { get; set; }
-        
         public int GroupId { get; set; }
+
+        public int ProductId { get; set; }
 
         #region Relations
 
-        public Product Product { get; set; }
-        public ProductGroup ProductGroup { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual Group ProductGroup { get; set; }
 
         #endregion
 

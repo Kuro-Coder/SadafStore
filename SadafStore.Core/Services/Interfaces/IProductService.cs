@@ -12,7 +12,7 @@ namespace SadafStore.Core.Services.Interfaces
     {
         #region Groups
 
-        List<ProductGroup> GetAllGroups();
+        List<Group> GetAllGroups();
         List<SelectListItem> GetGroupForManageProduct();
         List<SelectListItem> GetSubGroupForManageProduct(int groupId);
         void EditProductGroups(int productId, List<int> groupId);
@@ -49,6 +49,12 @@ namespace SadafStore.Core.Services.Interfaces
 
         void AddComment(ProductComment comment);
         Tuple<List<ProductComment>,int> GetProductComment(int productId, int pageId=1);
+
+        #endregion
+
+        #region Popular Product
+
+        List<ShowProductListViewModel> GetPopularProduct();
 
         #endregion
     }

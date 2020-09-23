@@ -44,7 +44,7 @@ namespace SadafStore.DataLayer.Context
         #region Product
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductGroup> ProductGroups { get; set; }
+        public DbSet<Group> Groups { get; set; }
         public DbSet<ProductGallery> ProductGalleries { get; set; }
         public DbSet<ProductSelectedGroup> ProductSelectedGroups { get; set; }
         public DbSet<ProductComment> ProductComments { get; set; }
@@ -87,7 +87,7 @@ namespace SadafStore.DataLayer.Context
             modelBuilder.Entity<Role>()
                 .HasQueryFilter(u => !u.IsDelete);
             //Filter For DeletedGroup in ProductGroup
-            modelBuilder.Entity<ProductGroup>()
+            modelBuilder.Entity<Group>()
                 .HasQueryFilter(u => !u.IsDelete);
             //Filter For DeletedGroup in ProductGroup
             modelBuilder.Entity<Product>()
@@ -102,28 +102,13 @@ namespace SadafStore.DataLayer.Context
             modelBuilder.Entity<Role>().HasData(new Role()
             {
                 RoleId = 1,
-                RoleName = "مدیرکل سیستم",
-                IsDelete = false
-            }, new Role()
-            {
-                RoleId = 2,
                 RoleName = "مدیر سیستم",
                 IsDelete = false
             }, new Role()
             {
-                RoleId = 3,
+                RoleId = 2,
                 RoleName = "کاربر",
                 IsDelete = false
-            }, new Role()
-            {
-                RoleId = 4,
-                RoleName = "کاربر طلایی",
-                IsDelete = true
-            }, new Role()
-            {
-                RoleId = 5,
-                RoleName = "کاربر سیلور",
-                IsDelete = true
             });
 
             #endregion
@@ -144,6 +129,20 @@ namespace SadafStore.DataLayer.Context
                 AvatarPhone = "09333635633",
                 AvatarAddress = "بابل - جاده قدیم آمل - روستای بالااحمدچاپی",
                 AvatarImg = "null.jpg"
+            },new User()
+            {
+                UserId = 2,
+                UserName = "Farhad",
+                Email = "farhad.manager@gmail.com",
+                Password = "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34",
+                IsActive = true,
+                IsDelete = false,
+                ActiveCode = Guid.NewGuid().ToString(),
+                RegisterDate = DateTime.Now,
+                AvatarName = null,
+                AvatarPhone = null,
+                AvatarAddress = null,
+                AvatarImg = "null.jpg"
             });
 
             #endregion
@@ -155,43 +154,48 @@ namespace SadafStore.DataLayer.Context
                 UR_Id = 1,
                 UserId = 1,
                 RoleId = 1
+            }, new UserRole()
+            {
+                UR_Id = 2,
+                UserId = 2,
+                RoleId = 2
             });
 
             #endregion
 
             #region ProductGrops
 
-            modelBuilder.Entity<ProductGroup>().HasData(new ProductGroup()
+            modelBuilder.Entity<Group>().HasData(new Group()
             {
                 GroupId = 1,
                 GroupTitle = "هنری معماری",
                 IsDelete = false,
                 ParentId = null
-            }, new ProductGroup()
+            }, new Group()
             {
                 GroupId = 2,
                 GroupTitle = "اداری",
                 IsDelete = false,
                 ParentId = null
-            }, new ProductGroup()
+            }, new Group()
             {
                 GroupId = 3,
                 GroupTitle = "نوشت افزار",
                 IsDelete = false,
                 ParentId = null
-            }, new ProductGroup()
+            }, new Group()
             {
                 GroupId = 4,
                 GroupTitle = "کمک آموزشی",
                 IsDelete = false,
                 ParentId = null
-            }, new ProductGroup()
+            }, new Group()
             {
                 GroupId = 5,
                 GroupTitle = "اسباب بازی",
                 IsDelete = false,
                 ParentId = null
-            }, new ProductGroup()
+            }, new Group()
             {
                 GroupId = 6,
                 GroupTitle = "رمان و کتاب",

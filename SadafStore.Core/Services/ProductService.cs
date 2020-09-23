@@ -104,14 +104,14 @@ namespace SadafStore.Core.Services
             _context.SaveChanges();
         }
 
-        public List<ProductGroup> GetAllGroups()
+        public List<Group> GetAllGroups()
         {
-            return _context.ProductGroups.ToList();
+            return _context.Groups.ToList();
         }
 
         public List<SelectListItem> GetGroupForManageProduct()
         {
-            return _context.ProductGroups.Where(g => g.ParentId == null)
+            return _context.Groups.Where(g => g.ParentId == null)
                 .Select(g => new SelectListItem()
                 {
                     Text = g.GroupTitle,
@@ -121,7 +121,7 @@ namespace SadafStore.Core.Services
 
         public List<SelectListItem> GetSubGroupForManageProduct(int groupId)
         {
-            return _context.ProductGroups.Where(g => g.ParentId == groupId)
+            return _context.Groups.Where(g => g.ParentId == groupId)
                 .Select(g => new SelectListItem()
                 {
                     Text = g.GroupTitle,
@@ -261,7 +261,7 @@ namespace SadafStore.Core.Services
             return list;
         }
 
-        public Tuple<List<ShowProductListViewModel>, int> GetProductsList(int pageId =1, string filter = "", string orderBy = "", int take = 0, List<int> selectedGroups = null)
+        public Tuple<List<ShowProductListViewModel>, int> GetProductsList(int pageId = 1, string filter = "", string orderBy = "", int take = 0, List<int> selectedGroups = null)
         {
             IQueryable<Product> result = _context.Products;
             IQueryable<ProductSelectedGroup> selected = _context.ProductSelectedGroups;
@@ -277,16 +277,16 @@ namespace SadafStore.Core.Services
             switch (orderBy)
             {
                 case "price":
-                {
-                    result = result.OrderByDescending(p => p.Price );
-                    break;
-                }
+                    {
+                        result = result.OrderByDescending(p => p.Price);
+                        break;
+                    }
 
                 case "new":
-                {
-                    result = result.OrderByDescending(p => p.CreateTime);
-                    break;
-                }
+                    {
+                        result = result.OrderByDescending(p => p.CreateTime);
+                        break;
+                    }
 
                 case "old":
                     break;
@@ -321,7 +321,7 @@ namespace SadafStore.Core.Services
                 NewPrice = p.Price,
                 OldPrice = p.OldPrice,
                 Img = p.ProductImage
-            }).Count()/take;
+            }).Count() / take;
 
             return Tuple.Create(query, pageCount);
         }
@@ -353,6 +353,23 @@ namespace SadafStore.Core.Services
                 _context.ProductComments.Include(c => c.User).Where(c => !c.IsDelete && c.ProductId == productId).Skip(skip).Take(take)
                     .OrderByDescending(c => c.CreateDate).ToList(), pageCount);
 
+
+        }
+
+        public List<ShowProductListViewModel> GetPopularProduct()
+        {
+            return _context.Products.Include(p => p.OrderDetails)
+                .Where(c => c.OrderDetails.Any())
+                .OrderByDescending(d => d.OrderDetails.Count)
+                .Take(8)
+                .Select(p => new ShowProductListViewModel()
+                {
+                    Id = p.ProductId,
+                    Img = p.ProductImage,
+                    OldPrice = p.OldPrice,
+                    NewPrice = p.Price,
+                    ShortDescription = p.ShortDescription
+                }).ToList();
 
         }
     }

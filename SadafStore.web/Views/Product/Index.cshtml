@@ -25,7 +25,7 @@
             <form action="Product" method="get">
                 <input type="hidden" id="myPageId" name="pageId" value="@ViewBag.pageId.ToString()" />
                 @{
-                    List<ProductGroup> groups = ViewBag.Groups as List<ProductGroup>;
+                    List<Group> groups = ViewBag.Groups as List<Group>;
                     List<int> selected = ViewBag.selectedGroups as List<int>;
                 }
                 <div class="col-12">
