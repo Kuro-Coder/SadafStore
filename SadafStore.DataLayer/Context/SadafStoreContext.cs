@@ -29,7 +29,7 @@ namespace SadafStore.DataLayer.Context
 
         #region Wallet
 
-        public DbSet<WalletType> WalletTypes { get; set; }
+        public DbSet<TypeOfWallet> TypeOfWallets { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
 
         #endregion
@@ -205,7 +205,21 @@ namespace SadafStore.DataLayer.Context
 
             #endregion
 
+            #region TypeOfWallet
+
+            modelBuilder.Entity<TypeOfWallet>().HasData(new TypeOfWallet()
+            {
+                TypeId = 1,
+                TypeTitle = "واریز به حساب"
+            }, new  TypeOfWallet()
+            {
+                TypeId = 2,
+                TypeTitle = "برداشت از حساب"
+            });
+
             #endregion
+
+#endregion
 
 
 

@@ -39,5 +39,7 @@ namespace SadafStore.Core.Services.Interfaces
 
         #endregion
 
+        
+
     }
 }

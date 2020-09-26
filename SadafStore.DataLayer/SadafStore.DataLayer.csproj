@@ -43,6 +43,8 @@
     <Compile Remove="Migrations\20200923064422_FixGroupT.Designer.cs" />
     <Compile Remove="Migrations\20200923065619_newfix.cs" />
     <Compile Remove="Migrations\20200923065619_newfix.Designer.cs" />
+    <Compile Remove="Migrations\20200923065737_FixGroupT.cs" />
+    <Compile Remove="Migrations\20200923065737_FixGroupT.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

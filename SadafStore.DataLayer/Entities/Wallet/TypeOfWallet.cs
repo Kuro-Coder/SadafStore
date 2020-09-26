@@ -6,9 +6,9 @@ using System.Text;
 
 namespace SadafStore.DataLayer.Entities.Wallet
 {
-    public class WalletType
+    public class TypeOfWallet
     {
-        public WalletType()
+        public TypeOfWallet()
         {
 
         }

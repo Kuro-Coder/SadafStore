@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SadafStore.DataLayer.Migrations
 {
-    public partial class FixGroupT : Migration
+    public partial class FixWalletT : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -104,6 +104,18 @@ namespace SadafStore.DataLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TypeOfWallets",
+                columns: table => new
+                {
+                    TypeId = table.Column<int>(nullable: false),
+                    TypeTitle = table.Column<string>(maxLength: 150, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TypeOfWallets", x => x.TypeId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -124,18 +136,6 @@ namespace SadafStore.DataLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "WalletTypes",
-                columns: table => new
-                {
-                    TypeId = table.Column<int>(nullable: false),
-                    TypeTitle = table.Column<string>(maxLength: 150, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WalletTypes", x => x.TypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -326,22 +326,22 @@ namespace SadafStore.DataLayer.Migrations
                     Description = table.Column<string>(maxLength: 500, nullable: true),
                     IsPay = table.Column<bool>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    WalletTypeTypeId = table.Column<int>(nullable: true)
+                    TypeOfWalletTypeId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Wallets", x => x.WalletId);
                     table.ForeignKey(
+                        name: "FK_Wallets_TypeOfWallets_TypeOfWalletTypeId",
+                        column: x => x.TypeOfWalletTypeId,
+                        principalTable: "TypeOfWallets",
+                        principalColumn: "TypeId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Wallets_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Wallets_WalletTypes_WalletTypeTypeId",
-                        column: x => x.WalletTypeTypeId,
-                        principalTable: "WalletTypes",
-                        principalColumn: "TypeId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -396,12 +396,21 @@ namespace SadafStore.DataLayer.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "TypeOfWallets",
+                columns: new[] { "TypeId", "TypeTitle" },
+                values: new object[,]
+                {
+                    { 1, "واریز به حساب" },
+                    { 2, "برداشت از حساب" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "ActiveCode", "AvatarAddress", "AvatarImg", "AvatarName", "AvatarPhone", "Email", "IsActive", "IsDelete", "Password", "RegisterDate", "UserName" },
                 values: new object[,]
                 {
-                    { 1, "6d3d045e-e5bc-445b-a574-f0df358884bc", "بابل - جاده قدیم آمل - روستای بالااحمدچاپی", "null.jpg", "حبیب پورخانلر احمدی", "09333635633", "habib.pa98@gmail.com", true, false, "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34", new DateTime(2020, 9, 23, 10, 27, 37, 373, DateTimeKind.Local).AddTicks(3220), "Habib" },
-                    { 2, "2998c7f5-e994-4aa3-b3f7-811d5fbea48f", null, "null.jpg", null, null, "farhad.manager@gmail.com", true, false, "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34", new DateTime(2020, 9, 23, 10, 27, 37, 376, DateTimeKind.Local).AddTicks(9851), "Farhad" }
+                    { 1, "6932df57-219c-4428-a297-284a5a6f39e7", "بابل - جاده قدیم آمل - روستای بالااحمدچاپی", "null.jpg", "حبیب پورخانلر احمدی", "09333635633", "habib.pa98@gmail.com", true, false, "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34", new DateTime(2020, 9, 23, 11, 1, 19, 747, DateTimeKind.Local).AddTicks(9564), "Habib" },
+                    { 2, "10342d62-b47f-4dee-9074-79640d2cf1c7", null, "null.jpg", null, null, "farhad.manager@gmail.com", true, false, "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34", new DateTime(2020, 9, 23, 11, 1, 19, 754, DateTimeKind.Local).AddTicks(2215), "Farhad" }
                 });
 
             migrationBuilder.InsertData(
@@ -495,14 +504,14 @@ namespace SadafStore.DataLayer.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Wallets_TypeOfWalletTypeId",
+                table: "Wallets",
+                column: "TypeOfWalletTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Wallets_UserId",
                 table: "Wallets",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Wallets_WalletTypeTypeId",
-                table: "Wallets",
-                column: "WalletTypeTypeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -550,7 +559,7 @@ namespace SadafStore.DataLayer.Migrations
                 name: "Roles");
 
             migrationBuilder.DropTable(
-                name: "WalletTypes");
+                name: "TypeOfWallets");
 
             migrationBuilder.DropTable(
                 name: "Users");

@@ -10,8 +10,8 @@ using SadafStore.DataLayer.Context;
 namespace SadafStore.DataLayer.Migrations
 {
     [DbContext(typeof(SadafStoreContext))]
-    [Migration("20200923065737_FixGroupT")]
-    partial class FixGroupT
+    [Migration("20200923073120_FixWalletT")]
+    partial class FixWalletT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -435,7 +435,7 @@ namespace SadafStore.DataLayer.Migrations
                         new
                         {
                             UserId = 1,
-                            ActiveCode = "6d3d045e-e5bc-445b-a574-f0df358884bc",
+                            ActiveCode = "6932df57-219c-4428-a297-284a5a6f39e7",
                             AvatarAddress = "بابل - جاده قدیم آمل - روستای بالااحمدچاپی",
                             AvatarImg = "null.jpg",
                             AvatarName = "حبیب پورخانلر احمدی",
@@ -444,19 +444,19 @@ namespace SadafStore.DataLayer.Migrations
                             IsActive = true,
                             IsDelete = false,
                             Password = "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34",
-                            RegisterDate = new DateTime(2020, 9, 23, 10, 27, 37, 373, DateTimeKind.Local).AddTicks(3220),
+                            RegisterDate = new DateTime(2020, 9, 23, 11, 1, 19, 747, DateTimeKind.Local).AddTicks(9564),
                             UserName = "Habib"
                         },
                         new
                         {
                             UserId = 2,
-                            ActiveCode = "2998c7f5-e994-4aa3-b3f7-811d5fbea48f",
+                            ActiveCode = "10342d62-b47f-4dee-9074-79640d2cf1c7",
                             AvatarImg = "null.jpg",
                             Email = "farhad.manager@gmail.com",
                             IsActive = true,
                             IsDelete = false,
                             Password = "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34",
-                            RegisterDate = new DateTime(2020, 9, 23, 10, 27, 37, 376, DateTimeKind.Local).AddTicks(9851),
+                            RegisterDate = new DateTime(2020, 9, 23, 11, 1, 19, 754, DateTimeKind.Local).AddTicks(2215),
                             UserName = "Farhad"
                         });
                 });
@@ -519,6 +519,33 @@ namespace SadafStore.DataLayer.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SadafStore.DataLayer.Entities.Wallet.TypeOfWallet", b =>
+                {
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TypeTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.HasKey("TypeId");
+
+                    b.ToTable("TypeOfWallets");
+
+                    b.HasData(
+                        new
+                        {
+                            TypeId = 1,
+                            TypeTitle = "واریز به حساب"
+                        },
+                        new
+                        {
+                            TypeId = 2,
+                            TypeTitle = "برداشت از حساب"
+                        });
+                });
+
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Wallet.Wallet", b =>
                 {
                     b.Property<int>("WalletId")
@@ -542,34 +569,19 @@ namespace SadafStore.DataLayer.Migrations
                     b.Property<int>("TypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("TypeOfWalletTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WalletTypeTypeId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("WalletId");
 
+                    b.HasIndex("TypeOfWalletTypeId");
+
                     b.HasIndex("UserId");
 
-                    b.HasIndex("WalletTypeTypeId");
-
                     b.ToTable("Wallets");
-                });
-
-            modelBuilder.Entity("SadafStore.DataLayer.Entities.Wallet.WalletType", b =>
-                {
-                    b.Property<int>("TypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TypeTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
-
-                    b.HasKey("TypeId");
-
-                    b.ToTable("WalletTypes");
                 });
 
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Order.Order", b =>
@@ -696,15 +708,15 @@ namespace SadafStore.DataLayer.Migrations
 
             modelBuilder.Entity("SadafStore.DataLayer.Entities.Wallet.Wallet", b =>
                 {
+                    b.HasOne("SadafStore.DataLayer.Entities.Wallet.TypeOfWallet", "TypeOfWallet")
+                        .WithMany("Wallets")
+                        .HasForeignKey("TypeOfWalletTypeId");
+
                     b.HasOne("SadafStore.DataLayer.Entities.User.User", "User")
                         .WithMany("Wallets")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("SadafStore.DataLayer.Entities.Wallet.WalletType", "WalletType")
-                        .WithMany("Wallets")
-                        .HasForeignKey("WalletTypeTypeId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,56 @@
+﻿@using SadafStore.Core.Services.Interfaces
+@model SadafStore.DataLayer.Entities.Order.Order
+@inject IUserService _UserService;
+
+@{
+    int sumOrder = Model.OrderSum;
+}
+
+<div class="mini_cart_wrapper ">
+    <a href="javascript:void(0)">
+        <i class="fa fa-shopping-bag"></i>
+        <span class="cart_price"><span>سبد خرید شما</span> </span>
+        <span class="cart_price"><span>@sumOrder.ToString("#,0") تومان</span> <i class="ion-ios-arrow-down"></i></span>
+        <span class="cart_count">2</span>
+
+    </a>
+    <!--mini cart-->
+    <div class="mini_cart">
+        <div class="mini_cart_inner">
+            @foreach (var item in Model.OrderDetails)
+            {
+                <div class="cart_item">
+                    <div class="cart_img">
+                        <a href="#"><img src="/ProductImg/thumbs/@item.Product.ProductImage" alt=""></a>
+                    </div>
+                    <div class="cart_info">
+                        <a href="#">@item.Product.ProductTitle</a>
+                        <p>تعداد: @item.Count × <span> @item.Price تومان </span></p>
+                    </div>
+                    <div class="cart_remove">
+                        <a href="#"><i class="ion-android-close"></i></a>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="mini_cart_table">
+
+            <div class="cart_total mt-10">
+                <span>جمع کل:</span>
+                <span>@sumOrder.ToString("#,0") تومان</span>
+            </div>
+        </div>
+        <div class="mini_cart_footer">
+            <div class="cart_button">
+                <a href="/UserPanel/MyOrders/ShowOrder">مشاهده سبد</a>
+            </div>
+            <div class="cart_button">
+                <a href="checkout.html">پرداخت</a>
+            </div>
+
+        </div>
+
+    </div>
+    <!--mini cart end-->
+</div>

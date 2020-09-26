@@ -57,7 +57,7 @@
                                 </p>
                             </div>
                         }
-                        
+
                         @if (ViewBag.SuccessChangePass == true)
                         {
                             <div class="alert alert-warning">
@@ -77,7 +77,14 @@
                             </p>
                             <span asp-validation-for="Password"></span>
                             <div class="login_submit">
-                                <a href="/ForgotPassword">کلمه عبور خود را فراموش کرده اید؟</a>
+                                <p>
+                                    <a href="/ForgotPassword">کلمه عبور خود را فراموش کرده‌اید؟</a>
+                                </p>
+
+                                <p >
+                                    <a style="margin-right: 15px !important" href="/Register">هنوز ثبت نام نکرده‌اید؟</a>
+                                </p>
+
                                 <label for="remember">
                                     <input asp-for="RememberMe" id="remember" type="checkbox">
                                     مرا به خاطر بسپار

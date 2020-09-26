@@ -38,6 +38,17 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
             return View(order);
         }
 
+        public IActionResult ShowMiniOrder(int id)
+        {
+            var order = _orderService.GetOrderForUserPanel(User.Identity.Name, id);
+            if (order == null)
+            {
+                return Content("شما خریدی ندارید!!");
+            }
+
+            return View(order);
+        }
+
         public IActionResult FinalyOrder(int id)
         {
             if (_orderService.FinalyOrder(User.Identity.Name,id))

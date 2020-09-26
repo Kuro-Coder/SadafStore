@@ -16,10 +16,12 @@ namespace SadafStore.web.Areas.UserPanel.Controllers
     public class HomeController : Controller
     {
         private IUserService _userService;
+        private IOrderService _orderService;
 
-        public HomeController(IUserService userService)
+        public HomeController(IUserService userService, IOrderService orderService)
         {
             _userService = userService;
+            _orderService = orderService;
         }
 
         public IActionResult Index()

@@ -222,5 +222,6 @@ namespace SadafStore.Core.Services
         {
             return _context.DisCounts.Any(d => d.DisCountCode == code);
         }
+
     }
 }
