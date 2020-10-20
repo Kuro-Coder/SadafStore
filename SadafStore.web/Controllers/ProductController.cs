@@ -22,12 +22,12 @@ namespace SadafStore.web.Controllers
             _userService = userService;
         }
 
-        public IActionResult Index(int pageId = 1, string filter = "", string orderBy = "", int take = 0, List<int> selectedGroups = null)
+        public IActionResult Index(int pageId = 1, string filter = "", string orderBy = "", List<int> selectedGroups = null, int take = 0)
         {
             ViewBag.pageId = pageId;
             ViewBag.Groups = _productService.GetAllGroups();
             ViewBag.SelectedGroups = selectedGroups;
-            return View(_productService.GetProductsList(pageId, filter, orderBy, 4 , selectedGroups));
+            return View(_productService.GetProductsList(pageId, filter, orderBy, selectedGroups, 4 ));
         }
 
         [Route("ShowProduct/{id}")]

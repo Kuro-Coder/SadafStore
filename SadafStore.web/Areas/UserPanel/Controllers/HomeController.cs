@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SadafStore.Core.DTOs;
 using SadafStore.Core.Services.Interfaces;
-
+ 
 namespace SadafStore.web.Areas.UserPanel.Controllers
 {
     [Area("UserPanel")]

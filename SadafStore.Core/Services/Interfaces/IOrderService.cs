@@ -22,6 +22,8 @@ namespace SadafStore.Core.Services.Interfaces
 
         void UpdateOrderDetail(OrderDetail detail);
 
+
+
         #region DisCount
 
         DisCountUseType UseDisCount(int orderId, string code);

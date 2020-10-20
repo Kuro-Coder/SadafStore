@@ -81,10 +81,18 @@ namespace SadafStore.Core.Services
                     product.ProductImageName.CopyTo(stream);
                 }
 
-                ImageConvertor imgResizer = new ImageConvertor();
+                ImageConvertor imgThumbReSizer = new ImageConvertor();
                 string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/thumbs", addProduct.ProductImage);
+                imgThumbReSizer.Image_resize(imagePath, thumbPath, 110);
 
-                imgResizer.Image_resize(imagePath, thumbPath, 100);
+                ImageConvertor imgBoxCardReSizer = new ImageConvertor();
+                string boxCardPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/boxCard", addProduct.ProductImage);
+                imgBoxCardReSizer.Image_resize(imagePath, boxCardPath, 251);
+
+                ImageConvertor imgBoxCardFilteringReSizer = new ImageConvertor();
+                string boxCardFilteringPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/boxCardFiltering", addProduct.ProductImage);
+                imgBoxCardFilteringReSizer.Image_resize(imagePath, boxCardFilteringPath, 314);
+
             }
 
             return AddProduct(addProduct);
@@ -176,6 +184,19 @@ namespace SadafStore.Core.Services
                     {
                         File.Delete(deletePath);
                     }
+                    string deleteBoxCardPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ProductImg/boxCard",
+                        editProduct.ImageName);
+                    if (File.Exists(deletePath))
+                    {
+                        File.Delete(deletePath);
+                    }
+                    string deleteBoxCardFilteringPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ProductImg/boxCardFiltering",
+                        editProduct.ImageName);
+                    if (File.Exists(deletePath))
+                    {
+                        File.Delete(deletePath);
+                    }
+
                 }
 
                 //Save New Image
@@ -185,10 +206,18 @@ namespace SadafStore.Core.Services
                 {
                     editProduct.ProductImageName.CopyTo(stream);
                 }
-                ImageConvertor imgResizer = new ImageConvertor();
-                string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ProductImg/thumbs", product.ProductImage);
 
-                imgResizer.Image_resize(imagePath, thumbPath, 100);
+                ImageConvertor imgThumbReSizer = new ImageConvertor();
+                string thumbPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/thumbs", product.ProductImage);
+                imgThumbReSizer.Image_resize(imagePath, thumbPath, 110);
+
+                ImageConvertor imgBoxCardReSizer = new ImageConvertor();
+                string boxCardPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/boxCard", product.ProductImage);
+                imgBoxCardReSizer.Image_resize(imagePath, boxCardPath, 251);
+
+                ImageConvertor imgBoxCardFilteringReSizer = new ImageConvertor();
+                string boxCardFilteringPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productimg/boxCardFiltering", product.ProductImage);
+                imgBoxCardFilteringReSizer.Image_resize(imagePath, boxCardFilteringPath, 314);
             }
             _context.Products.Update(product);
             _context.SaveChanges();
@@ -261,7 +290,7 @@ namespace SadafStore.Core.Services
             return list;
         }
 
-        public Tuple<List<ShowProductListViewModel>, int> GetProductsList(int pageId = 1, string filter = "", string orderBy = "", int take = 0, List<int> selectedGroups = null)
+        public Tuple<List<ShowProductListViewModel>, int> GetProductsList(int pageId = 1, string filter = "", string orderBy = "", List<int> selectedGroups = null, int take = 0)
         {
             IQueryable<Product> result = _context.Products;
             IQueryable<ProductSelectedGroup> selected = _context.ProductSelectedGroups;
@@ -296,7 +325,7 @@ namespace SadafStore.Core.Services
             {
                 foreach (var groupId in selectedGroups)
                 {
-                    selected = selected.Where(g => g.GroupId == groupId || g.PSG_Id == g.GroupId);
+                    selected = selected.Where(g => g.GroupId == groupId && g.ProductGroup.GroupId == groupId);
                 }
             }
             // Page Skip

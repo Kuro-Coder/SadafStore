@@ -25,4 +25,10 @@
     <ProjectReference Include="..\SadafStore.DataLayer\SadafStore.DataLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Admin\ProductGroups\" />
+    <Folder Include="wwwroot\ProductImg\boxCard\" />
+    <Folder Include="wwwroot\ProductImg\boxCardFiltering\" />
+  </ItemGroup>
+
 </Project>

@@ -343,6 +343,22 @@ namespace SadafStore.DataLayer.Migrations
                     b.ToTable("ProductSelectedGroups");
                 });
 
+            modelBuilder.Entity("SadafStore.DataLayer.Entities.User.News", b =>
+                {
+                    b.Property<int>("IdForNews")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EmailForNews")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
+
+                    b.HasKey("IdForNews");
+
+                    b.ToTable("Newses");
+                });
+
             modelBuilder.Entity("SadafStore.DataLayer.Entities.User.Role", b =>
                 {
                     b.Property<int>("RoleId")
@@ -433,7 +449,7 @@ namespace SadafStore.DataLayer.Migrations
                         new
                         {
                             UserId = 1,
-                            ActiveCode = "6932df57-219c-4428-a297-284a5a6f39e7",
+                            ActiveCode = "1eded556-f035-4e5e-bb29-b986b36a9538",
                             AvatarAddress = "بابل - جاده قدیم آمل - روستای بالااحمدچاپی",
                             AvatarImg = "null.jpg",
                             AvatarName = "حبیب پورخانلر احمدی",
@@ -442,19 +458,19 @@ namespace SadafStore.DataLayer.Migrations
                             IsActive = true,
                             IsDelete = false,
                             Password = "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34",
-                            RegisterDate = new DateTime(2020, 9, 23, 11, 1, 19, 747, DateTimeKind.Local).AddTicks(9564),
+                            RegisterDate = new DateTime(2020, 9, 26, 9, 54, 11, 963, DateTimeKind.Local).AddTicks(7680),
                             UserName = "Habib"
                         },
                         new
                         {
                             UserId = 2,
-                            ActiveCode = "10342d62-b47f-4dee-9074-79640d2cf1c7",
+                            ActiveCode = "2a9e1575-2ce9-4dad-bbe3-65e6c9f77a6f",
                             AvatarImg = "null.jpg",
                             Email = "farhad.manager@gmail.com",
                             IsActive = true,
                             IsDelete = false,
                             Password = "C5-FE-25-89-6E-49-DD-FE-99-6D-B7-50-8C-F0-05-34",
-                            RegisterDate = new DateTime(2020, 9, 23, 11, 1, 19, 754, DateTimeKind.Local).AddTicks(2215),
+                            RegisterDate = new DateTime(2020, 9, 26, 9, 54, 11, 967, DateTimeKind.Local).AddTicks(3179),
                             UserName = "Farhad"
                         });
                 });

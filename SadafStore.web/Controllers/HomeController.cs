@@ -21,7 +21,7 @@ namespace SadafStore.web.Controllers
         public IActionResult Index()
         {
             ViewBag.PopularProduct = _productService.GetPopularProduct();
-            return View(_productService.GetProductsList(1,"","",0,null).Item1);
+            return View(_productService.GetProductsList(1,"","",null, 0).Item1);
         }
 
         [Route("OnlinePayment/{id}")]
@@ -43,6 +43,18 @@ namespace SadafStore.web.Controllers
                     _userService.UpdateWallet(wallet);
                 }
             }
+            return View();
+        }
+
+        [Route("AboutUs")]
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        [Route("ContactUs")]
+        public IActionResult ContactUs()
+        {
             return View();
         }
     }

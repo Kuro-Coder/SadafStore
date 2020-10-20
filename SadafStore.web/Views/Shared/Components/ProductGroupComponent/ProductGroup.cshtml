@@ -9,21 +9,21 @@
         <ul>
             @foreach (var group in Model.Where(g => g.ParentId == null))
             {
-                <li class="menu_item_children">
+                <li name="selectedGroups" class="menu_item_children">
                     <a onchange="changeGroup()" href="/Product?selectedGroups=@group.GroupId">@group.GroupTitle <i class="fa fa-angle-left"></i></a>
                     @if (Model.Any(g => g.ParentId == group.GroupId))
                     {
                         <ul class="categories_mega_menu">
                             @foreach (var subGroupLevel1 in Model.Where(g => g.ParentId == group.GroupId))
                             {
-                                <li class="menu_item_children">
+                                <li name="selectedGroups" class="menu_item_children">
                                     <a onchange="changeGroup()" href="/Product?selectedGroups=@subGroupLevel1.GroupId">@subGroupLevel1.GroupTitle</a>
                                     @if (Model.Any(g => g.ParentId == subGroupLevel1.GroupId))
                                     {
                                         <ul class="categorie_sub_menu">
                                             @foreach (var subGroupLevel2 in Model.Where(g => g.ParentId == subGroupLevel1.GroupId))
                                             {
-                                                <li><a onchange="changeGroup()" href="/Product?selectedGroups=@subGroupLevel2.GroupId">@subGroupLevel2.GroupTitle</a></li>
+                                                <li name="selectedGroups"><a onchange="changeGroup()" href="/Product?selectedGroups=@subGroupLevel2.GroupId">@subGroupLevel2.GroupTitle</a></li>
                                             }
                                         </ul>
                                     }
